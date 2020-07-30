@@ -1,12 +1,13 @@
 import axios from "axios";
 
+
 const service = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
   withCredentials: true, // Cookie is sent to client when using this service. (used for session)
 });
 
 function errorHandler(error) {
-  if (error.response) {
+  if (error.response.data) {
     console.log(error.response && error.response.data);
     throw error;
   }
@@ -16,38 +17,40 @@ function errorHandler(error) {
 export default {
   service,
 
-  signup(userInfo) {
-    return service
-      .post("/api/auth/signup", userInfo)
+  displayAllQuizz() {
+   return service
+      .get("api/quizz")
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
-  signin(userInfo) {
+  getOneQuizz(quizzId) {
     return service
-      .post("/api/auth/signin", userInfo)
+      .get(`api/quizz/${quizzID}`)
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
-  isLoggedIn() {
-    return service
-      .get("/api/auth/isLoggedIn")
-      .then((res) => res.data)
-      .catch(errorHandler);
-  },
 
-  logout() {
-    return service
-      .get("/api/auth/logout")
-      .then((res) => res.data)
-      .catch(errorHandler);
-  },
+updateQuizz(quizzID,newInfos){
+   return service
+    .patch(`api/quizz/${quizzID}`,newInfos)
+    .then((res) => res.data)
+    .catch(errorHandler);
+},
 
-  getItems() {
+createQuizz(newQuizz){
     return service
-      .get("/api/items")
-      .then((res) => res.data)
-      .catch(errorHandler);
-  },
+    .post("api/quizz",newQuizz)
+    .then ((res)=>res.data)
+    .catch(errorHandler)
+},
+
+deleteQuizz(quizzID){
+    return service
+    .delete(`api/quizz/${quizzID}`)
+    .then((res) => res.data)
+    .catch(errorHandler);
+}
+
 };
