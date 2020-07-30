@@ -71,18 +71,17 @@ class FormSignup extends Component {
         </label>
         </div>
 
-        
 
         <div>
         <label htmlFor="einstein" class="einstein">
-        <input type="radio" id="griezmann" name="image" value="https://img.icons8.com/color/48/000000/einstein.png" />
-        <img src="https://img.icons8.com/color/48/000000/einstein.png" alt="einstein"/>
+        <input type="radio" id="einstein" name="image" value="https://img.icons8.com/color/48/000000/einstein.png" />
+        <img src="https://img.icons8.com/color/48/000000/einstein.png" alt="einstein" />
         </label>
         </div>
 
         <div>
         <label htmlFor="beyonce" class="beyonce">
-        <input type="radio" id="beyonce" name="image" value="../../../media/icons8-beyonce-96.png"/>
+        <input type="radio" id="beyonce" name="image" value="https://img.icons8.com/color/48/000000/beyonce.png"/>
         <img src="https://img.icons8.com/color/48/000000/beyonce.png" alt="beyonce" />
         </label>
         </div>
