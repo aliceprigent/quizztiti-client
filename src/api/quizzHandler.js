@@ -19,14 +19,17 @@ export default {
 
   displayAllQuizz() {
    return service
-      .get("api/quizz")
-      .then((res) => res.data)
+      .get("/quizz")
+      .then((res) => 
+          res.data
+        
+    )
       .catch(errorHandler);
   },
 
   getOneQuizz(quizzId) {
     return service
-      .get(`api/quizz/${quizzID}`)
+      .get(`/quizz/${quizzId}`)
       .then((res) => res.data)
       .catch(errorHandler);
   },
@@ -34,21 +37,21 @@ export default {
 
 updateQuizz(quizzID,newInfos){
    return service
-    .patch(`api/quizz/${quizzID}`,newInfos)
+    .patch(`/quizz/${quizzID}`,newInfos)
     .then((res) => res.data)
     .catch(errorHandler);
 },
 
 createQuizz(newQuizz){
     return service
-    .post("api/quizz",newQuizz)
+    .post("/quizz",newQuizz)
     .then ((res)=>res.data)
     .catch(errorHandler)
 },
 
 deleteQuizz(quizzID){
     return service
-    .delete(`api/quizz/${quizzID}`)
+    .delete(`/quizz/${quizzID}`)
     .then((res) => res.data)
     .catch(errorHandler);
 }
