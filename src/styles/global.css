@@ -18,3 +18,28 @@ a {
 ul {
   list-style-type: none;
 }
+
+/* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: none;
+  background-color: rgb(223, 215, 215);
+  border-radius: 3rem;
+ 
+  
+}
