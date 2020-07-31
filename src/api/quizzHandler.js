@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const service = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
   withCredentials: true, // Cookie is sent to client when using this service. (used for session)
@@ -18,12 +17,9 @@ export default {
   service,
 
   displayAllQuizz() {
-   return service
+    return service
       .get("/quizz")
-      .then((res) => 
-          res.data
-        
-    )
+      .then((res) => res.data)
       .catch(errorHandler);
   },
 
@@ -34,26 +30,24 @@ export default {
       .catch(errorHandler);
   },
 
-
-updateQuizz(quizzID,newInfos){
-   return service
-    .patch(`/quizz/${quizzID}`,newInfos)
-    .then((res) => res.data)
-    .catch(errorHandler);
-},
-
-createQuizz(newQuizz){
+  updateQuizz(quizzID, newInfos) {
     return service
-    .post("/quizz",newQuizz)
-    .then ((res)=>res.data)
-    .catch(errorHandler)
-},
+      .patch(`/quizz/${quizzID}`, newInfos)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 
-deleteQuizz(quizzID){
+  createQuizz(newQuizz) {
     return service
-    .delete(`/quizz/${quizzID}`)
-    .then((res) => res.data)
-    .catch(errorHandler);
-}
+      .post("/quizz", newQuizz)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 
+  deleteQuizz(quizzID) {
+    return service
+      .delete(`/quizz/${quizzID}`)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
 };
