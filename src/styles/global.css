@@ -89,3 +89,8 @@ ul {
 .btn:hover{
   background-color: rgb(145, 69, 74);
 }
+
+.space-around {
+  justify-content: space-around;
+  align-items: center;
+}
