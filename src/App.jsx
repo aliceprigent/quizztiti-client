@@ -6,7 +6,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
-import Quizz from "./pages/Quizz";
+import Quizz from "./pages/AllQuizz";
 import FormNewTeam from "./components/Forms/Team/FormNewTeam"
 import Dashboard from "./pages/Dashboard"
 

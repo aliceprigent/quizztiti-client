@@ -1,0 +1,11 @@
+.all-quizz {
+}
+
+.quizz-sticker {
+  height: 15em;
+  width: 15em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20%;
+  margin: 2em;
+}

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import QuizzCard from "../components/Quizz/QuizzCard.jsx";
-import quizzHandler from "../api/quizzHandler.js";
 
-export class Quizz extends Component {
+import quizzHandler from "../api/quizzHandler.js";
+import QuizzSticker from "../components/Quizz/QuizzSticker.jsx";
+
+export class AllQuizz extends Component {
   state = {
     quizz:[],
   };
@@ -19,15 +20,15 @@ export class Quizz extends Component {
 
   render() {
     return (
-      <div>
+      <div className="all-quizz row center">
       {this.state.quizz.map((quiz)=>{
           return(
-              <div className="quizzCard">
-        <QuizzCard key={quiz._id} 
+              
+        <QuizzSticker key={quiz._id} 
             quizz={quiz}
         />
 
-              </div>
+              
           )
       })}
       </div>
@@ -35,4 +36,4 @@ export class Quizz extends Component {
   }
 }
 
-export default Quizz;
+export default AllQuizz;

@@ -2,6 +2,7 @@
 @import'./variables.css'; 
 @import'./NavMain.css'; 
 @import'./user.css'; 
+@import'./quizz.css';
 
 * {
   margin: 0;
