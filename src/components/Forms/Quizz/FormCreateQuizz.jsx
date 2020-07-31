@@ -1,13 +1,40 @@
 import React, { Component } from "react";
-import quizzHandler from "../api/quizzHandler.js";
+import quizzHandler from "../../../api/quizzHandler";
 
 export class FormCreateQuizz extends Component {
   state = {};
 
+  handleChange = (event) => {
+    const key = event.target.name;
+    let value;
+    event.target.type === "select"
+      ? (value = event.target.selected)
+      : (value = event.target.value);
+    this.setState({ [key]: value });
+    console.log(this.state);
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log(this.state);
+    quizzHandler
+      .createQuizz(this.state)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <div>
-        <form className="quizz-form">
+        <form
+          className="quizz-form"
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+        >
           <label htmlFor="title" className="quizz-label">
             Title
           </label>
@@ -20,20 +47,25 @@ export class FormCreateQuizz extends Component {
           />
 
           <label htmlFor="thema" className="quizz-label">
-            Thema
+            Topic
           </label>
           <select name="thema" className="quizz-select">
-            <option value="Nature">Nature</option>
-            <option value="General Culture">General Culture</option>
+          <option value="" selected>
+              
+            </option>
+            <option value="Nature" >
+              Nature
+            </option>
+            <option value="General Culture" >General Culture</option>
             <option value="Health and Beauty">Health and Beauty</option>
             <option value="Celebrity">Celebrity</option>
             <option value="Society">Society</option>
             <option value="Miscellaneous">Miscellaneous</option>
           </select>
-          
-          <label htmlFor="quizzTotal"></label>
 
-          
+          {/* <label htmlFor="quizzTotal">Quizz total</label>
+          <input name="quizzTotal" type="text" /> */}
+          <button>Submit</button>
         </form>
       </div>
     );
