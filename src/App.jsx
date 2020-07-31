@@ -17,7 +17,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={Signin} />
-        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/:mode(signup|profile/edit)" component={Signup} />
         <Route path="/team/create" component={FormNewTeam} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <Route exact path="/quizz" component={Quizz}/>
