@@ -1,17 +1,34 @@
+@import'./variables.css'; 
+
 .NavMain {
-  background-color: transparent;
-  color: rgb(57, 57, 57);
+  background-color: var(--red);
+  color: white;
   display: flex;
   align-items: center;
   padding: 20px;
-  height: 70px;
+  height: 65px;
+  margin-bottom: 30px;
 }
 
 .NavMain .nav-list {
   margin-left: auto;
   display: flex;
+  margin-bottom: 3px;
 }
 
 .NavMain .nav-list li:not(:last-child) {
   margin-right: 20px;
+}
+
+.avatar {
+  margin-bottom: 8px;
+  margin-top: 5px;
+  margin-left: 10px;
+  background-color: white;
+  border-radius: 40px;
+  padding: 5px;
+}
+
+.link-nav {
+  margin-left: 30px;
 }
