@@ -13,7 +13,7 @@ export class UserQuizz extends Component {
           email: apiRes.data.email,
           password: apiRes.data.password,
           image: apiRes.data.image,
-          quizzCreated: apiRes.data.quizzDone,
+          quizzCreated: apiRes.data.quizzCreated,
           quizzDone: apiRes.data.quizzDone,
         });
       })
@@ -26,7 +26,7 @@ export class UserQuizz extends Component {
     return (
       <React.Fragment>
         <h2>MY QUIZZ</h2>
-        <a href="/profile/edit">
+        <a href="/quizz/new">
           <button style={{ marginTop: "10px", width: "10em" }} className="btn">
             CREATE QUIZZ
           </button>
