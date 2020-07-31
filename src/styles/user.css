@@ -1,0 +1,24 @@
+.sign-input {
+    margin: 10px;
+    width: 15em;
+    border-radius: 20px;
+    border-style: none;
+    background-color: rgb(243, 235, 235);
+    height: 2em;
+}
+
+.sign-label {
+    font-size: 18px;
+    
+}
+
+.signup-div {
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.avatar-div {
+    width: 100%;
+    margin-bottom: 30px;
+}

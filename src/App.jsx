@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import Quizz from "./pages/Quizz";
 import FormNewTeam from "./components/Forms/Team/FormNewTeam"
+import Dashboard from "./pages/Dashboard"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/team/create" component={FormNewTeam} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <Route exact path="/quizz" component={Quizz}/>
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   );
