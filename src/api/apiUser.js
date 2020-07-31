@@ -19,7 +19,7 @@ export default {
     },
 
     updateUser(data) {
-        return service.post("/me", data)
+        return service.patch("/me", data)
     }
   
   };
