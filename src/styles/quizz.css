@@ -1,5 +1,7 @@
 .all-quizz {
+  flex-wrap: wrap;
 }
+
 
 .quizz-sticker {
   height: 15em;
@@ -8,4 +10,25 @@
   background-repeat: no-repeat;
   border-radius: 20%;
   margin: 2em;
+}
+
+.quizz-form{
+  width: 50em;
+}
+
+.quizz-form .title{
+  height:3em;
+}
+
+.question{
+  height:3em;
+}
+
+.question-box input{
+  width: 50em;
+}
+.q-input{
+  height:7em;
+  margin:2em 0;
+ 
 }
