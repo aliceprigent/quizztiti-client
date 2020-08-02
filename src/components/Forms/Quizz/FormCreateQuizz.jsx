@@ -79,7 +79,7 @@ export class FormCreateQuizz extends Component {
           </select>
           <label htmlFor="quizzTotal">Quizz total</label>
           <div id="question-container">
-            {this.state.children.map((child) => child)}
+            {this.state.quizz.map((oneQuizz) => oneQuizz)}
           </div>
           ;
           <span className="addQuestion" onClick={this.addQuestion}>
