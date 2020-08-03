@@ -81,7 +81,6 @@ export class FormCreateQuizz extends Component {
             <option value="Society">Society</option>
             <option value="Miscellaneous">Miscellaneous</option>
           </select>
-
           <label htmlFor="status" className="status">
             Status
           </label>
