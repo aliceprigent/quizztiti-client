@@ -14,6 +14,7 @@
 
 .quizz-form{
   width: 50em;
+  padding: 1em;
 }
 
 .quizz-form .title{
@@ -28,7 +29,17 @@
   width: 50em;
 }
 .q-input{
-  height:7em;
+  height:3em;
   margin:2em 0;
  
+}
+.question-box{
+  padding:2em;
+}
+.question-box [type=radio]{
+  width:1em;
+  height:1em;
+  opacity: 100;
+  display: flex;
+  position: relative;
 }
