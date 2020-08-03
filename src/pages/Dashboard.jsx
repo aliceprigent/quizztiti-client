@@ -17,7 +17,7 @@ export class Dashboard extends Component {
               email: apiRes.data.email,
               password: apiRes.data.password,
               image: apiRes.data.image,
-              quizzCreated: apiRes.data.quizzDone,
+              quizzCreated: apiRes.data.quizzCreated,
               quizzDone: apiRes.data.quizzDone
             },
           );
@@ -28,6 +28,7 @@ export class Dashboard extends Component {
     }
 
   render() {
+    console.log(this.state,"this is state")
     return (
 
         <div className="center column">
@@ -46,7 +47,7 @@ export class Dashboard extends Component {
           <UserTeam user={this.state}/>
           </div>
           <div className="shadow-box dashboard-box">
-          <UserTeam user={this.state}/>
+          <UserTeam />
           </div>
         </div>
       </section>
