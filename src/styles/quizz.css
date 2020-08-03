@@ -1,5 +1,7 @@
 .all-quizz {
+  flex-wrap: wrap;
 }
+
 
 .quizz-sticker {
   height: 15em;
@@ -10,3 +12,26 @@
   margin: 2em;
 }
 
+<<<<<<< HEAD
+=======
+.quizz-form{
+  width: 50em;
+}
+
+.quizz-form .title{
+  height:3em;
+}
+
+.question{
+  height:3em;
+}
+
+.question-box input{
+  width: 50em;
+}
+.q-input{
+  height:7em;
+  margin:2em 0;
+ 
+}
+>>>>>>> e86b62c7758d3f94f012ea7e7f6a2ff586a89f09

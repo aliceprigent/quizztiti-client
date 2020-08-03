@@ -1,7 +1,7 @@
 import React from "react";
 
 const QuizzSticker = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="quizz-sticker row center" style={{backgroundImage:`url(${props.quizz.image})`}}>
     
