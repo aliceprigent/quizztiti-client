@@ -10,7 +10,7 @@ import Quizz from "./pages/AllQuizz";
 import FormNewTeam from "./components/Forms/FormNewTeam";
 import Dashboard from "./pages/Dashboard"
 import FormCreateQuizz from "./components/Forms/Quizz/FormCreateQuizz";
-import TeamDashboard from "./components/Team/teamDashboard"
+import TeamDashboard from "./components/Team/TeamDashboard"
 
 function App() {
   return (
