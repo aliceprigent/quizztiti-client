@@ -11,7 +11,7 @@ const UserProfile = (props) => {
           </div>
           <div className="column center shadow-box" style={{width:"40%"}}>
               <h3>SCORE</h3>
-              <h4 style={{marginTop:"30px"}}>score</h4>
+              <h4 style={{marginTop:"30px"}}>{/* {props.user.quizzDone.score} */}</h4>
           </div>
           </section>
       </React.Fragment>

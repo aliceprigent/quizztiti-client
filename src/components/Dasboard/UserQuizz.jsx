@@ -1,6 +1,6 @@
 import apiUser from "../../api/apiUser";
 import React, { Component } from "react";
-import QuizzSticker from "../Quizz/QuizzSticker";
+import StickerDashboard from "./StickerDashboard";
 
 export class UserQuizz extends Component {
   state = {};
@@ -32,7 +32,7 @@ export class UserQuizz extends Component {
           </button>
         </a>
         {this.state.quizzCreated && this.state.quizzCreated.map((quizz) => {
-          return <QuizzSticker key={quizz._id} quizz={quizz} />;
+          return <StickerDashboard key={quizz._id} quizz={quizz} />;
         })}
       </React.Fragment>
     );

@@ -32,3 +32,16 @@
   margin:2em 0;
  
 }
+
+.proposition {
+  text-align: center;
+  margin: 10px;
+
+}
+
+.answer {
+  width: 60%;
+  height: 10em;
+  margin: 30px;
+}
+
