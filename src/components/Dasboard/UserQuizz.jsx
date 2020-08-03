@@ -1,6 +1,8 @@
 import apiUser from "../../api/apiUser";
 import React, { Component } from "react";
 import StickerDashboard from "./StickerDashboard";
+import { withUser } from "../Auth/withUser";
+
 
 export class UserQuizz extends Component {
   state = {};

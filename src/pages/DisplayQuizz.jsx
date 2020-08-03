@@ -3,6 +3,7 @@ import QuestionQuizz from "../components/Quizz/QuestionQuizz";
 import AnswerQuizz from "../components/Quizz/AnswerQuizz";
 import quizzHandler from "../api/quizzHandler";
 import apiUser from "../api/apiUser";
+import EndQuizz from "../components/Quizz/EndQuizz";
 
 export class DisplayQuizz extends Component {
   state = {
@@ -30,13 +31,21 @@ export class DisplayQuizz extends Component {
   };
 
   handleUserScore = () => {
-    apiUser.updateUser({
-      $push: {
-        quizzDone: {
-          quizzId: this.state.quizz._id,
-          score: this.state.userScore,
+    apiUser
+      .updateUser({
+        $push: {
+          quizzDone: {
+            quizzId: this.state.quizz._id,
+            score: this.state.userScore,
+          },
         },
-      },
+      })
+      .then(console.log("score send"))
+      .catch((error) => {
+        console.log(error);
+      });
+    this.setState({
+      questionIndex: this.state.questionIndex + 1,
     });
   };
 
@@ -56,36 +65,56 @@ export class DisplayQuizz extends Component {
   }
 
   render() {
-    console.log(this.state);
     if (!this.state.quizz) {
       return <div>Loading...</div>;
     }
     return (
       <div className="column center">
         <h2>{this.state.quizz.title}</h2>
-        <section>
-          <QuestionQuizz
-            quizz={this.state.quizz.quizzTotal[this.state.questionIndex]}
-            handleAnswer={this.handleAnswer}
-            handleScore={this.handleScore}
-            answered={this.state.answered}
-          />
-          <div className="answer">
-            {this.state.answered && (
-              <AnswerQuizz
+        {this.state.questionIndex < 10 ? (
+          <div>
+            <section>
+              <QuestionQuizz
                 quizz={this.state.quizz.quizzTotal[this.state.questionIndex]}
-                userAnswer={this.state.userAnswer}
+                handleAnswer={this.handleAnswer}
+                handleScore={this.handleScore}
+                answered={this.state.answered}
               />
-            )}
+              <div className="answer">
+                {this.state.answered && (
+                  <AnswerQuizz
+                    quizz={
+                      this.state.quizz.quizzTotal[this.state.questionIndex]
+                    }
+                    userAnswer={this.state.userAnswer}
+                  />
+                )}
+              </div>
+            </section>
+
+            <div className="center column">
+              {this.state.questionIndex < 9 ? (
+                <button
+                  onClick={this.handleNextQuestion}
+                  style={{ width: "150px" }}
+                  className="btn"
+                >
+                  Next question
+                </button>
+              ) : (
+                <button
+                  className="btn"
+                  style={{ width: "150px" }}
+                  onClick={this.handleUserScore}
+                >
+                  Submit
+                </button>
+              )}
+            </div>
           </div>
-        </section>
-        <button
-          onClick={this.handleNextQuestion}
-          style={{ width: "150px" }}
-          className="btn"
-        >
-          Next question
-        </button>
+        ) : (
+          <EndQuizz score={this.state.userScore} quizz={this.state.quizz} />
+        )}
       </div>
     );
   }
