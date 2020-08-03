@@ -4,21 +4,35 @@ import QuestionBox from "../../Forms/Quizz/QuestionBox";
 
 export class FormCreateQuizz extends Component {
   state = {
-   title:"",
-   thema:"",
-   status:"",
-    quizz: [],
+  questionNb: 1,
+    // incrémenter le compte dès qu'on appuie sur add question
+    quizzTotal: [],
+    //  push une question dès qu'on appuie sur add question
   };
 
   handleChange = (event) => {
     const key = event.target.name;
     let value;
-    event.target.type === "select"
-      ? (value = event.target.selected)
-      : (value = event.target.value);
-    this.setState({ [key]: value });
-    console.log(this.state);
+    if (key === "title" || key === "thema" || key === "status") {
+      event.target.type === "select"
+        ? (value = event.target.selected)
+        : (value = event.target.value);
+      this.setState({ [key]: value });
+      console.log(this.state);
+    }
   };
+
+  addQuestion = (newQuest) => {
+    let copy = [...this.state.quizzTotal];
+    copy.push(newQuest);
+    this.setState(
+      {
+        questionNb: this.state.questionNb + 1,
+        quizzTotal: copy,
+      },
+      () => console.log("step1", this.state.quizzTotal)
+    );
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -33,19 +47,6 @@ export class FormCreateQuizz extends Component {
       });
   };
 
-  addQuestion = (event) => {
-    this.state.quizz.length < 11 &&
-      this.setState({
-        quizz: [
-          ...this.state.quizz,
-          <QuestionBox
-            index={this.state.quizz.length}
-            key={this.state.quizz.length}
-            
-          />,
-        ],
-      });
-  };
 
  
   render() {
@@ -65,33 +66,32 @@ export class FormCreateQuizz extends Component {
             className="title quizz-input"
             placeholder="Short description of your quizz"
             maxLength="120"
+            defaultValue="mon 1er quizz"
           />
           <label htmlFor="thema" className="quizz-label">
             Topic
           </label>
           <select name="thema" className="quizz-select">
-            <option value="" defaultValue></option>
-            <option value="Nature">Nature</option>
+          <option value=""></option>
+            <option value="Nature" defaultValue>
+              Nature
+            </option>
             <option value="General Culture">General Culture</option>
             <option value="Health and Beauty">Health and Beauty</option>
             <option value="Celebrity">Celebrity</option>
             <option value="Society">Society</option>
             <option value="Miscellaneous">Miscellaneous</option>
           </select>
-          <label htmlFor="quizzTotal">Quizz total</label>
-          <div id="question-container">
-            {this.state.quizz.map((oneQuizz) => oneQuizz)}
-          </div>
-          ;
-          <span className="addQuestion" onClick={this.addQuestion}>
-            Add a question
-          </span>
+          
+            
           <label htmlFor="status" className="status">
-            Topic
+          Status
           </label>
           <select name="status" className="quizz-status">
-            <option value="" defaultValue></option>
-            <option value="Public">Public</option>
+          <option value=""></option>
+            <option value="Public" defaultValue>
+              Public
+            </option>
 
             <option value="Private">Private</option>
           </select>
