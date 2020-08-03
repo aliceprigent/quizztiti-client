@@ -24,13 +24,13 @@ function App() {
         <Route path="/team/create" component={FormNewTeam} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <Route exact path="/quizz" component={Quizz}/>
+        <ProtectedRoute exact path="/quizz/new" component={FormCreateQuizz} />
         <Route
           exact
           path="/quizz/:id"
           component={DisplayQuizz}
         />
-        <Route path="/dashboard" component={Dashboard} />
-        <ProtectedRoute exact path="/quizz/new" component={FormCreateQuizz} />
+        <Route path="/dashboard" component={Dashboard} />        
         <Route path="/teams/:id" component={TeamDashboard} />
       </Switch>
     </div>

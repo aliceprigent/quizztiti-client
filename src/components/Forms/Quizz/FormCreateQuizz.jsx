@@ -92,10 +92,13 @@ export class FormCreateQuizz extends Component {
 
             <option value="Private">Private</option>
           </select>
+
+          <label htmlFor="image"></label>
+          <input type="file" name="image" id="quizz-image" />
+
           <button className="btn">Submit</button>
         </form>
 
-        <label htmlFor="quizzTotal">Quizz total</label>
         <div id="question-container">
           <QuestionBox
             changeCbk={this.handleChange}
