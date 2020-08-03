@@ -1,0 +1,84 @@
+@import'../variables.css'; 
+
+
+.container_left {
+  box-sizing: border-box;
+  width: 55vw;
+  height: 80vh;
+  margin-left: 3vw;
+}
+
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+#team_info {
+  padding: 1vh 1vw;
+  width: 50vw;
+  height: 20vh;
+  border-radius: 30px;
+  background: var(--grey);
+}
+
+#team_members {
+    margin-left: 10vw;
+    border-radius: 30px;
+    width: 40vw;
+    height: 80vh;
+    margin-right: 5vw;
+  }
+
+#team_quizz {
+  width: 60vw;
+  height: 60vh;
+  overflow: scroll;
+}
+
+.space_between {
+  justify-content: space-between;
+  padding: 1vh 2vw 0 2vw;
+}
+
+.space_evenly {
+  justify-content: space-evenly;
+  padding: 1vh 2vw 0 2vw;
+}
+
+#owner {
+font-size: .7rem;
+}
+
+.team_block {
+ width: 50vw;   
+}
+
+.float_Left{
+    float: left;
+}
+
+.margin_bottom {
+    margin-bottom: 2vh;
+}
+
+.team_image {
+    width: 150px;
+    box-sizing: border-box;
+}
+
+#team_head {
+    width: 33vw;
+}
+
+#team_desc {
+margin-left: 2vw;
+overflow: scroll;
+}
+
+.half_width {
+    width: 30%;   
+}
+
+.transparent {
+    background: transparent;
+}

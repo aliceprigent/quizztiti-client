@@ -11,7 +11,7 @@ import FormNewTeam from "./components/Forms/FormNewTeam";
 import Dashboard from "./pages/Dashboard"
 import FormCreateQuizz from "./components/Forms/Quizz/FormCreateQuizz";
 import DisplayQuizz from './pages/DisplayQuizz'
-import TeamDashboard from "./components/Team/teamDashboard"
+import TeamDashboard from "./components/Team/TeamDashboard"
 
 function App() {
   return (
