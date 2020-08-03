@@ -7,7 +7,7 @@ import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import Quizz from "./pages/AllQuizz";
-import FormNewTeam from "./components/Forms/Team/FormNewTeam"
+import FormNewTeam from "./components/Forms/FormNewTeam";
 import Dashboard from "./pages/Dashboard"
 import FormCreateQuizz from "./components/Forms/Quizz/FormCreateQuizz";
 import TeamDashboard from "./components/Team/teamDashboard"

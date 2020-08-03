@@ -33,7 +33,7 @@ export default {
   getOneTeam(id) {
     return service
       .get(`teams/${id}`)
-      // .then((teamJSON) => teamJSON.data)
+      .then((teamJSON) => teamJSON.data)
       .catch((err) => errorHandler(err));
   },
 
