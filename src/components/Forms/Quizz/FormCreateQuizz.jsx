@@ -41,6 +41,7 @@ export class FormCreateQuizz extends Component {
           <QuestionBox
             index={this.state.quizz.length}
             key={this.state.quizz.length}
+            
           />,
         ],
       });
