@@ -23,14 +23,14 @@ export class FormCreateQuizz extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
-    // quizzHandler
-    //   .createQuizz(this.state)
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    quizzHandler
+      .createQuizz(this.state)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   addQuestion = (event) => {

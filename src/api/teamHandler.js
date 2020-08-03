@@ -33,14 +33,14 @@ export default {
   getOneTeam(id) {
     return service
       .get(`teams/${id}`)
-      .then((teamJSON) => teamJSON.data)
+      // .then((teamJSON) => teamJSON.data)
       .catch((err) => errorHandler(err));
   },
 
   updateOneTeam(id, obj) {
     return service
       .patch(`teams/${id}`, obj)
-      .then((updTeamJSON) => updTeamJSON.data)
+      // .then((updTeamJSON) => updTeamJSON.data)
       .catch((err) => errorHandler(err));
   },
 
