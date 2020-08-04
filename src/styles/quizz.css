@@ -61,8 +61,6 @@
 }
 
 
-
-
 .all-quizz {
   flex-wrap: wrap;
 }
@@ -170,6 +168,21 @@
     margin: 6px;
     padding: 2em
   }
+
+  .quizz-sticker-mobile {
+    height: 10em;
+    width: 20em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin: 6px;
+    padding: 2em
+  }
+
+  .quizz-sticker-mobile h3{
+    font-size: 20px;
+  }
+  
 
 }
 

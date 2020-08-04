@@ -18,6 +18,10 @@
         justify-content: center;
         text-align: center;
     }
+
+    .bouton-fleche-mobile {
+        width: 10%;
+    }
 }
 
 .welcome-div {
