@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TeamQuizzes from "./Dashboard/TeamQuizzes";
 import TeamMembers from "./Dashboard/TeamMembers";
 import teamHandler from "../../api/teamHandler";
-import "../../styles/teams/TeamDashboard.css"
+import "../../styles/teams/teamDashboard.css"
 
 export class teamDashboard extends Component {
   componentDidMount() {
