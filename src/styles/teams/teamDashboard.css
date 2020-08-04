@@ -25,7 +25,8 @@
     margin-left: 10vw;
     border-radius: 30px;
     width: 40vw;
-    height: 80vh;
+    height: 40vh;
+    overflow: scroll;
     margin-right: 5vw;
   }
 
@@ -89,4 +90,18 @@ overflow: scroll;
   margin-left: 5px;
   padding-bottom: 5px;
   font-size: .8rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.owner {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  padding-bottom: 5px;
+  font-size: .8rem;
+  background: greenyellow;
 }
