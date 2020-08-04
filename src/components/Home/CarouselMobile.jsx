@@ -36,25 +36,40 @@ export class Carousel extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <div>
-      <section className="quizz-home row">
-        <button onClick={this.previous}>Previous</button>
-        <Link to={`/quizz/${this.state.quizz[this.state.currentIndex]._id}`}>
-        <div
-          className="quizz-sticker row center"
-          style={{
-            backgroundImage: `url(${
-              this.state.quizz[this.state.currentIndex].image
-            })`,
-          }}
-        >
-          <h3 className="row ">
-            {this.state.quizz[this.state.currentIndex].title}
-          </h3>
-        </div>
-        </Link>
-        <button onClick={this.next}>Next</button>
-        </section>
+      <div className="row center">
+        
+          <img
+            onClick={this.previous}
+            className="bouton-fleche-mobile"
+            alt="previous"
+            src="../../../media/icons8-double-gauche-100.png"
+          />
+          <section className="quizz-home row">
+          <Link to={`/quizz/${this.state.quizz[this.state.currentIndex]._id}`}>
+            <div
+              className="quizz-sticker-mobile row center"
+              style={{
+                backgroundImage: `url(${
+                  this.state.quizz[this.state.currentIndex].image
+                })`,
+              }}
+            >
+              <h3 className="row ">
+                {this.state.quizz[this.state.currentIndex].title}
+              </h3>
+            </div>
+            
+            
+          </Link>
+          </section>
+          
+          <img
+            onClick={this.next}
+            className="bouton-fleche-mobile"
+            alt="previous"
+            src="../../../media/icons8-double-droite-100.png"
+          />
+        
       </div>
     );
   }

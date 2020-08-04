@@ -1,3 +1,68 @@
+@keyframes shake-bottom {
+  0%,
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 100%;
+  }
+  10% {
+    transform: rotate(2deg);
+  }
+  20%,
+  40%,
+  60% {
+    transform: rotate(-4deg);
+  }
+  30%,
+  50%,
+  70% {
+    transform: rotate(4deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1, 0.95, 1);
+  }
+  40% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 1, 1);
+  }
+  65% {
+    transform: scale3d(1, 1, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+
+
 .all-quizz {
   flex-wrap: wrap;
 }
@@ -5,7 +70,7 @@
 
 .quizz-sticker {
   height: 14em;
-  width: 20em;
+  width: 22em;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 20px;
@@ -13,11 +78,42 @@
   padding: 2em
 }
 
+.quizz-sticker:hover {
+  animation: jello-horizontal 0.9s both;
+}
+
+.quizz-sticker-mobile {
+  height: 22em;
+  width: 45em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  margin: 6px;
+  padding: 2em
+}
+
+.quizz-sticker-mobile:hover {
+  animation: jello-horizontal 0.9s both;
+}
+
+
 .quizz-sticker h3 {
   text-align: center;
   text-transform: uppercase;
-  color: white
+  color: white;
+ 
+  
 }
+
+.quizz-sticker-mobile h3 {
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-size: 35px;
+ 
+  
+}
+
 
 .quizz-form{
   width: 50em;
@@ -59,4 +155,64 @@
   align-items:center;
 
 
+}
+
+/* Display Quizz */
+
+
+@media (max-width: 1200px){
+  .quizz-sticker {
+    height: 14em;
+    width: 18em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin: 6px;
+    padding: 2em
+  }
+
+}
+
+.question-div {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.proposition {
+  margin: 20px;
+  background-color: var(--grey);
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.proposition:hover {
+  background-color: rgba(128, 128, 128, 0.247);
+  animation: shake-bottom 1s;
+  cursor:pointer;
+  
+}
+
+.answer {
+  height: 14em;
+  
+}
+
+.display-quizz {
+  width: 90%
+}
+
+.question-section {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.banner-question {
+  height: 5em;
 }

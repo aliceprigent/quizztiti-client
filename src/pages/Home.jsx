@@ -3,36 +3,38 @@ import Carousel from "../components/Home/Carousel";
 import quizzHandler from "../api/quizzHandler";
 import CarouselMobile from "../components/Home/CarouselMobile";
 import Categories from "../components/Home/Categories";
+import Footer from "../components/Footer"
 
 export class Home extends Component {
   state = {
     categories: [
       {
         theme: "Nature",
-        image: "",
+        image: "https://img.icons8.com/color/48/000000/sakura.png",
       },
       {
         theme: "General",
-        image: "",
+        image: "https://img.icons8.com/color/48/000000/dali.png",
       },
       {
-        theme: "Health and Beauty",
-        image: "",
+        theme: "Health",
+        image: "https://img.icons8.com/color/48/000000/the-birth-of-venus.png",
       },
       {
         theme: "Celebrity",
-        image: "",
+        image: "https://img.icons8.com/color/48/000000/tango.png",
       },
       {
         theme: "Society",
-        image: "",
+        image: "https://img.icons8.com/color/48/000000/us-capitol.png",
       },
       {
         theme: "Miscellanous",
-        image: "",
+        image: "https://img.icons8.com/color/48/000000/illuminati-symbol.png",
       },
     ],
   };
+
   render() {
     return (
       <div className="column center">
@@ -47,28 +49,50 @@ export class Home extends Component {
             >
               Discover all our quizzes and categories !{" "}
               <button className="btn" style={{ width: "170px" }}>
-                See all quizz !
+                Discover !
               </button>
             </div>
           </section>
+          <div style={{width:"92%"}}>
+          <h3 className="title">All quizz</h3>
+          </div>
 
           <div>
-            <h3 className="title">All quizz</h3>
+            
             <br />
 
             <Carousel />
           </div>
           <br />
-          <button className="btn">See more</button>
+          <button className="btn" style={{marginBottom:"40px"}}>See more</button>
 
           {/*  <CarouselMobile /> */}
 
-          <div>
-            <h3 className="title">Les catégories</h3>
+          <div style={{width:"92%"}}>
+            <h3 className="title">Categories</h3>
             <br />
 
-            <Categories />
+           <section className="row category-wrap">
+            {this.state.categories.map((category) => 
+              <div className="category-div row flex-start"><Categories theme={category.theme} image={category.image} /></div>
+            )}
+            </section>
+
+            <div style={{width:"95%", marginTop:"50px"}}>
+          <h3 className="title">Community quizz</h3>
           </div>
+
+          <div>
+            
+            <br />
+
+            <CarouselMobile />
+          </div>
+            
+          </div>
+        </div>
+        <div style={{width:"90%"}}>
+        <Footer/>
         </div>
       </div>
     );

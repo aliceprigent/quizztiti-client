@@ -14,6 +14,7 @@ import DisplayQuizz from './pages/DisplayQuizz'
 import TeamDashboard from "./components/Team/TeamDashboard"
 import Page404 from "./components/Page404"
 
+
 function App() {
   return (
     <div className="App">
@@ -35,6 +36,7 @@ function App() {
         <Route path="/teams/:id" component={TeamDashboard} />
         <Route path="*" component={Page404} />
       </Switch>
+      
     </div>
   );
 }
