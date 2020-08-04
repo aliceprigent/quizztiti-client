@@ -42,7 +42,7 @@ this.setState({newQuest:updatedQuest}, ()=>{
       <div className="question-box ">
         <form className="question-box" onChange={this.questionChange}>
           <label htmlFor="question">Question {this.props.questionNumber}/10</label>
-          <input name="question" className="question column" type="text" defaultValue="question 1" />
+          <input name="question" className="question column" type="text" defaultValue="question 1" ref={el => this.inputTitle = el}/>
 
           <label htmlFor="proposition">Propositions</label>
           <div>
@@ -53,12 +53,14 @@ this.setState({newQuest:updatedQuest}, ()=>{
                 name="proposition1"
                 className="proposition column q-input"
                 defaultValue="réponse 1"
+                ref={el => this.inputprop1 = el}
               />
               <input
                 type="radio"
                 name="answer"
                 id="proposition1"
                 value={this.state.proposition1}
+                ref={el => this.inputprop2 = el}
               />
             </label>
           </div>
