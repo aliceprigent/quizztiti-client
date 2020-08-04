@@ -15,7 +15,7 @@ const teamMembers = (props) => {
       <div className="row space_between margin_bottom">
       <div>
       <h3>Members</h3>
-      <aside id="owner"> owner : {props.owner.name}</aside>
+      <aside id="owner"> owner : {(props.owner.name) ? props.owner.name : "you" }</aside>
       </div>
       <div className="column">
       <button className="btn"> Invite </button>

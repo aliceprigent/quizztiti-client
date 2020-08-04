@@ -1,5 +1,7 @@
 import React from "react";
 import StickerDashboard from "../../Dasboard/StickerDashboard";
+import { Link } from "react-router-dom";
+
 
 const teamQuizzes = (props) => {
   if (!props.quizzes) {
@@ -22,6 +24,7 @@ const teamQuizzes = (props) => {
         {props.quizzes.map((quizz) => (
           <StickerDashboard key={quizz._id} quizz={quizz} />
         ))}
+        
       </div>
     </div>
   );

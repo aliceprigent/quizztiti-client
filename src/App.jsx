@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard"
 import FormCreateQuizz from "./components/Forms/Quizz/FormCreateQuizz";
 import DisplayQuizz from './pages/DisplayQuizz'
 import TeamDashboard from "./components/Team/TeamDashboard"
+import Page404 from "./components/Page404"
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/:mode(signup|profile/edit)" component={Signup} />
-        <Route path="/team/create" component={FormNewTeam} />
+        <Route path="/team/:mode(create|/edit)/:id?" component={FormNewTeam} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <Route exact path="/quizz" component={Quizz}/>
         <ProtectedRoute exact path="/quizz/new" component={FormCreateQuizz} />
@@ -32,6 +33,7 @@ function App() {
         />
         <Route path="/dashboard" component={Dashboard} />        
         <Route path="/teams/:id" component={TeamDashboard} />
+        <Route path="*" component={Page404} />
       </Switch>
     </div>
   );
