@@ -25,7 +25,7 @@
     margin-left: 10vw;
     border-radius: 30px;
     width: 40vw;
-    height: 40vh;
+    height: 30vh;
     overflow: scroll;
     margin-right: 5vw;
   }
@@ -33,6 +33,12 @@
 #team_quizz {
   width: 60vw;
   height: 60vh;
+  overflow: scroll;
+}
+
+#team_quizzes {
+  width: 40vw;
+  height: 20vh;
   overflow: scroll;
 }
 
@@ -104,4 +110,19 @@ overflow: scroll;
   padding-bottom: 5px;
   font-size: .8rem;
   background: greenyellow;
+}
+
+.red {
+  color: crimson;
+}
+
+.red:hover{
+  /* background-color: crimson;
+  color: white; */
+  border-bottom: crimson 2px solid;
+  box-sizing: border-box;
+}
+
+.click {
+  cursor: pointer;
 }

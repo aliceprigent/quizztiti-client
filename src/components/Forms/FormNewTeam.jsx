@@ -24,12 +24,13 @@ class FormNewTeam extends Component {
     inputSearchMembers: null,
   };
 
-removeImages = (event) => {
-  // didn't manage to make it work
-  console.log("in Remove Images")
-  this.setState({image : null,
-  tmpImage : null}, ()=> console.log('removed images'))
-}
+  removeImages = (event) => {
+    // didn't manage to make it work
+    console.log("in Remove Images");
+    this.setState({ image: null, tmpImage: null }, () =>
+      console.log("removed images")
+    );
+  };
 
   handleChange = (event) => {
     const value = event.target.value;
@@ -71,129 +72,6 @@ removeImages = (event) => {
       console.log("team quizzes:", this.state.teamQuizzes)
     );
   };
-
-  handleSubmit = (event) => {
-    const mode = this.props.match.params.mode;
-    event.preventDefault();
-    var newTeamData = {
-      name: this.state.name,
-      image: this.state.image,
-      description: this.state.description,
-      members: this.state.members,
-      teamQuizz: this.state.teamQuizzes,
-    };
-
-    function buildFormData(formData, data, parentKey) {
-      if (
-        data &&
-        typeof data === "object" &&
-        !(data instanceof Date) &&
-        !(data instanceof File)
-      ) {
-        Object.keys(data).forEach((key) => {
-          buildFormData(
-            formData,
-            data[key],
-            parentKey ? `${parentKey}[${key}]` : key
-          );
-        });
-      } else {
-        const value = data == null ? "" : data;
-
-        formData.append(parentKey, value);
-      }
-    }
-
-    function jsonToFormData(data) {
-      const formData = new FormData();
-
-      buildFormData(formData, data);
-
-      return formData;
-    }
-
-    var objectFormData = jsonToFormData(newTeamData);
-
-    if (mode === "create") {
-      teamHandler
-        .create(objectFormData)
-        .then((newTeam) => {
-          console.log(newTeam);
-          this.setState({teamId : newTeam._id})
-        //  if  (this.state.submitted)  this.props.history.push("/teams/", this.state.teamId)
-        })
-        .catch((error) => {
-          console.log(error);
-          // this.setState({submitted : false})
-        });
-    } else {
-      teamHandler
-        .updateOneTeam(this.state.teamId, objectFormData)
-        .then((updatedTeam) => {
-          console.log(updatedTeam);
-          // if  (this.state.submitted)  this.props.history.push("/teams/", this.state.teamId)
-        })
-        .catch((error) => {
-          console.log(error);
-          // this.setState({submitted : false});
-        });
-    }
-  };
-
-// finalSubmit = (event) => {
-//   this.setState({submitted : true})
-//   this.handleSubmit(event);
-  
-// }
-
-  componentDidMount() {
-    const mode = this.props.match.params.mode;
-
-    apiUser
-      .getUsers()
-      .then((usersJSON) => {
-        console.log(usersJSON);
-        this.setState({ optionsMembers: usersJSON.data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    apiUser
-      .getOneUser()
-      .then((userPopulatedJSON) => {
-        console.log(userPopulatedJSON);
-        this.setState({ userQuizzes: userPopulatedJSON.data.quizzCreated });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    if (mode === "edit") {
-      teamHandler
-        .getOneTeam(this.props.match.params.id)
-        .then((DBres) => {
-          // const newoptionsMembers = this.state.optionsMembers.filter(optionMember => !DBres.members.find(teamMember => optionMember._id === teamMember._id))
-          this.setState(
-            {
-              teamId: DBres._id,
-              owner: DBres.owner,
-              name: DBres.name,
-              description: DBres.description,
-              image: DBres.image,
-              tmpImage: DBres.image,
-              members: DBres.members,
-              teamQuizzes: DBres.teamQuizz,
-              // optionsMembers : newoptionsMembers
-            },
-            () => console.log(this.state)
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }
 
   updateMembers = (memberId) => {
     const mode = this.props.match.params.mode;
@@ -257,59 +135,207 @@ removeImages = (event) => {
     else return false;
   };
 
+  handleSubmit = (event) => {
+    const mode = this.props.match.params.mode;
+    event.preventDefault();
+    var newTeamData = {
+      name: this.state.name,
+      image: this.state.image,
+      description: this.state.description,
+      members: this.state.members,
+      teamQuizz: this.state.teamQuizzes,
+    };
+
+    function buildFormData(formData, data, parentKey) {
+      if (
+        data &&
+        typeof data === "object" &&
+        !(data instanceof Date) &&
+        !(data instanceof File)
+      ) {
+        Object.keys(data).forEach((key) => {
+          buildFormData(
+            formData,
+            data[key],
+            parentKey ? `${parentKey}[${key}]` : key
+          );
+        });
+      } else {
+        const value = data == null ? "" : data;
+
+        formData.append(parentKey, value);
+      }
+    }
+
+    function jsonToFormData(data) {
+      const formData = new FormData();
+
+      buildFormData(formData, data);
+
+      return formData;
+    }
+
+    var objectFormData = jsonToFormData(newTeamData);
+
+    if (mode === "create") {
+      teamHandler
+        .create(objectFormData)
+        .then((newTeam) => {
+          console.log(newTeam);
+          this.setState({ teamId: newTeam._id });
+          //  if  (this.state.submitted)  this.props.history.push("/teams/", this.state.teamId)
+        })
+        .catch((error) => {
+          console.log(error);
+          // this.setState({submitted : false})
+        });
+    } else {
+      teamHandler
+        .updateOneTeam(this.state.teamId, objectFormData)
+        .then((updatedTeam) => {
+          console.log(updatedTeam);
+          // if  (this.state.submitted)  this.props.history.push("/teams/", this.state.teamId)
+        })
+        .catch((error) => {
+          console.log(error);
+          // this.setState({submitted : false});
+        });
+    }
+  };
+
+  // finalSubmit = (event) => {
+  //   this.setState({submitted : true})
+  //   this.handleSubmit(event);
+  // }
+
+  handleDelete = (event) => {
+    const mode = this.props.match.params.mode;
+    if (mode === "edit") {
+      teamHandler
+        .deleteTeam(this.props.match.params.id)
+        .then((DBres) => console.log("deletion complete"))
+        .catch((err) => console.error("error in deletion", err));
+    }
+  };
+
+  componentDidMount() {
+    const mode = this.props.match.params.mode;
+
+    apiUser
+      .getUsers()
+      .then((usersJSON) => {
+        console.log(usersJSON);
+        this.setState({ optionsMembers: usersJSON.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    apiUser
+      .getOneUser()
+      .then((userPopulatedJSON) => {
+        console.log(userPopulatedJSON);
+        this.setState({ userQuizzes: userPopulatedJSON.data.quizzCreated });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    if (mode === "edit") {
+      teamHandler
+        .getOneTeam(this.props.match.params.id)
+        .then((DBres) => {
+          // const newoptionsMembers = this.state.optionsMembers.filter(optionMember => !DBres.members.find(teamMember => optionMember._id === teamMember._id))
+          this.setState(
+            {
+              teamId: DBres._id,
+              owner: DBres.owner,
+              name: DBres.name,
+              description: DBres.description,
+              image: DBres.image,
+              tmpImage: DBres.image,
+              members: DBres.members,
+              teamQuizzes: DBres.teamQuizz,
+              // optionsMembers : newoptionsMembers
+            },
+            () => console.log(this.state)
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+
   render() {
     const mode = this.props.match.params.mode;
-// if (this.state.submitted) {
-//   return <Redirect to={`/teams/${this.state.teamId}`}/>;
-// }
-
+    // if (this.state.submitted) {
+    //   return <Redirect to={`/teams/${this.state.teamId}`}/>;
+    // }
 
     return (
       <React.Fragment>
-        <h2 className="column center">
-          {mode === "create" ? "Create a new team !" : "Edit your team"}
-        </h2>
+        {mode === "create" ? (
+          <h2 className="column center"> Create a new team !" </h2>
+        ) : (
+          <h2 className="row space_between">
+            {" "}
+            <span>Edit your team </span>{" "}
+            <span className="red click" onClick={this.handleDelete}>
+              {" "}
+              Delete your team{" "}
+            </span>{" "}
+          </h2>
+        )}
 
-        <form className="column center" onSubmit={this.handleSubmit}>
-          <img
-            src={this.state.tmpImage ? this.state.tmpImage : this.state.image}
-            alt="your team image"
-            className="team_image"
-          />
-          <input
-            type="file"
-            id="image"
-            name="image"
-            onChange={this.handleImage}
-          />
+        <form onSubmit={this.handleSubmit}>
+          <div className="row">
+            <div className="column">
+              <input
+                type="file"
+                id="image"
+                name="image"
+                onChange={this.handleImage}
+              />
+              <img
+                src={
+                  this.state.tmpImage ? this.state.tmpImage : this.state.image
+                }
+                alt="your team image"
+                className="team_image"
+              />
+            </div>
 
-          <label htmlFor="name">Team Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            maxLength="25"
-            onChange={this.handleChange}
-            defaultValue={
-              mode === "edit" ? this.state.name : "a cool team name"
-            }
-          />
-
-          <label htmlFor="description">Team Description</label>
-          <textarea
-            id="description"
-            name="description"
-            maxLength="125"
-            rows="3"
-            cols="20"
-            onChange={this.handleChange}
-            defaultValue={
-              mode === "edit"
-                ? this.state.description
-                : "a team of crazy brains"
-            }
-          />
-
+            <div className="column">
+              <label htmlFor="name">Team Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                maxLength="25"
+                onChange={this.handleChange}
+                defaultValue={
+                  mode === "edit" ? this.state.name : "a cool team name"
+                }
+              />
+            </div>
+            <div className="column">
+              <label htmlFor="description">Team Description</label>
+              <textarea
+                id="description"
+                name="description"
+                maxLength="125"
+                rows="3"
+                cols="20"
+                onChange={this.handleChange}
+                defaultValue={
+                  mode === "edit"
+                    ? this.state.description
+                    : "a team of crazy brains"
+                }
+              />
+            </div>
+          </div>
           <div className="row space_evenly ">
             <div className="column">
               <h3>Add members</h3>
@@ -394,12 +420,14 @@ removeImages = (event) => {
               />
               {this.state.inputSearchQuizz &&
                 this.state.userQuizzes
-                  .filter((userQuizz) =>
-                    userQuizz.title
-                      .toLowerCase()
-                      .includes(this.state.inputSearchQuizz.toLowerCase()) || userQuizz.thema
-                      .toLowerCase()
-                      .includes(this.state.inputSearchQuizz.toLowerCase())
+                  .filter(
+                    (userQuizz) =>
+                      userQuizz.title
+                        .toLowerCase()
+                        .includes(this.state.inputSearchQuizz.toLowerCase()) ||
+                      userQuizz.thema
+                        .toLowerCase()
+                        .includes(this.state.inputSearchQuizz.toLowerCase())
                   )
                   .map((userQuizz) => (
                     <label htmlFor={`${userQuizz.title}`} key={userQuizz._id}>
@@ -417,7 +445,7 @@ removeImages = (event) => {
                     </label>
                   ))}
 
-                  {(!this.state.inputSearchQuizzes ||
+              {(!this.state.inputSearchQuizzes ||
                 this.state.inputSearchQuizzes === "") &&
                 this.state.userQuizzes.map((userQuizz) => (
                   <label htmlFor={`${userQuizz.title}`} key={userQuizz._id}>
@@ -443,10 +471,11 @@ removeImages = (event) => {
             )}
           </div>
 
-          <button className="btn">
-            {" "}
-            {mode === "create" ? "Create" : "Edit"}
-          </button>
+          <div className="column center">
+            <button className="btn">
+              {mode === "create" ? "Create" : "Edit"}
+            </button>
+          </div>
         </form>
       </React.Fragment>
     );
