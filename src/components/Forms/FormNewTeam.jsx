@@ -4,6 +4,8 @@ import UserContext from "../Auth/UserContext";
 import teamHandler from "../../api/teamHandler";
 import apiUser from "../../api/apiUser";
 import "../../styles/global.css";
+import DisplayMembers from "../Team/DisplayMembers";
+
 
 class FormNewTeam extends Component {
   static contextType = UserContext;
@@ -58,6 +60,7 @@ class FormNewTeam extends Component {
     };
   
   handleSubmit = (event) => {
+    const mode = this.props.match.params.mode;
     event.preventDefault();
     var newTeamData = {
       name: this.state.name,
@@ -90,6 +93,8 @@ class FormNewTeam extends Component {
     
    var objectFormData = jsonToFormData(newTeamData)
 
+   if (mode === "create") {
+
     teamHandler
       .create(objectFormData)
       .then((newTeam) => {
@@ -98,10 +103,25 @@ class FormNewTeam extends Component {
       })
       .catch((error) => {
         console.log(error);
+      })
+    }
+    else {
+      teamHandler
+      .updateOneTeam(this.props.match.params.id, objectFormData)
+      .then((updatedTeam) => {
+        console.log(updatedTeam)
+        //this.props.history.push("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
       });
+    }
   };
 
   componentDidMount() {
+
+    const mode = this.props.match.params.mode;
+
     apiUser
       .getUsers()
       .then((usersJSON) => {
@@ -121,13 +141,33 @@ class FormNewTeam extends Component {
       .catch((error) => {
         console.log(error);
       });
+
+      if (mode === "edit") {
+        teamHandler
+          .getOneTeam(this.props.match.params.id)
+          .then((DBres) => {
+            this.setState(
+              {name: DBres.name,
+              image: DBres.image,
+              tmpImage: DBres.image,
+              members: DBres.members,
+              teamQuizzes: DBres.teamQuizz,
+              },
+              () => console.log(this.state)
+            );
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
   }
 
   render() {
+    const mode = this.props.match.params.mode;
     return (
       <React.Fragment>
-        <h2 className="column center" >Create a Team</h2>
-        <img scr="/media/flame-succss.png" alt="create a team" />
+        <h2 className="column center" >{mode === "create" ? "Create a new team !" : "Edit your team"}</h2>
 
         <form className="column center" onSubmit={this.handleSubmit}>
           <label htmlFor="name">Team Name</label>
@@ -137,6 +177,7 @@ class FormNewTeam extends Component {
             name="name"
             maxLength="25"
             onChange={this.handleChange}
+            defaultValue={mode === "edit" ? this.state.name : "a cool team name"}
           />
 
 <label htmlFor="description">Team Description</label>
@@ -147,6 +188,7 @@ class FormNewTeam extends Component {
             maxLength="125"
             rows="3" cols="20"
             onChange={this.handleChange}
+            defaultValue={mode === "edit" ? this.state.description : "a team of crazy brains"}
           />
 
           <label htmlFor="image">image</label>
@@ -156,6 +198,8 @@ class FormNewTeam extends Component {
             name="image"
             onChange={this.handleImage}
           />
+
+          <img src={mode === "create" ? this.state.tmpImage : this.state.image} alt="your team image"/>
 
           <div className="row start">
             <label htmlFor="members"> Add Members</label>
@@ -173,6 +217,7 @@ class FormNewTeam extends Component {
                 />
               </label>
             ))}
+
           </div>
 
           <div className="row">

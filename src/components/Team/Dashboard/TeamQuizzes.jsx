@@ -1,4 +1,7 @@
 import React from "react";
+import StickerDashboard from "../../Dasboard/StickerDashboard";
+import { Link } from "react-router-dom";
+
 
 const teamQuizzes = (props) => {
   if (!props.quizzes) {
@@ -10,12 +13,19 @@ const teamQuizzes = (props) => {
   }
   return (
     <div>
+    <div className="row space_between team_block">
       <h3>Quizz</h3>
-      <ul>
+      <div>
+      <button className="btn"> Create </button>
+      <button className="btn"> Add </button>
+      </div>
+</div>
+      <div id="team_quizz" className="row wrap">
         {props.quizzes.map((quizz) => (
-          <li key={quizz._id}> {quizz.title} </li>
+          <StickerDashboard key={quizz._id} quizz={quizz} />
         ))}
-      </ul>
+        
+      </div>
     </div>
   );
 };
