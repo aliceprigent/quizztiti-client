@@ -11,8 +11,9 @@ import FormNewTeam from "./components/Forms/FormNewTeam";
 import Dashboard from "./pages/Dashboard"
 import FormCreateQuizz from "./components/Forms/Quizz/FormCreateQuizz";
 import DisplayQuizz from './pages/DisplayQuizz'
-import TeamDashboard from "./components/Team/TeamDashboard"
+import TeamDashboard from './components/Team/TeamDashboard'
 import Page404 from "./components/Page404"
+import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           path="/quizz/:id"
           component={DisplayQuizz}
         />
+        <Route exact path="/quizz/edit/:id" component={FormEditQuizz}/>
         <Route path="/dashboard" component={Dashboard} />        
         <Route path="/teams/:id" component={TeamDashboard} />
         <Route path="*" component={Page404} />
