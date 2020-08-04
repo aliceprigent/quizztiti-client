@@ -4,12 +4,19 @@
 
 
 .quizz-sticker {
-  height: 15em;
-  width: 15em;
+  height: 14em;
+  width: 20em;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 20%;
-  margin: 2em;
+  border-radius: 20px;
+  margin: 6px;
+  padding: 2em
+}
+
+.quizz-sticker h3 {
+  text-align: center;
+  text-transform: uppercase;
+  color: white
 }
 
 .quizz-form{

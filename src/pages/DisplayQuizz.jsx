@@ -15,7 +15,6 @@ export class DisplayQuizz extends Component {
   };
 
   handleAnswer = (answer) => {
-    console.log(answer);
     this.setState({ answered: true, userAnswer: answer });
   };
 

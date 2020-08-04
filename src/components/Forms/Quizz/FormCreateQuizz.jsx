@@ -1,3 +1,7 @@
+
+import React, { Component } from "react";
+import quizzHandler from "../../../api/quizzHandler";
+import QuestionBox from "../../Forms/Quizz/QuestionBox";
 export class FormCreateQuizz extends Component {
   state = {
     questionNb: 1,
