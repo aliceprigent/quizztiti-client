@@ -24,7 +24,7 @@ const displayMembers = (props) => {
         <div id="team_members" >
           <div className="row space_between margin_bottom">
           <div>
-          <h3>Members</h3>
+          <h3>Current members</h3>
           </div>
           <div className="column">
           </div>
@@ -32,8 +32,9 @@ const displayMembers = (props) => {
           <ul>
             {props.members.map((member) => (
                 <div className="row" key={member._id}>
+                <button className="btn delete"> x</button>
                 <img src={member.image} alt={member.name}/>
-               {member._id} {member.name} 
+                {member.name} 
               </div>
             ))}
           </ul>
