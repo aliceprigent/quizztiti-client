@@ -50,6 +50,9 @@
   height: 200px;
   justify-content: flex-start;
   align-items:center;
+}
 
-
+.quizz-image{
+  height:10rem;
+width:15rem
 }

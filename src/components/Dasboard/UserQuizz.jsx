@@ -36,7 +36,7 @@ export class UserQuizz extends Component {
         {this.state.quizzCreated &&
           this.state.quizzCreated.map((quizz) => {
             return (
-              <Link to={`/quizz/edit/${quizz._id}`}>
+              <Link to={`/quizz/edit/${quizz._id}`} >
                 <StickerDashboard key={quizz._id} quizz={quizz} />
               </Link>
             );
