@@ -2,7 +2,7 @@ import apiUser from "../../api/apiUser";
 import React, { Component } from "react";
 import StickerDashboard from "./StickerDashboard";
 import { withUser } from "../Auth/withUser";
-
+import { Link } from "react-router-dom";
 
 export class UserQuizz extends Component {
   state = {};
@@ -23,7 +23,7 @@ export class UserQuizz extends Component {
         console.log(error);
       });
   }
-  
+
   render() {
     return (
       <React.Fragment>
@@ -33,9 +33,14 @@ export class UserQuizz extends Component {
             CREATE QUIZZ
           </button>
         </a>
-        {this.state.quizzCreated && this.state.quizzCreated.map((quizz) => {
-          return <StickerDashboard key={quizz._id} quizz={quizz} />;
-        })}
+        {this.state.quizzCreated &&
+          this.state.quizzCreated.map((quizz) => {
+            return (
+              <Link to={`/quizz/edit/${quizz._id}`}>
+                <StickerDashboard key={quizz._id} quizz={quizz} />
+              </Link>
+            );
+          })}
       </React.Fragment>
     );
   }
