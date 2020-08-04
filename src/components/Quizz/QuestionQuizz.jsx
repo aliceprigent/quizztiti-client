@@ -25,10 +25,11 @@ export class QuestionQuizz extends Component {
     return (
       <div>
         <br />
-        <h3 className="center proposition">{this.props.quizz.question}</h3>
+        <section className="banner-question" style={{backgroundImage:`url(${this.props.image})`}}>
+        <h3 className="center" style={{textAlign:"center"}}>{this.props.quizz.question}</h3>
+        </section>
         <br />
-        <div>
-          <section className="row center">
+        <div className="question-div">
             <div>
               <p
                 onClick={() => this.quizzAnswer(propositions[0])}
@@ -57,7 +58,6 @@ export class QuestionQuizz extends Component {
                 {propositions[3]}
               </p>
             </div>
-          </section>
         </div>
       </div>
     );

@@ -15,7 +15,6 @@ export class DisplayQuizz extends Component {
   };
 
   handleAnswer = (answer) => {
-    console.log(answer);
     this.setState({ answered: true, userAnswer: answer });
   };
 
@@ -70,16 +69,18 @@ export class DisplayQuizz extends Component {
     }
     return (
       <div className="column center">
-        <h2>{this.state.quizz.title}</h2>
+        <h2 style={{textAlign:"center"}}>{this.state.quizz.title}</h2>
         {this.state.questionIndex < 10 ? (
-          <div>
+          <div className="display-quizz center">
             <section>
               <QuestionQuizz
                 quizz={this.state.quizz.quizzTotal[this.state.questionIndex]}
+                image={this.state.quizz}
                 handleAnswer={this.handleAnswer}
                 handleScore={this.handleScore}
                 answered={this.state.answered}
               />
+             
               <div className="answer">
                 {this.state.answered && (
                   <AnswerQuizz
@@ -90,6 +91,7 @@ export class DisplayQuizz extends Component {
                   />
                 )}
               </div>
+              
             </section>
 
             <div className="center column">

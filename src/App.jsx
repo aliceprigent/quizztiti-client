@@ -15,6 +15,7 @@ import TeamDashboard from './components/Team/TeamDashboard'
 import Page404 from "./components/Page404"
 import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
 
+
 function App() {
   return (
     <div className="App">
@@ -37,6 +38,7 @@ function App() {
         <Route path="/teams/:id" component={TeamDashboard} />
         <Route path="*" component={Page404} />
       </Switch>
+      
     </div>
   );
 }
