@@ -19,7 +19,7 @@ const UserTeam = (props) => {
         <div className="row wrap" style={{width:"100%"}}>
         {props.user.teams &&
           props.user.teams.map((team) =>
-              <Link to={`/team/edit/${team._id}`} >
+              <Link to={`/teams/${team._id}`} >
                 <StickerTeam key={team._id} team={team} />
               </Link>
           )}
