@@ -21,6 +21,16 @@
   background: var(--grey);
 }
 
+#dash_team_members {
+  margin-left: 10vw;
+  border-radius: 30px;
+  width: 40vw;
+  height: 50vh;
+  overflow: scroll;
+  margin-right: 5vw;
+}
+
+
 #team_members {
     margin-left: 10vw;
     border-radius: 30px;
