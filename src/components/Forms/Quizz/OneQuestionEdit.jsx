@@ -152,7 +152,7 @@ export class MiniBox extends Component {
                 type="radio"
                 name="answer"
                 id="proposition1"
-                // value={this.state.proposition1}
+                value={this.state.proposition1}
               />
             </label>
           </div>
@@ -169,7 +169,7 @@ export class MiniBox extends Component {
                 type="radio"
                 name="answer"
                 id="proposition2"
-                // value={this.state.proposition2}
+                value={this.state.proposition2}
               />
             </label>
           </div>

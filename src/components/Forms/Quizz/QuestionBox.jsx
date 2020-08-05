@@ -78,7 +78,7 @@ console.log(inputList)
                 name="proposition1"
                 className="proposition column q-input"
                 defaultValue="réponse 1"
-                ref={(el) => (this.inputprop1 = el)}
+                
               />
               <input
                 type="radio"
@@ -97,7 +97,7 @@ console.log(inputList)
                 name="proposition2"
                 className="proposition column q-input"
                 defaultValue="réponse 2"
-                ref={(el) => (this.inputprop2 = el)}
+               
               />
               <input
                 type="radio"
@@ -117,7 +117,7 @@ console.log(inputList)
                 name="proposition3"
                 className="proposition column q-input"
                 defaultValue="réponse 3"
-                ref={(el) => (this.inputprop3 = el)}
+                
               />
               <input
                 type="radio"
@@ -135,7 +135,7 @@ console.log(inputList)
                 name="proposition4"
                 className="proposition column q-input"
                 defaultValue="réponse 4"
-                ref={(el) => (this.inputprop4 = el)}
+                
               />
               <input
                 type="radio"
@@ -147,7 +147,7 @@ console.log(inputList)
           </div>
 
           <label htmlFor="funFact">FunFact</label>
-          <input name="funFact" type="text" defaultValue="lol"  ref={(el) => (this.inputFunFact = el)}/>
+          <input name="funFact" type="text" defaultValue="lol" />
           <button onClick={this.compilQuest}>Validate Question</button>
         </form>
       </div>

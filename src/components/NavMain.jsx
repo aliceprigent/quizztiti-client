@@ -22,7 +22,7 @@ const NavMain = (props) => {
   return (
     <nav className="NavMain NavMobile">
       <NavLink exact to="/">
-        <img src="../../media/icons8-année-du-singe-50.png" className="logo" alt="logo"/>
+        <img src="/media/icons8-année-du-singe-50.png" className="logo" alt="logo"/>
       </NavLink>
      
      
