@@ -184,38 +184,47 @@ class FormNewTeam extends Component {
         .then((newTeam) => {
           console.log(newTeam);
           this.setState({ teamId: newTeam._id });
-          if  (this.state.submitted)  this.props.history.push(`/teams/${this.state.teamId}`)
+          if (this.state.submitted)
+            this.props.history.push(`/teams/${this.state.teamId}`);
         })
         .catch((error) => {
           console.log(error);
-          this.setState({submitted : false})
+          this.setState({ submitted: false });
         });
     } else {
       teamHandler
         .updateOneTeam(this.state.teamId, objectFormData)
         .then((updatedTeam) => {
           console.log(updatedTeam);
-          if  (this.state.submitted)  this.props.history.push(`/teams/${this.state.teamId}`)
+          if (this.state.submitted)
+            this.props.history.push(`/teams/${this.state.teamId}`);
         })
         .catch((error) => {
           console.log(error);
-          this.setState({submitted : false});
+          this.setState({ submitted: false });
         });
     }
   };
 
   finalSubmit = (event) => {
-    this.setState({submitted : true})
+    this.setState({ submitted: true });
     this.handleSubmit(event);
-  }
+  };
 
   handleDelete = (event) => {
     const mode = this.props.match.params.mode;
     if (mode === "edit") {
       teamHandler
         .deleteTeam(this.props.match.params.id)
-        .then((DBres) => console.log("deletion complete"))
-        .catch((err) => console.error("error in deletion", err));
+        .then((DBres) => {
+          console.log("deletion complete");
+          this.setState({ submitted: true });
+          if (this.state.submitted) this.props.history.push(`/dashboard`);
+        })
+        .catch((err) => {
+          console.error("error in deletion", err);
+          this.setState({ submitted: false });
+        });
     }
   };
 
@@ -236,7 +245,10 @@ class FormNewTeam extends Component {
       .getOneUser()
       .then((userPopulatedJSON) => {
         console.log(userPopulatedJSON);
-        this.setState({ owner: userPopulatedJSON.data._id , userQuizzes: userPopulatedJSON.data.quizzCreated });
+        this.setState({
+          owner: userPopulatedJSON.data,
+          userQuizzes: userPopulatedJSON.data.quizzCreated,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -270,6 +282,21 @@ class FormNewTeam extends Component {
 
   render() {
     const mode = this.props.match.params.mode;
+    console.log("context", this.context);
+    if (this.props.context.user === null) return null;
+    console.log("context user", this.props.context.user);
+    console.log("owner", this.state.owner);
+
+    if (!this.state.owner) {
+      return <div> Please wait ...</div>;
+    }
+
+    if (
+      mode === "edit" &&
+      this.props.context.user._id !== this.state.owner._id
+    ) {
+      this.props.history.push("/dashboard");
+    }
 
     return (
       <React.Fragment>
@@ -277,12 +304,10 @@ class FormNewTeam extends Component {
           <h2 className="column center"> Create a new team !" </h2>
         ) : (
           <h2 className="row space_between">
-            {" "}
             <span>Edit your team </span>{" "}
             <span className="red click" onClick={this.handleDelete}>
-              {" "}
-              Delete your team{" "}
-            </span>{" "}
+              Delete your team
+            </span>
           </h2>
         )}
 
@@ -312,9 +337,7 @@ class FormNewTeam extends Component {
                 name="name"
                 maxLength="25"
                 onChange={this.handleChange}
-                defaultValue={
-                  mode === "edit" ? this.state.name : ""
-                }
+                defaultValue={mode === "edit" ? this.state.name : ""}
                 placeholder={
                   mode === "edit" ? this.state.name : "a cool team name"
                 }
@@ -329,11 +352,7 @@ class FormNewTeam extends Component {
                 rows="3"
                 cols="20"
                 onChange={this.handleChange}
-                defaultValue={
-                  mode === "edit"
-                    ? this.state.description
-                    : ""
-                }
+                defaultValue={mode === "edit" ? this.state.description : ""}
                 placeholder={
                   mode === "edit"
                     ? this.state.description
@@ -406,13 +425,12 @@ class FormNewTeam extends Component {
                   </label>
                 ))}
             </div>
-          
-              <DisplayMembers
-                owner={this.state.owner}
-                updateMembers={this.updateMembers}
-                members={this.state.members}
-              />
-       
+
+            <DisplayMembers
+              owner={this.state.owner}
+              updateMembers={this.updateMembers}
+              members={this.state.members}
+            />
           </div>
 
           <div className="row space_evenly ">
@@ -470,22 +488,20 @@ class FormNewTeam extends Component {
                 ))}
             </div>
 
-              <DisplayQuizzes
-                updateQuizzes={this.updateQuizz}
-                quizzes={this.state.teamQuizzes}
-              />
-  
+            <DisplayQuizzes
+              updateQuizzes={this.updateQuizz}
+              quizzes={this.state.teamQuizzes}
+            />
           </div>
 
-          <div className="column center">
-          </div>
+          <div className="column center"></div>
         </form>
         <button className="btn" onClick={this.finalSubmit}>
-              {mode === "create" ? "Create" : "Edit"}
-            </button>
+          {mode === "create" ? "Create" : "Edit"}
+        </button>
       </React.Fragment>
     );
   }
 }
 
-export default withRouter(FormNewTeam);
+export default withUser(FormNewTeam);

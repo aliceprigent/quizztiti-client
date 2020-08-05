@@ -5,8 +5,11 @@ import teamHandler from "../../api/teamHandler";
 import "../../styles/teams/teamDashboard.css";
 import { Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
+import UserContext from '../Auth/UserContext';
 
 export class TeamDashboard extends Component {
+  static contextType = UserContext;
+
   componentDidMount() {
     var teamId = this.props.match.params.id;
     teamHandler
@@ -52,8 +55,15 @@ export class TeamDashboard extends Component {
   };
 
   render() {
+    console.log("context", this.context);
     if (this.props.context.user === null) return null;
     console.log(this.props.context.user);
+
+
+    if (!this.props.context.user.teams.find(team => team === this.props.match.params.id)) {
+      this.props.history.push("/dashboard");
+    }
+
 
     if (!this.state) {
       return <div> Loading ... </div>;
@@ -68,10 +78,13 @@ export class TeamDashboard extends Component {
               <div className="row space_between" id="team_head">
                 {" "}
                 <h2>{this.state.name} </h2>{" "}
+
+             {   (this.context.user._id === this.state.owner._id) &&
                 <button onClick={this.handleEdit} className="btn half_width">
                   {" "}
                   Edit{" "}
                 </button>
+              }
               </div>
               <div id="team_desc"> {this.state.description} </div>
             </div>
@@ -79,6 +92,7 @@ export class TeamDashboard extends Component {
 
           <TeamQuizzes
           teamId={this.state.teamId}
+          owner={this.state.owner}
             userQuizzes={this.props.context.user.quizzCreated}
             quizzes={this.state.teamQuizz}
             edit={this.handleEdit}
@@ -90,6 +104,7 @@ export class TeamDashboard extends Component {
           owner={this.state.owner}
           members={this.state.members}
           edit={this.handleEdit}
+          owner={this.state.owner}
         />
       </div>
     );

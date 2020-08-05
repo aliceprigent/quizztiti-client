@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import StickerDashboard from "../../Dasboard/StickerDashboard";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AddQuizz from './AddQuizz';
 import { withUser } from "../../Auth/withUser";
+import UserContext from '../../Auth/UserContext';
 
 
 export class TeamQuizzes extends Component {
+  static contextType = UserContext;
 
   state = {
     addQuizz : null
@@ -23,8 +25,9 @@ handleBack = (event) => {
 }
 
   render () {
+    console.log("in team quizzes, context:", this.props.context);
     if (this.props.context.user === null) return null;
-    console.log(this.props.context.user);
+    console.log("in team quizzes, props:",this.props);
 
   if (!this.props.quizzes) {
     return (
@@ -33,6 +36,9 @@ handleBack = (event) => {
       </div>
     );
   }
+
+
+
   return (
     <div>
     <div className="row space_between team_block">
@@ -40,13 +46,16 @@ handleBack = (event) => {
       <div>
       <button className="btn" onClick={this.props.create}> Create </button>
       <button className="btn" onClick={this.handleAddQuizz}> Add </button>
-      <button className="btn" onClick={this.props.edit}> Manage </button>
+      { (this.context.user._id === this.props.owner._id) &&
+        <button className="btn" onClick={this.props.edit}> Manage </button>}
       </div>
 </div>
 { !this.state.addQuizz &&
       <div id="team_quizz" className="row wrap">
         {this.props.quizzes.map((quizz) => (
+          <Link to={`/quizz/${quizz._id}`} >
           <StickerDashboard key={quizz._id} quizz={quizz} />
+          </Link>
         ))}
         
       </div>}
