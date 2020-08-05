@@ -7,7 +7,7 @@ export class MiniBox extends Component {
     _idParentQuizz: "",
     //index de la question à updater dans quizzTotal
     _idIndex: "",
-      };
+  };
 
   componentDidMount() {
     const questId = this.props.match.params.id;
@@ -70,15 +70,15 @@ export class MiniBox extends Component {
     // console.log(this.state)
     updatedQuest = {
       _idParentQuizz: this.state._idParentQuizz,
-      _idIndex:this.state._idIndex,
+      _idIndex: this.state._idIndex,
       index: this.state.index,
       question: this.state.question,
-      propositions: [
-        this.state.proposition1,
-        this.state.proposition2,
-        this.state.proposition3,
-        this.state.proposition4,
-      ],
+
+      proposition1: this.state.proposition1,
+      proposition2: this.state.proposition2,
+      proposition3: this.state.proposition3,
+      proposition4: this.state.proposition4,
+
       answer: this.state.answer,
       funFact: this.state.funFact,
     };
@@ -114,6 +114,7 @@ export class MiniBox extends Component {
 
     var objectFormData = jsonToFormData(updatedQuest);
 
+    debugger
     quizzHandler
       .updateOneQuestion(this.props.match.params.id, updatedQuest)
       .then((res) => {
@@ -144,7 +145,7 @@ export class MiniBox extends Component {
                 type="text"
                 name="proposition1"
                 className="proposition column q-input"
-                defaultValue="réponse 1"
+                defaultValue={this.state.proposition1}
               />
               <input
                 type="radio"
@@ -155,13 +156,13 @@ export class MiniBox extends Component {
             </label>
           </div>
           <div>
-            <label htmlFor="proposition 2">
+            <label htmlFor="proposition2">
               <h2>Proposition 2</h2>
               <input
                 type="text"
                 name="proposition2"
                 className="proposition column q-input"
-                defaultValue="réponse 2"
+                defaultValue={this.state.proposition2}
               />
               <input
                 type="radio"
@@ -173,13 +174,13 @@ export class MiniBox extends Component {
           </div>
 
           <div>
-            <label htmlFor="proposition 3">
+            <label htmlFor="proposition3">
               <h2>Proposition 3</h2>
               <input
                 type="text"
                 name="proposition3"
                 className="proposition column q-input"
-                defaultValue="réponse 3"
+                defaultValue={this.state.proposition3}
               />
               <input
                 type="radio"
@@ -196,7 +197,7 @@ export class MiniBox extends Component {
                 type="text"
                 name="proposition4"
                 className="proposition column q-input"
-                defaultValue="réponse 4"
+                defaultValue={this.state.proposition4}
               />
               <input
                 type="radio"
