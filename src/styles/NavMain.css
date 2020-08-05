@@ -58,11 +58,3 @@
   margin-left: 30px;
 }
 
-@media (max-width: 650px){
-  .avatar {
-    visibility: hidden
-    
-  }
-
-}
-

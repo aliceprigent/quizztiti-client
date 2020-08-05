@@ -11,7 +11,7 @@ export class AnswerQuizz extends Component {
                 <p><b>Answer</b> : {this.props.quizz.answer}</p>
                 <br />
                
-                <p style={{width:"50%"}}>{this.props.quizz.funFact}</p>
+                <p style={{width:"80%", textAlign:"center"}}>{this.props.quizz.funFact}</p>
                 </div>
       
             </div>

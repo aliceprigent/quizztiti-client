@@ -170,8 +170,8 @@
   }
 
   .quizz-sticker-mobile {
-    height: 10em;
-    width: 20em;
+    height: 12em;
+    width: 23em;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 20px;
@@ -182,8 +182,15 @@
   .quizz-sticker-mobile h3{
     font-size: 20px;
   }
-  
 
+  .question-h3 {
+    height: 60%;
+  }
+
+  .banner-question {
+    width: 70%;
+  }
+ 
 }
 
 .question-div {
@@ -195,11 +202,11 @@
 
 
 .proposition {
-  margin: 20px;
+  margin: 15px;
   background-color: var(--grey);
   padding: 10px;
   border-radius: 10px;
-  width: 80%;
+  width: 90%;
 }
 
 .proposition:hover {
@@ -210,7 +217,7 @@
 }
 
 .answer {
-  height: 14em;
+  height: 11em;
   
 }
 
@@ -227,5 +234,15 @@
 }
 
 .banner-question {
-  height: 5em;
+  height: 15em;
+  background-position: center;
+  width: 50%;
+  border-radius: 20px;
+}
+
+.question-h3 {
+  text-align:center; 
+  background-color:white; 
+  width:100%; 
+  height: 40%;
 }

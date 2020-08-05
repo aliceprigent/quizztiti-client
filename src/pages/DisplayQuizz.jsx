@@ -69,7 +69,7 @@ export class DisplayQuizz extends Component {
     }
     return (
       <div className="column center">
-        <h2 style={{textAlign:"center"}}>{this.state.quizz.title}</h2>
+        <h2 style={{textAlign:"center", textTransform:"uppercase", color:"grey"}}>{this.state.quizz.title}</h2>
         {this.state.questionIndex < 10 ? (
           <div className="display-quizz center">
             <section>
@@ -94,11 +94,11 @@ export class DisplayQuizz extends Component {
               
             </section>
 
-            <div className="center column">
+            <div className="center column" style={{marginTop: "20px"}}>
               {this.state.questionIndex < 9 ? (
                 <button
                   onClick={this.handleNextQuestion}
-                  style={{ width: "150px" }}
+                  style={{ width: "150px", marginBottom: "10px"}}
                   className="btn"
                 >
                   Next question
@@ -106,7 +106,7 @@ export class DisplayQuizz extends Component {
               ) : (
                 <button
                   className="btn"
-                  style={{ width: "150px" }}
+                  style={{ width: "150px"}}
                   onClick={this.handleUserScore}
                 >
                   Submit

@@ -23,10 +23,10 @@ export class QuestionQuizz extends Component {
     const { propositions } = this.props.quizz;
     console.log(propositions);
     return (
-      <div>
+      <div className="center column">
         <br />
-        <section className="banner-question" style={{backgroundImage:`url(${this.props.image})`}}>
-        <h3 className="center" style={{textAlign:"center"}}>{this.props.quizz.question}</h3>
+        <section className="banner-question column center" style={{backgroundImage:`url(${this.props.image.image})`}}>
+        <h3 className="column center question-h3"> {this.props.quizz.question}</h3>
         </section>
         <br />
         <div className="question-div">
