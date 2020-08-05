@@ -63,14 +63,14 @@
     width:40%; 
     height:100%; 
     margin: 0px 5px 0px 5px;
-    overflow: auto;
+    overflow: scroll;
 }
 
 .dashboard-box .avatar {
     width: 100%;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 1200px) {
     .dashboard-row {
       display:flex;
       flex-direction: column;
