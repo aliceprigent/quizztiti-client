@@ -47,6 +47,7 @@ export class Home extends Component {
                 backgroundColor: "var(--grey)",
               }}
             >
+             <img className="logo-quizztiti" src="../../media/imageonline-co-transparentimage.png" alt="logo"/>
               Discover all our quizzes and categories !{" "}
               <a href="/quizz"><button className="btn" style={{ width: "170px" }}>
                 Discover !
@@ -66,7 +67,7 @@ export class Home extends Component {
           <br />
           <a href="/quizz"><button className="btn" style={{marginBottom:"40px"}}>See more</button></a>
 
-          {/*  <CarouselMobile /> */}
+       
 
           <div style={{width:"92%"}}>
             <h3 className="title">Categories</h3>
