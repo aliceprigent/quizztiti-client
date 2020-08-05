@@ -23,16 +23,18 @@ const UserProfile = (props) => {
             }}
             alt="r"
           />
-          <h3>{props.context.user.name}</h3>
+          <h3 style={{marginTop:"10px"}}>{props.context.user.name}</h3>
           <a href="/profile/edit">
             <button style={{ marginTop: "30px" }} className="btn">
               EDIT
             </button>
           </a>
         </div>
-        <div className="column center shadow-box" style={{ width: "40%" }}>
-          <h3>SCORE</h3>
-          <h4>{globalScore}</h4>
+        
+        <div className="column center score-box" style={{ width: "35%" }}>
+        <h3>SCORE</h3>
+        <img alt="r" style={{width: "40px", marginTop: "10px"}} src="https://img.icons8.com/officel/80/000000/gold-medal.png"/>
+          <h4 style={{fontSize:"30px", color:"var(--red)"}}>{globalScore}</h4>
         </div>
       </section>
     </React.Fragment>
