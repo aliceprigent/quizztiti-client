@@ -4,6 +4,9 @@
 @import'./user.css'; 
 @import'./quizz.css';
 @import'./home.css';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
 
 * {
   margin: 0;
@@ -12,7 +15,7 @@
 }
 
 html {
-  font-family: "Manrope", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 a {
@@ -23,6 +26,7 @@ a {
 ul {
   list-style-type: none;
 }
+
 
 
 
@@ -85,6 +89,7 @@ ul {
   height: 2.5em;
   border-style: none;
   font-weight: 600;
+  font-family: 'Rubik', sans-serif;
 }
 
 .btn:hover{

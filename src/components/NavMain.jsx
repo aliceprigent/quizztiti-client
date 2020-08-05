@@ -24,10 +24,6 @@ const NavMain = (props) => {
       <NavLink exact to="/">
         <img src="../../media/icons8-année-du-singe-50.png" className="logo" alt="logo"/>
       </NavLink>
-
-      <NavLink to="/quizz" className="link-nav">
-                ALL QUIZZ
-              </NavLink>
      
      
 

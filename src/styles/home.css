@@ -39,8 +39,9 @@
 }
 
 .title {
-    font-size: 25px;
+    font-size: 30px;
     color: rgb(88, 87, 87);
+    font-family: 'Rubik', sans-serif;
 }
 
 .category-div {

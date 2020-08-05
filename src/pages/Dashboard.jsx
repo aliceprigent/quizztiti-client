@@ -18,7 +18,8 @@ export class Dashboard extends Component {
               password: apiRes.data.password,
               image: apiRes.data.image,
               quizzCreated: apiRes.data.quizzCreated,
-              quizzDone: apiRes.data.quizzDone
+              quizzDone: apiRes.data.quizzDone, 
+              teams:apiRes.data.teams
             },
           );
         })

@@ -33,6 +33,7 @@ export class UserQuizz extends Component {
             CREATE QUIZZ
           </button>
         </a>
+        <div className="row wrap" style={{width:"100%"}}>
         {this.state.quizzCreated &&
           this.state.quizzCreated.map((quizz) => {
             return (
@@ -41,6 +42,7 @@ export class UserQuizz extends Component {
               </Link>
             );
           })}
+          </div>
       </React.Fragment>
     );
   }

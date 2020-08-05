@@ -24,22 +24,25 @@
 }
 
 .NavMain li {
-  margin-left: 18px;
-  margin-right: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .NavMain a {
-  margin-left: 15px;
+  margin-left: 5px;
   margin-right: 15px;
 }
 
 .NavMain li:hover {
   font-weight: 600;
+  cursor: pointer;
+  
   
 }
 
 .NavMain a:hover {
   font-weight: 600;
+  cursor: pointer;
   
 }
 
@@ -58,4 +61,11 @@
 
 .NavMain .avatar {
   margin-right: 50px;
+}
+
+@media (max-width: 600px) {
+  .NavMain .avatar {
+    margin-left: 15px;
+  }
+
 }

@@ -5,12 +5,12 @@ function Footer() {
         <div className="center row">
         <section className="footer row">
         <div className="column">
-            <h4>Quizztiti</h4>
+        <h4 style={{fontFamily:"'Rubik', sans-serif"}}>Quizztiti</h4>
             <p>About</p>
             <p>Join us</p>
         </div>
         <div>
-        <h4> Catégories</h4>
+        <h4 style={{fontFamily:"'Rubik', sans-serif"}}> Catégories</h4>
         <section className="row">
         <div className="column">
             <p>Health</p>
