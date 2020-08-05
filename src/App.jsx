@@ -14,6 +14,8 @@ import DisplayQuizz from './pages/DisplayQuizz'
 import TeamDashboard from './components/Team/TeamDashboard'
 import Page404 from "./components/Page404"
 import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
+import QuestionBox from "./components/Forms/Quizz/QuestionBox";
+import OneQuestionEdit from"./components/Forms/Quizz/OneQuestionEdit";
 
 
 function App() {
@@ -34,6 +36,7 @@ function App() {
           component={DisplayQuizz}
         />
         <Route exact path="/quizz/edit/:id" component={FormEditQuizz}/>
+        <Route exact path="/question/:id" component={OneQuestionEdit}/>
         <Route path="/dashboard" component={Dashboard} />        
         <Route path="/teams/:id" component={TeamDashboard} />
         <Route path="*" component={Page404} />

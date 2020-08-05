@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import StickerDashboard from "../../Dasboard/StickerDashboard";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
-const teamQuizzes = (props) => {
-  if (!props.quizzes) {
+export class TeamQuizzes extends Component {
+
+  render () {
+  if (!this.props.quizzes) {
     return (
       <div>
         <h3>Quizz </h3> Loading...
@@ -16,18 +18,20 @@ const teamQuizzes = (props) => {
     <div className="row space_between team_block">
       <h3>Quizz</h3>
       <div>
-      <button className="btn"> Create </button>
+      <button className="btn" onClick={this.props.create}> Create </button>
       <button className="btn"> Add </button>
+      <button className="btn" onClick={this.props.edit}> Manage </button>
       </div>
 </div>
       <div id="team_quizz" className="row wrap">
-        {props.quizzes.map((quizz) => (
+        {this.props.quizzes.map((quizz) => (
           <StickerDashboard key={quizz._id} quizz={quizz} />
         ))}
         
       </div>
     </div>
   );
+        }
 };
 
-export default teamQuizzes;
+export default TeamQuizzes;

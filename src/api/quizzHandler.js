@@ -30,6 +30,7 @@ export default {
       .catch(errorHandler);
   },
 
+ 
   updateQuizz(quizzID, newInfos) {
     return service
       .patch(`/quizz/${quizzID}`, newInfos)
@@ -50,4 +51,19 @@ export default {
       .then((res) => res.data)
       .catch(errorHandler);
   },
+
+  getOneQuestion(questId) {
+    return service
+      .get(`/question/${questId}`)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
+  updateOneQuestion(questId,params) {
+      return service
+      .patch(`/question/${questId}`,params)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+
 };
