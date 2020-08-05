@@ -12,7 +12,9 @@ export class Carousel extends Component {
     quizzHandler
       .displayAllQuizz()
       .then((apiRes) => {
-        this.setState({ quizz: apiRes });
+        this.setState({
+          quizz: apiRes.filter((quiz) => quiz.supplier === "Quizztiti"),
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -28,7 +30,11 @@ export class Carousel extends Component {
   };
 
   next = (event) => {
-    this.setState({ currentIndex: this.state.currentIndex + 1 });
+    if (this.state.currentIndex === this.state.quizz.length - 1) {
+      this.setState({ currentIndex: 0 });
+    } else {
+      this.setState({ currentIndex: this.state.currentIndex + 1 });
+    }
   };
 
   render() {
@@ -37,14 +43,13 @@ export class Carousel extends Component {
     }
     return (
       <div className="row center">
-        
-          <img
-            onClick={this.previous}
-            className="bouton-fleche-mobile"
-            alt="previous"
-            src="../../../media/icons8-double-gauche-100.png"
-          />
-          <section className="quizz-home row">
+        <img
+          onClick={this.previous}
+          className="bouton-fleche-mobile"
+          alt="previous"
+          src="../../../media/icons8-double-gauche-100.png"
+        />
+        <section className="quizz-home row">
           <Link to={`/quizz/${this.state.quizz[this.state.currentIndex]._id}`}>
             <div
               className="quizz-sticker-mobile row center"
@@ -58,18 +63,15 @@ export class Carousel extends Component {
                 {this.state.quizz[this.state.currentIndex].title}
               </h3>
             </div>
-            
-            
           </Link>
-          </section>
-          
-          <img
-            onClick={this.next}
-            className="bouton-fleche-mobile"
-            alt="previous"
-            src="../../../media/icons8-double-droite-100.png"
-          />
-        
+        </section>
+
+        <img
+          onClick={this.next}
+          className="bouton-fleche-mobile"
+          alt="previous"
+          src="../../../media/icons8-double-droite-100.png"
+        />
       </div>
     );
   }

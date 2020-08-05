@@ -48,9 +48,9 @@ export class Home extends Component {
               }}
             >
               Discover all our quizzes and categories !{" "}
-              <button className="btn" style={{ width: "170px" }}>
+              <a href="/quizz"><button className="btn" style={{ width: "170px" }}>
                 Discover !
-              </button>
+              </button></a>
             </div>
           </section>
           <div style={{width:"92%"}}>
@@ -64,7 +64,7 @@ export class Home extends Component {
             <Carousel />
           </div>
           <br />
-          <button className="btn" style={{marginBottom:"40px"}}>See more</button>
+          <a href="/quizz"><button className="btn" style={{marginBottom:"40px"}}>See more</button></a>
 
           {/*  <CarouselMobile /> */}
 

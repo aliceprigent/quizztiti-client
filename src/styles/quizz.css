@@ -1,3 +1,13 @@
+@keyframes slide-bck-center {
+  0% {
+    transform: translateZ(0);
+  }
+  100% {
+    transform: translateZ(-400px);
+  }
+}
+
+
 @keyframes shake-bottom {
   0%,
   100% {
@@ -132,8 +142,8 @@
 }
 
 .quizz-sticker-mobile {
-  height: 22em;
-  width: 45em;
+  height: 18em;
+  width: 35em;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 20px;
@@ -210,8 +220,8 @@ h2 {
 .endquizz {
   margin-top: 40px;
   padding: 10px;
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   border-radius: 20px;
   margin-bottom: 30px;
   justify-content: flex-start;
@@ -320,3 +330,5 @@ width:15rem
 .score-quizz {
   height: 60%
 }
+
+

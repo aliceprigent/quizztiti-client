@@ -7,11 +7,12 @@ export class EndQuizz extends Component {
             <div className="column endquizz">
             <h3>SCORE</h3>
             <div className="score-quizz">
-            <p style={{marginTop: "10px"}}>{this.props.score}</p>
+            <p style={{marginTop: "3em", fontSize:"30px"}}>{this.props.score}</p>
             </div>
                 
             </div>
-            <button style={{width: "150px"}}className="btn">See dashboard</button>
+            
+            <a href="/dashboard"><button style={{width: "150px"}}className="btn">See dashboard</button></a>
             </div>
         )
     }

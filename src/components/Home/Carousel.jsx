@@ -12,7 +12,7 @@ export class Carousel extends Component {
     quizzHandler
       .displayAllQuizz()
       .then((apiRes) => {
-        this.setState({ quizz: apiRes }, () => console.log(this.state.quizz));
+        this.setState({ quizz: apiRes.filter(quiz => quiz.supplier === 'OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)') });
       })
       .catch((error) => {
         console.log(error);

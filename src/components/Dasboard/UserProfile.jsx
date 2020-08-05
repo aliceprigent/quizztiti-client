@@ -5,9 +5,15 @@ const UserProfile = (props) => {
   if (props.context.user === null) return null;
   console.log(props.context.user)
 
-  let globalScore = props.context.user.quizzDone.reduce((acc, currentValue) => {
+  let globalScore = 0;
+
+  if (props.context.user.quizzDone) {
+    globalScore = props.context.user.quizzDone.reduce((acc, currentValue) => {
     return acc + currentValue.score
-  }, 0) 
+  }, 0)
+}
+
+   
 
   return (
     <React.Fragment>
