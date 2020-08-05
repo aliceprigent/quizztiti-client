@@ -114,11 +114,12 @@ export class MiniBox extends Component {
 
     var objectFormData = jsonToFormData(updatedQuest);
 
-    debugger
+    
     quizzHandler
-      .updateOneQuestion(this.props.match.params.id, updatedQuest)
+      .updateOneQuestion(this.props.match.params.id, objectFormData)
       .then((res) => {
-        console.log(res);
+        console.log("ok updated")
+        this.props.history.push(`/quizz/edit/${this.state._idParentQuizz}`)
       })
       .catch((error) => {
         console.log(error);
