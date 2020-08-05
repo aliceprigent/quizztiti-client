@@ -1,0 +1,35 @@
+.search-container {
+  width: 28rem;
+  margin: 0 auto 1.3rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 24px;
+
+  /* background-color:var(--grey); */
+  transition: transform 250ms ease-in-out;
+  font-size: 14px;
+  line-height: 18px;
+
+  color: #575756;
+  background-color: transparent;
+  background-image: url("/media/4092559-magnifier-mobile-ui-search-ui-website-zoom_114034.svg");
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: 95% center;
+  border-radius: 50px;
+  border: 1px solid #575756;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.search-input:hover {
+  padding: 12px 0;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #575756;
+  border-radius: 0;
+  background-position: 100% center;
+  background-color: transparent;
+}

@@ -54,9 +54,10 @@ handleFilter=()=>{
     })
     console.log(filteredArray)
 
+   
     return (
       <React.Fragment>
-      <div>
+      <div className="search-container">
 <SearchBar search={this.handleSearch}/>
       </div>
       <div className="all-quizz row center global-view">
