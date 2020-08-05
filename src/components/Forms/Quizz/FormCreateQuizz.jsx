@@ -1,7 +1,7 @@
+
 import React, { Component } from "react";
 import quizzHandler from "../../../api/quizzHandler";
 import QuestionBox from "../../Forms/Quizz/QuestionBox";
-
 export class FormCreateQuizz extends Component {
   state = {
     questionNb: 1,
@@ -164,7 +164,6 @@ this.handleValidation()
             <option value="Public" defaultValue>
               Public
             </option>
-
             <option value="Private">Private</option>
           </select>
 
@@ -187,7 +186,6 @@ this.handleValidation()
             </span>
           </div>
         </form>
-
         <div id="question-container">
           <QuestionBox
             changeCbk={this.handleChange}
@@ -200,5 +198,4 @@ this.handleValidation()
     );
   }
 }
-
 export default FormCreateQuizz;

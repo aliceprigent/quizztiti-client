@@ -17,6 +17,7 @@ import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
 import QuestionBox from "./components/Forms/Quizz/QuestionBox";
 import OneQuestionEdit from"./components/Forms/Quizz/OneQuestionEdit";
 
+
 function App() {
   return (
     <div className="App">
@@ -40,6 +41,7 @@ function App() {
         <Route path="/teams/:id" component={TeamDashboard} />
         <Route path="*" component={Page404} />
       </Switch>
+      
     </div>
   );
 }

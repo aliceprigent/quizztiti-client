@@ -3,6 +3,7 @@
 @import'./NavMain.css'; 
 @import'./user.css'; 
 @import'./quizz.css';
+@import'./home.css';
 
 * {
   margin: 0;
@@ -78,10 +79,10 @@ ul {
 
 .btn {
   background-color: var(--red);
-  border-radius: 20px;
+  border-radius: 8px;
   color: white;
   width: 6em;
-  height: 2em;
+  height: 2.5em;
   border-style: none;
   font-weight: 600;
 }
@@ -93,4 +94,27 @@ ul {
 .space-around {
   justify-content: space-around;
   align-items: center;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.footer {
+  width:90%;
+  height: 200px;
+  border-top: 1px solid rgba(0, 0, 0, 0.205);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+  margin-top: 40px;
+  margin-bottom: 20px;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+}
+
+.footer h4 {
+  margin-bottom: 10px;
+  margin-top: 20px;
 }

@@ -4,11 +4,16 @@ export class AnswerQuizz extends Component {
 
     render() {
         return (
-            <div>
+            <div classname="column center" style={{textAlign:"left"}}>
+
+<div className="column center" style={{paddingTop:"20px"}}>
                 {this.props.userAnswer === this.props.quizz.answer ? <h4 style={{color: "green"}}>Good answer !</h4> : <h4 style={{color: "red"}}>Wrong answer...</h4>}
-                <p>Answer : {this.props.quizz.answer}</p>
+                <p><b>Answer</b> : {this.props.quizz.answer}</p>
                 <br />
-                <p>{this.props.quizz.funFact}</p>
+               
+                <p style={{width:"80%", textAlign:"center"}}>{this.props.quizz.funFact}</p>
+                </div>
+      
             </div>
         )
     }

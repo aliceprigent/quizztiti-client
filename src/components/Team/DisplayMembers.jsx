@@ -1,8 +1,7 @@
 import React from 'react'
 
 const displayMembers = (props) => {
-
-    console.log("in display members", props.members)
+console.log(props)
     if (!props.members) {
         return (
           <div>
@@ -24,7 +23,7 @@ const displayMembers = (props) => {
         <div id="team_members" >
           <div className="row space_between margin_bottom">
           <div>
-          <h3>Current members</h3>
+          <h3>Current members ({props.members.length})</h3>
           </div>
           <div className="column">
           </div>
@@ -32,9 +31,9 @@ const displayMembers = (props) => {
           <ul>
             {props.members.map((member) => (
                 <div className="row" key={member._id}>
-                <button className="btn delete"> x</button>
+                { !(props.owner._id === member._id) ? <button className="btn delete" onClick={()=>props.updateMembers(member._id)}> x</button> : <button className="btn owner" >  </button>}
                 <img src={member.image} alt={member.name}/>
-                {member.name} 
+                {member.name}  { (props.owner._id === member._id) ? "(owner)" :""}
               </div>
             ))}
           </ul>

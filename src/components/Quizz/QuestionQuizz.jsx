@@ -23,12 +23,13 @@ export class QuestionQuizz extends Component {
     const { propositions } = this.props.quizz;
     console.log(propositions);
     return (
-      <div>
+      <div className="center column">
         <br />
-        <h3 className="center proposition">{this.props.quizz.question}</h3>
+        <section className="banner-question column center" style={{backgroundImage:`url(${this.props.image.image})`}}>
+        <h3 className="column center question-h3"> {this.props.quizz.question}</h3>
+        </section>
         <br />
-        <div>
-          <section className="row center">
+        <div className="question-div">
             <div>
               <p
                 onClick={() => this.quizzAnswer(propositions[0])}
@@ -57,7 +58,6 @@ export class QuestionQuizz extends Component {
                 {propositions[3]}
               </p>
             </div>
-          </section>
         </div>
       </div>
     );

@@ -36,7 +36,7 @@ export class Dashboard extends Component {
       <section className="column center section-dashboard">
         <div className="row center dashboard-row">
         <div className="shadow-box dashboard-box">
-          <UserProfile user={this.state}/>
+          <UserProfile/>
           </div>
           <div className="shadow-box dashboard-box">
           <UserQuizz user={this.state}/>
