@@ -28,7 +28,7 @@ class FormSignin extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
+// console.log('login in frontend', this.state)
     apiHandler
       .signin(this.state)
       .then((data) => {

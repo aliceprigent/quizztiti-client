@@ -1,6 +1,7 @@
 import React from 'react'
 
 const DisplayQuizzes = (props) => {
+
     console.log(props)
     if (!props.quizzes) {
         return (
@@ -29,7 +30,7 @@ const DisplayQuizzes = (props) => {
           </div>
     </div>
           <ul>
-            {props.quizzes.map((quizz) => (
+            {props.quizzes && props.quizzes.map((quizz) => (
                 <div className="row" key={quizz._id}>
                 <button className="btn delete" onClick={()=>props.updateQuizzes(quizz._id)}> x</button> 
                 [{quizz.thema}] -  {quizz.title}  

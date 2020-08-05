@@ -40,7 +40,15 @@ export default {
   updateOneTeam(id, obj) {
     return service
       .patch(`teams/${id}`, obj)
-      // .then((updTeamJSON) => updTeamJSON.data)
+      // .then((updTeamJSON) => console.log("update successful, updated team : ", updTeamJSON.data))
+      .catch((err) => errorHandler(err));
+  },
+
+
+  updateTeamQuizzes(id, obj) {
+    return service
+      .patch(`teams/${id}/quizzes`, obj)
+      .then((updTeamJSON) => updTeamJSON.data)
       .catch((err) => errorHandler(err));
   },
 

@@ -26,7 +26,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/:mode(signup|profile/edit)" component={Signup} />
-        <Route path="/team/:mode(create|edit)/:id?" component={FormNewTeam} />
+        <ProtectedRoute path="/team/:mode(create|edit)/:id?" component={FormNewTeam} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <Route exact path="/quizz" component={Quizz}/>
         <ProtectedRoute exact path="/quizz/new" component={FormCreateQuizz} />
@@ -38,7 +38,7 @@ function App() {
         <Route exact path="/quizz/edit/:id" component={FormEditQuizz}/>
         <Route exact path="/question/:id" component={OneQuestionEdit}/>
         <Route path="/dashboard" component={Dashboard} />        
-        <Route path="/teams/:id" component={TeamDashboard} />
+        <ProtectedRoute path="/teams/:id" component={TeamDashboard} />
         <Route path="*" component={Page404} />
       </Switch>
       
