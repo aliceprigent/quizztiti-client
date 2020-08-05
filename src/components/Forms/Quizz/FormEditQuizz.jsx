@@ -96,13 +96,26 @@ export class FormEditQuizz extends Component {
         .updateQuizz(this.props.match.params.id,updquizzFormData)
         .then((data) => {
           console.log(data);
+          this.props.history.push("/dashboard")
         })
         .catch((error) => {
           console.log(error);
         });
     }
   
-
+    handleDelete=(event)=>{
+      quizzHandler
+      .deleteQuizz(this.props.match.params.id)
+      .then((data) => {
+        console.log(data)
+        this.props.history.push("/dashboard")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  
+    
   render() {
     if (this.state === null) {
       return <div>...Loading</div>;
@@ -110,6 +123,7 @@ export class FormEditQuizz extends Component {
 
     return (
       <div>
+      <button className="quizz-delete btn" onClick={this.handleDelete}>Delete Quizz</button>
         <form className="quizz-form column" onSubmit={this.handleSubmit}>
           <label htmlFor="title" className="quizz-label">
             Title

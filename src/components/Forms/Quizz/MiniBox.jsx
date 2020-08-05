@@ -19,9 +19,9 @@ export class MiniBox extends Component {
           <p>Right Answer : {this.props.question.answer}</p>
           <p>FunFact : {this.props.question.funFact}</p>
           
-         <Link to={`/question/${this.props.question._id}`} question={this.props.question}>Edit Question</Link> 
-          <button >Delete Question</button>
-      
+         <Link to={`/question/${this.props.question._id}`} question={this.props.question}>
+         <button> Edit Question</button></Link> 
+               
       </div>
     );
   }

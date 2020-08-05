@@ -46,13 +46,15 @@ export class FormCreateQuizz extends Component {
       // () => console.log("step1", this.state.quizzTotal)
     );
   };
-
-  clearInput=()=>{
-this.inputTitle.value=""
+// pour cleaner les inputs apres submit une question
+  clearInput=(inputArray)=>{
+    inputArray.forEach((
+      input) => {input.value =""})
   }
 
+
   handleValidation = (event) => {
-    if (this.state.quizzTotal.length < 10) {
+    if (this.state.quizzTotal.length <10) {
       this.setState({
         formIsValid: false,
         errors:"Your quizz must have 10 questions to be valid",        
@@ -65,9 +67,13 @@ this.inputTitle.value=""
   handleSubmit = (event) => {
     event.preventDefault();
     console.log("submit:", this.state);
-this.handleValidation()
-    if (this.state.formIsValid===true) {
-      
+// this.handleValidation()
+    if (this.state.quizzTotal.length <10){
+      this.setState({
+        
+        errors:"Your quizz must have 10 questions to be valid",        
+      })
+    }else{
      
       var newQuizzData = {
         title: this.state.title,
@@ -109,12 +115,14 @@ this.handleValidation()
       quizzHandler
         .createQuizz(quizzFormData)
         .then((data) => {
-          console.log(data);
+          console.log(data)
+          this.props.history.push("/dashboard")
         })
         .catch((error) => {
           console.log(error);
         });
     }
+  
   };
 
   render() {
@@ -186,13 +194,13 @@ this.handleValidation()
             </span>
           </div>
         </form>
-        <div id="question-container">
+        <div id="question-container" style={{display:this.state.quizzTotal.length===10? "none":"flex"}}>
           <QuestionBox
             changeCbk={this.handleChange}
             questionNumber={this.state.questionNb}
             addCbk={this.addQuestion}
             clearCbk={this.clearInput}
-          />
+                      />
         </div>
       </div>
     );

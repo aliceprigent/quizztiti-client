@@ -14,8 +14,9 @@ import DisplayQuizz from './pages/DisplayQuizz'
 import TeamDashboard from './components/Team/TeamDashboard'
 import Page404 from "./components/Page404"
 import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
-import QuestionBox from "./components/Forms/Quizz/QuestionBox";
-import OneQuestionEdit from"./components/Forms/Quizz/OneQuestionEdit";
+import OneQuestionEdit from "./components/Forms/Quizz/OneQuestionEdit";
+
+
 
 
 function App() {

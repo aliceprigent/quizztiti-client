@@ -40,7 +40,7 @@ export default {
 
   createQuizz(newQuizz) {
     return service
-      .post("/quizz", newQuizz)
+      .post("/quizz/new", newQuizz)
       .then((res) => res.data)
       .catch(errorHandler);
   },
@@ -53,6 +53,7 @@ export default {
   },
 
   getOneQuestion(questId) {
+    console.log(questId)
     return service
       .get(`/question/${questId}`)
       .then((res) => res.data)
