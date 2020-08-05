@@ -11,7 +11,7 @@ const teamMembers = (props) => {
   }
   return (
       <React.Fragment>
-    <div id="team_members" >
+    <div id="dash_team_members" >
       <div className="row space_between margin_bottom">
       <div>
       <h3>Members</h3>

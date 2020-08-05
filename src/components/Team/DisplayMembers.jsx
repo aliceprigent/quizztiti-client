@@ -29,7 +29,7 @@ console.log(props)
           </div>
     </div>
           <ul>
-            {props.members.map((member) => (
+            {props.members &&   props.members.map((member) => (
                 <div className="row" key={member._id}>
                 { !(props.owner._id === member._id) ? <button className="btn delete" onClick={()=>props.updateMembers(member._id)}> x</button> : <button className="btn owner" >  </button>}
                 <img src={member.image} alt={member.name}/>
