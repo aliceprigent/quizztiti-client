@@ -15,10 +15,9 @@ const teamMembers = (props) => {
       <div className="row space_between margin_bottom">
       <div>
       <h3>Members</h3>
-      <aside id="owner"> owner : {(props.owner.name) ? props.owner.name : "you" }</aside>
       </div>
       <div className="column">
-      <button className="btn"> Invite </button>
+      <button className="btn" onClick={props.edit}> Manage </button>
 
       </div>
 </div>
@@ -26,7 +25,7 @@ const teamMembers = (props) => {
         {props.members.map((member) => (
             <div className="row" key={member._id}>
             <img src={member.image} alt={member.name}/>
-           {member.name} 
+           {member.name} {(props.owner.name === member.name) ? "(owner)" : "" }
           </div>
         ))}
       </ul>
