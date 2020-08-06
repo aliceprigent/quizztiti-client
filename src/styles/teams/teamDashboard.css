@@ -3,53 +3,83 @@
 
 .container_left {
   box-sizing: border-box;
-  width: 55vw;
-  height: 80vh;
+  /* width: 55vw; */
+  /* height: 80vh; */
   margin-left: 3vw;
 }
 
+#description {
+  height: 10vh;
+  overflow-wrap: normal;
+  overflow: scroll;
+}
 
 .wrap {
     flex-wrap: wrap;
 }
 
-#team_info {
+#team_card {
   padding: 1vh 1vw;
   width: 50vw;
-  height: 20vh;
+  height: 30vh;
   border-radius: 30px;
   background: var(--grey);
+  align-items :flex-start
 }
 
-#dash_team_members {
-  margin-left: 10vw;
-  border-radius: 30px;
-  width: 40vw;
-  height: 50vh;
-  overflow: scroll;
-  margin-right: 5vw;
+#form_mode {
+  width: 80%;
 }
+
+/* #dash_team_members {
+  margin-left: 10vw;
+  border-radius: 30px; 
+   width: 40vw;
+   height: 50vh; 
+   overflow: scroll; 
+  margin-right: 5vw;
+} */
 
 
 #team_members {
-    margin-left: 10vw;
-    border-radius: 30px;
-    width: 40vw;
+    margin-left: 1vw;
+    width: 30vw;
     height: 30vh;
     overflow: scroll;
-    margin-right: 5vw;
+    margin-right: 1vw;
   }
 
+  #add_members {
+    margin-left: 1vw;
+    width: 30vw;
+    height: 20vh;
+    overflow: scroll;
+    margin-right: 1vw;
+    margin-bottom: 2vh;
+  }
+
+
 #team_quizz {
-  width: 60vw;
-  height: 60vh;
+  margin-left: 1vw;
+  width: 30vw;
+  height: 30vh;
   overflow: scroll;
+  margin-right: 1vw;
 }
 
 #team_quizzes {
-  width: 40vw;
+  margin-left: 1vw;
+  width: 100%30vw;
   height: 20vh;
   overflow: scroll;
+  margin-right: 1vw;
+}
+
+#add_quizzes {
+  width: 30vw;
+  height: 12vh;
+  overflow: scroll;
+  margin-bottom: 2vh;
 }
 
 .space_between {
@@ -79,7 +109,7 @@ font-size: .7rem;
 }
 
 .team_image {
-    width: 150px;
+    width: 15%;
     box-sizing: border-box;
 }
 
@@ -135,4 +165,11 @@ overflow: scroll;
 
 .click {
   cursor: pointer;
+}
+
+
+.add {
+  margin-top: 1vh;
+  width: auto;
+  padding: 1vh 2vw;
 }

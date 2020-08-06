@@ -41,7 +41,7 @@ handleBack = (event) => {
 
   return (
     <div>
-    <div className="row space_between team_block">
+    <div >
       <h3>Quizz</h3>
       <div>
       <button className="btn" onClick={this.props.create}> Create </button>
@@ -61,7 +61,7 @@ handleBack = (event) => {
       </div>}
 
       {this.state.addQuizz &&
-        <div id="team_quizz" className="row wrap">
+        <div id="team_quizz" >
         
           <AddQuizz  userQuizzes={this.props.userQuizzes} quizzes={this.props.quizzes} addQuizz={this.props.add} toggleAddQuizz={this.handleBack}/>
       

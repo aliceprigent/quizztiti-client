@@ -17,7 +17,7 @@ class FormNewTeam extends Component {
     owner: null,
     name: "",
     image: "",
-    tmpImage: "",
+    tmpImage: "/media/teams/flame-793.png",
     members: [],
     teamQuizzes: [],
     optionsMembers: [],
@@ -299,39 +299,48 @@ class FormNewTeam extends Component {
     }
 
     return (
-      <React.Fragment>
+      <div className="center column">
         {mode === "create" ? (
-          <h2 className="column center"> Create a new team !" </h2>
+          <div className="row space-around">
+          <img
+              src={this.state.tmpImage ? this.state.tmpImage : this.state.image}
+              alt="your team image"
+              className="team_image"
+            />
+            <h2 id="form_mode" className="column center">
+              Create a new team !
+            </h2>
+            
+          </div>
         ) : (
-          <h2 className="row space_between">
-            <span>Edit your team </span>{" "}
-            <span className="red click" onClick={this.handleDelete}>
-              Delete your team
-            </span>
-          </h2>
+          <div id="form_mode" className="row space-around">
+            <h2>Edit team </h2>
+            <img
+              src={this.state.tmpImage ? this.state.tmpImage : this.state.image}
+              alt="your team image"
+              className="team_image"
+            />
+            <h2 className="red click" onClick={this.handleDelete}>
+              Delete team
+            </h2>
+          </div>
         )}
 
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="column">
               <input
+                className="sign-input"
                 type="file"
                 id="image"
                 name="image"
                 onChange={this.handleImage}
               />
-              <img
-                src={
-                  this.state.tmpImage ? this.state.tmpImage : this.state.image
-                }
-                alt="your team image"
-                className="team_image"
-              />
             </div>
 
             <div className="column">
-              <label htmlFor="name">Team Name</label>
               <input
+                className="sign-input"
                 type="text"
                 id="name"
                 name="name"
@@ -344,8 +353,8 @@ class FormNewTeam extends Component {
               />
             </div>
             <div className="column">
-              <label htmlFor="description">Team Description</label>
               <textarea
+                className="sign-input"
                 id="description"
                 name="description"
                 maxLength="125"
@@ -356,29 +365,64 @@ class FormNewTeam extends Component {
                 placeholder={
                   mode === "edit"
                     ? this.state.description
-                    : "a team of crazy brains"
+                    : "team description : a gathering of crazy brains"
                 }
               />
             </div>
           </div>
           <div className="row space_evenly ">
+            <DisplayMembers
+              owner={this.state.owner}
+              updateMembers={this.updateMembers}
+              members={this.state.members}
+            />
             <div className="column">
               <h3>Add members</h3>
               <input
+                className="sign-input"
                 type="text"
                 name="inputSearchMembers"
                 placeholder="Search members"
                 onChange={this.handleChange}
               />
-              {this.state.inputSearchMembers &&
-                this.state.optionsMembers
-                  .filter((optionMember) =>
-                    optionMember.name
-                      .toLowerCase()
-                      .includes(this.state.inputSearchMembers.toLowerCase())
-                  )
-                  .map((optionMember) => (
+              <div id="add_members">
+                {this.state.inputSearchMembers &&
+                  this.state.optionsMembers
+                    .filter((optionMember) =>
+                      optionMember.name
+                        .toLowerCase()
+                        .includes(this.state.inputSearchMembers.toLowerCase())
+                    )
+                    .map((optionMember) => (
+                      <label
+                        className="sign-label"
+                        htmlFor={`${optionMember.name}`}
+                        key={optionMember._id}
+                      >
+                        <div className="row">
+                          <input
+                            type="checkbox"
+                            id={`${optionMember.name}`}
+                            name={`${optionMember.name}`}
+                            value={optionMember._id}
+                            onChange={this.handleMembers}
+                            disabled={this.checkOptionMember(optionMember)}
+                          />
+
+                          <img
+                            src={`${optionMember.image}`}
+                            alt={optionMember.name}
+                          />
+                          {`${optionMember.name}`}
+                        </div>
+                      </label>
+                    ))}
+
+                {(!this.state.inputSearchMembers ||
+                  this.state.inputSearchMembers === "") &&
+                  this.state.optionsMembers.map((optionMember) => (
                     <label
+                      className="sign-label"
                       htmlFor={`${optionMember.name}`}
                       key={optionMember._id}
                     >
@@ -391,7 +435,6 @@ class FormNewTeam extends Component {
                           onChange={this.handleMembers}
                           disabled={this.checkOptionMember(optionMember)}
                         />
-
                         <img
                           src={`${optionMember.image}`}
                           alt={optionMember.name}
@@ -400,48 +443,25 @@ class FormNewTeam extends Component {
                       </div>
                     </label>
                   ))}
-              {(!this.state.inputSearchMembers ||
-                this.state.inputSearchMembers === "") &&
-                this.state.optionsMembers.map((optionMember) => (
-                  <label
-                    htmlFor={`${optionMember.name}`}
-                    key={optionMember._id}
-                  >
-                    <div className="row">
-                      <input
-                        type="checkbox"
-                        id={`${optionMember.name}`}
-                        name={`${optionMember.name}`}
-                        value={optionMember._id}
-                        onChange={this.handleMembers}
-                        disabled={this.checkOptionMember(optionMember)}
-                      />
-                      <img
-                        src={`${optionMember.image}`}
-                        alt={optionMember.name}
-                      />
-                      {`${optionMember.name}`}
-                    </div>
-                  </label>
-                ))}
+              </div>
             </div>
-
-            <DisplayMembers
-              owner={this.state.owner}
-              updateMembers={this.updateMembers}
-              members={this.state.members}
-            />
           </div>
 
-          <div className="row space_evenly ">
+          <div className="row space-around ">
+            <DisplayQuizzes
+              updateQuizzes={this.updateQuizz}
+              quizzes={this.state.teamQuizzes}
+            />
             <div className="column">
               <h3>Add quizzes</h3>
               <input
+                className="sign-input"
                 type="text"
                 name="inputSearchQuizz"
                 placeholder="Search quizz"
                 onChange={this.handleQuizzes}
               />
+              <div id="add_quizzes" >
               {this.state.inputSearchQuizz &&
                 this.state.userQuizzes
                   .filter(
@@ -454,7 +474,11 @@ class FormNewTeam extends Component {
                         .includes(this.state.inputSearchQuizz.toLowerCase())
                   )
                   .map((userQuizz) => (
-                    <label htmlFor={`${userQuizz.title}`} key={userQuizz._id}>
+                    <label
+                      className="sign-label"
+                      htmlFor={`${userQuizz.title}`}
+                      key={userQuizz._id}
+                    >
                       <div className="row">
                         <input
                           type="checkbox"
@@ -472,7 +496,11 @@ class FormNewTeam extends Component {
               {(!this.state.inputSearchQuizzes ||
                 this.state.inputSearchQuizzes === "") &&
                 this.state.userQuizzes.map((userQuizz) => (
-                  <label htmlFor={`${userQuizz.title}`} key={userQuizz._id}>
+                  <label
+                    className="sign-label"
+                    htmlFor={`${userQuizz.title}`}
+                    key={userQuizz._id}
+                  >
                     <div className="row">
                       <input
                         type="checkbox"
@@ -486,12 +514,8 @@ class FormNewTeam extends Component {
                     </div>
                   </label>
                 ))}
+                </div>
             </div>
-
-            <DisplayQuizzes
-              updateQuizzes={this.updateQuizz}
-              quizzes={this.state.teamQuizzes}
-            />
           </div>
 
           <div className="column center"></div>
@@ -499,7 +523,7 @@ class FormNewTeam extends Component {
         <button className="btn" onClick={this.finalSubmit}>
           {mode === "create" ? "Create" : "Edit"}
         </button>
-      </React.Fragment>
+      </div>
     );
   }
 }

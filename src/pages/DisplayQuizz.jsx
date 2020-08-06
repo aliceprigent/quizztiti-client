@@ -106,7 +106,7 @@ export class DisplayQuizz extends Component {
               ) : (
                 <button
                   className="btn"
-                  style={{ width: "150px"}}
+                  style={{ width: "150px", marginBottom: "10px"}}
                   onClick={this.handleUserScore}
                 >
                   Submit
