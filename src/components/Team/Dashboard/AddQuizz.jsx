@@ -50,58 +50,55 @@ export class AddQuizz extends Component {
     else return false;
   };
 
-
-handleSubmit = () => {
-  this.props.addQuizz(this.state.newTeamQuizzes);
-  this.props.toggleAddQuizz();
-}
+  handleSubmit = () => {
+    this.props.addQuizz(this.state.newTeamQuizzes);
+    this.props.toggleAddQuizz();
+  };
 
   render() {
     return (
       <div>
-        <div className="row space_evenly ">
-          <div className="column">
-            <div id="team_quizzes" >
-          <div className="row space_between margin_bottom">
-          <div>
-          <h3>Current quizzes ({this.props.quizzes.length})</h3>
-          </div>
-          <div className="column">
-          </div>
-    </div>
-          <ul>
-            {this.props.quizzes.map((quizz) => (
-                <div className="row" key={quizz._id}>
-                [{quizz.thema}] -  {quizz.title}  
+        <div className="row ">
+          <div className="row">
+            <div id="team_quizzes">
+              <div className="row space-between margin_bottom">
+                <div>
+                  <h3>Current quizzes ({this.props.quizzes.length})</h3>
+                </div>
+                <div className="column"></div>
               </div>
-            ))}
-          </ul>
-        </div>
-
-
-            <h3>Add quizzes</h3>
-
-            {this.state.userQuizzes &&
-              this.state.userQuizzes.map((userQuizz) => (
-                <label htmlFor={`${userQuizz._id}`} key={userQuizz._id}>
-                  <div className="row">
-                    <input
-                      type="checkbox"
-                      id={`${userQuizz._id}`}
-                      name={`${userQuizz.title}`}
-                      value={userQuizz._id}
-                      onChange={this.handleQuizzes}
-                      disabled={this.checkOptionQuizzes(userQuizz)}
-                    />
-                    [{userQuizz.thema}] {userQuizz.title}
+              <ul>
+                {this.props.quizzes.map((quizz) => (
+                  <div className="row" key={quizz._id}>
+                    [{quizz.thema}] - {quizz.title}
                   </div>
-                </label>
-              ))}
-            <button
-              onClick={this.handleSubmit}
-            >
-              add to the team quizzes
-            </button>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3>Add quizzes of your creation</h3>
+
+              {this.state.userQuizzes &&
+                this.state.userQuizzes.map((userQuizz) => (
+                  <label htmlFor={`${userQuizz._id}`} key={userQuizz._id}>
+                    <div className="row">
+                      <input
+                        type="checkbox"
+                        id={`${userQuizz._id}`}
+                        name={`${userQuizz.title}`}
+                        value={userQuizz._id}
+                        onChange={this.handleQuizzes}
+                        disabled={this.checkOptionQuizzes(userQuizz)}
+                      />
+                      [{userQuizz.thema}] {userQuizz.title}
+                    </div>
+                  </label>
+                ))}
+              <button className="btn add" onClick={this.handleSubmit}>
+                add to the team quizzes
+              </button>
+            </div>
           </div>
         </div>
       </div>

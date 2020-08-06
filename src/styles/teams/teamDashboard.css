@@ -147,3 +147,8 @@ overflow: scroll;
 }
 
 
+.add {
+  margin-top: 1vh;
+  width: auto;
+  padding: 1vh 2vw;
+}
