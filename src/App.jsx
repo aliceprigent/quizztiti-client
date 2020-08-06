@@ -15,6 +15,7 @@ import TeamDashboard from './components/Team/teamDashboard'
 import Page404 from "./components/Page404"
 import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
 import OneQuestionEdit from "./components/Forms/Quizz/OneQuestionEdit";
+import QuizzCategories from "./components/Quizz/QuizzCategories"
 
 
 
@@ -38,8 +39,9 @@ function App() {
         />
         <Route exact path="/quizz/edit/:id" component={FormEditQuizz}/>
         <Route exact path="/question/:id" component={OneQuestionEdit}/>
-        <Route path="/dashboard" component={Dashboard} />        
+        <ProtectedRoute path="/dashboard" component={Dashboard} />        
         <ProtectedRoute path="/teams/:id" component={TeamDashboard} />
+        <ProtectedRoute exact path="/quizz/categories/:category" component={QuizzCategories} />
         <Route path="*" component={Page404} />
       </Switch>
       

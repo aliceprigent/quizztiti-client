@@ -74,3 +74,11 @@
 .logo-quizztiti {
     width:20%;
 }
+
+.quizzCategorie{
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    width:90%;
+    flex-wrap: wrap;
+}

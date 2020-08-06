@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 function Categories(props) {
     return (
         <Link
-            to={`/quizz/${props.theme}`}>
+            to={`/quizz/categories/${props.theme}`}>
         <div className="row center">
         
           

@@ -43,14 +43,14 @@ export class Dashboard extends Component {
           <UserQuizz user={this.state}/>
           </div>
         </div>
+      
         <div className="row center dashboard-row">
-        <div className="shadow-box dashboard-box">
+        <div className="shadow-box dashboard-box" style={{width:"81%"}}>
           <UserTeam user={this.state}/>
           </div>
-          <div className="shadow-box dashboard-box">
-          <UserTeam />
           </div>
-        </div>
+    
+        
       </section>
       </div>
       

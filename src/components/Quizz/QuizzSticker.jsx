@@ -5,7 +5,7 @@ const QuizzSticker = (props) => {
   return (
     <div className="quizz-sticker row center" style={{backgroundImage:`url(${props.quiz.image})`}}>
     
-      <h3 className="row ">{props.quiz.title}</h3>
+      <h3 className="row">{props.quiz.title}</h3>
     </div>
   );
 };
