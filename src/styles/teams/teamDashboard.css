@@ -28,7 +28,7 @@
 }
 
 #form_mode {
-  width: 80vw;
+  width: 80%;
 }
 
 /* #dash_team_members {
@@ -42,23 +42,44 @@
 
 
 #team_members {
-    margin-left: 10vw;
-    border-radius: 30px;
-    width: 40vw;
+    margin-left: 1vw;
+    width: 30vw;
     height: 30vh;
     overflow: scroll;
-    margin-right: 5vw;
+    margin-right: 1vw;
   }
 
-#team_quizz {
+  #add_members {
+    margin-left: 1vw;
+    width: 30vw;
+    height: 20vh;
+    overflow: scroll;
+    margin-right: 1vw;
+    margin-bottom: 2vh;
+  }
 
+
+#team_quizz {
+  margin-left: 1vw;
+  width: 30vw;
+  height: 30vh;
   overflow: scroll;
+  margin-right: 1vw;
 }
 
 #team_quizzes {
-  width: 40vw;
+  margin-left: 1vw;
+  width: 100%30vw;
   height: 20vh;
   overflow: scroll;
+  margin-right: 1vw;
+}
+
+#add_quizzes {
+  width: 30vw;
+  height: 12vh;
+  overflow: scroll;
+  margin-bottom: 2vh;
 }
 
 .space_between {
@@ -88,7 +109,7 @@ font-size: .7rem;
 }
 
 .team_image {
-    width: 150px;
+    width: 15%;
     box-sizing: border-box;
 }
 
