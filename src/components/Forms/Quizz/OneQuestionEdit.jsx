@@ -135,7 +135,7 @@ export class MiniBox extends Component {
           <label htmlFor="question">Question {this.state.index}/10</label>
           <input
             name="question"
-            className="question column"
+            className="question column qbox"
             type="text"
             defaultValue={this.state.question}
           />

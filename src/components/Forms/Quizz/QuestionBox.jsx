@@ -72,7 +72,7 @@ export class QuestionBox extends Component {
           className="qbox question column"
           type="text"
           placeholder="What is your question?"
-          ref={(el) => (this.inputTitle = el)}
+         
         />
 
         <label htmlFor="proposition" style={{ paddingTop: "2em" }}>
