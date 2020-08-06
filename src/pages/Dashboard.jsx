@@ -3,6 +3,7 @@ import UserProfile from '../components/Dasboard/UserProfile'
 import UserQuizz from '../components/Dasboard/UserQuizz'
 import UserTeam from '../components/Dasboard/UserTeam'
 import apiUser from '../api/apiUser'
+import UserStats from '../components/Dasboard/UserStats'
 
 export class Dashboard extends Component {
     state= {};
@@ -36,21 +37,30 @@ export class Dashboard extends Component {
 
       <section className="column center section-dashboard">
         <div className="row center dashboard-row">
-        <div className="shadow-box dashboard-box">
+        <div className="dashboard-box">
           <UserProfile/>
           </div>
           <div className="shadow-box dashboard-box">
           <UserQuizz user={this.state}/>
           </div>
         </div>
+      
         <div className="row center dashboard-row">
-        <div className="shadow-box dashboard-box">
+        <div className="shadow-box dashboard-box2">
           <UserTeam user={this.state}/>
           </div>
-          <div className="shadow-box dashboard-box">
-          <UserTeam />
+          
           </div>
-        </div>
+
+          <div className="row center dashboard-row">
+        <div className="shadow-box dashboard-box2" style={{marginBottom:"20px"}}>
+          <UserStats user={this.state}/>
+          </div>
+          
+          </div>
+    
+    
+        
       </section>
       </div>
       

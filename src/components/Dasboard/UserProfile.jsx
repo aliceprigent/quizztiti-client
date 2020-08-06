@@ -31,7 +31,7 @@ const UserProfile = (props) => {
           />
           <h3 style={{marginTop:"10px"}}>{props.context.user.name}</h3>
           <a href="/profile/edit">
-            <button style={{ marginTop: "30px" }} className="btn">
+            <button style={{ marginTop: "20px" }} className="btn">
               EDIT
             </button>
           </a>

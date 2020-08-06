@@ -29,7 +29,7 @@ export class Home extends Component {
         image: "https://img.icons8.com/color/48/000000/us-capitol.png",
       },
       {
-        theme: "Miscellanous",
+        theme: "Miscellaneous",
         image: "https://img.icons8.com/color/48/000000/illuminati-symbol.png",
       },
     ],
@@ -87,7 +87,7 @@ export class Home extends Component {
             
             <br />
 
-            {/* <CarouselMobile /> */}
+             <CarouselMobile /> 
           </div>
             
           </div>
