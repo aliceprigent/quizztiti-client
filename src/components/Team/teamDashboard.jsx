@@ -5,7 +5,7 @@ import teamHandler from "../../api/teamHandler";
 import "../../styles/teams/teamDashboard.css";
 import { Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
-import UserContext from '../Auth/UserContext';
+import UserContext from "../Auth/UserContext";
 
 export class TeamDashboard extends Component {
   static contextType = UserContext;
@@ -16,17 +16,15 @@ export class TeamDashboard extends Component {
       .getOneTeam(teamId)
       .then((team) => {
         // console.log(team);
-        this.setState(
-          {
-            teamId: team._id,
-            name: team.name,
-            image: team.image,
-            owner: team.owner,
-            description: team.description,
-            members: team.members,
-            teamQuizz: team.teamQuizz,
-          },
-        );
+        this.setState({
+          teamId: team._id,
+          name: team.name,
+          image: team.image,
+          owner: team.owner,
+          description: team.description,
+          members: team.members,
+          teamQuizz: team.teamQuizz,
+        });
       })
       .catch((err) => console.error(err));
   }
@@ -50,7 +48,7 @@ export class TeamDashboard extends Component {
         // console.log(newTeam);
         this.setState({ teamQuizz: newTeam.teamQuizz });
       })
-      .catch((err) => console.error('could not update state -', err));
+      .catch((err) => console.error("could not update state -", err));
   };
 
   render() {
@@ -58,11 +56,13 @@ export class TeamDashboard extends Component {
     if (this.props.context.user === null) return null;
     console.log(this.props.context.user);
 
-
-    if (!this.props.context.user.teams.find(team => team === this.props.match.params.id)) {
+    if (
+      !this.props.context.user.teams.find(
+        (team) => team === this.props.match.params.id
+      )
+    ) {
       this.props.history.push("/dashboard");
     }
-
 
     if (!this.state) {
       return <div> Loading ... </div>;
@@ -71,40 +71,48 @@ export class TeamDashboard extends Component {
     return (
       <div id="team_dashboard" className="center column">
         <div className="column center section-dashboard">
-          <div id="team_info"  >
-            <img src={this.state.image} alt="team pic" className="team_image" />
-            <div>
-              <div  id="team_head" className="row space-around">
-                {" "}
-                <h2>{this.state.name} </h2>{" "}
-
-             {   (this.context.user._id === this.state.owner._id) &&
-                <button onClick={this.handleEdit} className="btn half_width">
-                  {" "}
-                  Edit{" "}
-                </button>
-              }
+          <div id="first_row" className="row space-around dashboard-row">
+            <div id="team_card" className="row space-around shadow-box dashboard-box">
+              <img
+                src={this.state.image}
+                alt="team pic"
+                className="team_image"
+              />
+              <div id="team_info" className="row wrap">
+                <div id="team_head" className="row space-around">
+                  <h2>{this.state.name} </h2>
+                  {this.context.user._id === this.state.owner._id && (
+                    <button
+                      onClick={this.handleEdit}
+                      className="btn half_width"
+                    >
+                      Edit
+                    </button>
+                  )}
+                </div>
+                <div id="team_desc"> {this.state.description} </div>
               </div>
-              <div id="team_desc"> {this.state.description} </div>
             </div>
-            </div>
-
-          <TeamQuizzes className="shadow-box dashboard-box"
-          teamId={this.state.teamId}
-          owner={this.state.owner}
+            <TeamMembers
+              className="shadow-box dashboard-box"
+              owner={this.state.owner}
+              members={this.state.members}
+              edit={this.handleEdit}
+              owner={this.state.owner}
+            />
+          </div>
+          <div id="second_row" className="dashboard-box2 ">
+          <TeamQuizzes
+            className="row wrap"
+            teamId={this.state.teamId}
+            owner={this.state.owner}
             userQuizzes={this.props.context.user.quizzCreated}
             quizzes={this.state.teamQuizz}
             edit={this.handleEdit}
             create={this.handleCreateQuizz}
             add={this.handleAddQuizz}
           />
-        
-        <TeamMembers className="shadow-box dashboard-box"
-          owner={this.state.owner}
-          members={this.state.members}
-          edit={this.handleEdit}
-          owner={this.state.owner}
-        />
+          </div>
         </div>
       </div>
     );

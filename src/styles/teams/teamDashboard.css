@@ -8,27 +8,37 @@
   margin-left: 3vw;
 }
 
+#description {
+  height: 10vh;
+  overflow-wrap: normal;
+  overflow: scroll;
+}
 
 .wrap {
     flex-wrap: wrap;
 }
 
-#team_info {
+#team_card {
   padding: 1vh 1vw;
   width: 50vw;
-  height: 20vh;
+  height: 30vh;
   border-radius: 30px;
   background: var(--grey);
+  align-items :flex-start
 }
 
-#dash_team_members {
-  margin-left: 10vw;
-  border-radius: 30px;
-  width: 40vw;
-  height: 50vh;
-  overflow: scroll;
-  margin-right: 5vw;
+#form_mode {
+  width: 80vw;
 }
+
+/* #dash_team_members {
+  margin-left: 10vw;
+  border-radius: 30px; 
+   width: 40vw;
+   height: 50vh; 
+   overflow: scroll; 
+  margin-right: 5vw;
+} */
 
 
 #team_members {
@@ -137,19 +147,3 @@ overflow: scroll;
 }
 
 
-
-
-@media (max-width: 540px) {
-
-  #dash_team_members {
-      width: 10vh;
-     
-  }
-  #team_dashboard  {
-    flex-direction: column !important; 
-  }
-  #team_dashboard .container_left {
-    flex-direction: column !important
-    ;
-  }
-}

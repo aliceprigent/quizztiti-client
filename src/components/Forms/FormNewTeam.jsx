@@ -299,22 +299,25 @@ class FormNewTeam extends Component {
     }
 
     return (
-      <React.Fragment>
+      <div className="center column">
         {mode === "create" ? (
-          <h2 className="column center"> Create a new team !" </h2>
-        ) : (
-          <h2 className="row space_between">
-            <span>Edit your team </span>{" "}
-            <span className="red click" onClick={this.handleDelete}>
-              Delete your team
-            </span>
+          <h2 id="form_mode" className="column center">
+            {" "}
+            Create a new team !"{" "}
           </h2>
+        ) : (
+          <div id="form_mode" className="row space-around">
+            <h2>Edit team </h2>
+            <h2 className="red click" onClick={this.handleDelete}>
+              Delete team
+            </h2>
+          </div>
         )}
 
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="column">
-              <input
+              <input className="sign-input"
                 type="file"
                 id="image"
                 name="image"
@@ -330,8 +333,8 @@ class FormNewTeam extends Component {
             </div>
 
             <div className="column">
-              <label htmlFor="name">Team Name</label>
-              <input
+        
+              <input className="sign-input"
                 type="text"
                 id="name"
                 name="name"
@@ -344,8 +347,8 @@ class FormNewTeam extends Component {
               />
             </div>
             <div className="column">
-              <label htmlFor="description">Team Description</label>
-              <textarea
+      
+              <textarea className="sign-input"
                 id="description"
                 name="description"
                 maxLength="125"
@@ -356,7 +359,7 @@ class FormNewTeam extends Component {
                 placeholder={
                   mode === "edit"
                     ? this.state.description
-                    : "a team of crazy brains"
+                    : "team description : a gathering of crazy brains"
                 }
               />
             </div>
@@ -364,7 +367,7 @@ class FormNewTeam extends Component {
           <div className="row space_evenly ">
             <div className="column">
               <h3>Add members</h3>
-              <input
+              <input className="sign-input"
                 type="text"
                 name="inputSearchMembers"
                 placeholder="Search members"
@@ -378,12 +381,12 @@ class FormNewTeam extends Component {
                       .includes(this.state.inputSearchMembers.toLowerCase())
                   )
                   .map((optionMember) => (
-                    <label
+                    <label className="sign-label"
                       htmlFor={`${optionMember.name}`}
                       key={optionMember._id}
                     >
                       <div className="row">
-                        <input
+                        <input 
                           type="checkbox"
                           id={`${optionMember.name}`}
                           name={`${optionMember.name}`}
@@ -403,7 +406,7 @@ class FormNewTeam extends Component {
               {(!this.state.inputSearchMembers ||
                 this.state.inputSearchMembers === "") &&
                 this.state.optionsMembers.map((optionMember) => (
-                  <label
+                  <label className="sign-label"
                     htmlFor={`${optionMember.name}`}
                     key={optionMember._id}
                   >
@@ -436,7 +439,7 @@ class FormNewTeam extends Component {
           <div className="row space_evenly ">
             <div className="column">
               <h3>Add quizzes</h3>
-              <input
+              <input className="sign-input"
                 type="text"
                 name="inputSearchQuizz"
                 placeholder="Search quizz"
@@ -454,7 +457,7 @@ class FormNewTeam extends Component {
                         .includes(this.state.inputSearchQuizz.toLowerCase())
                   )
                   .map((userQuizz) => (
-                    <label htmlFor={`${userQuizz.title}`} key={userQuizz._id}>
+                    <label className="sign-label" htmlFor={`${userQuizz.title}`} key={userQuizz._id}>
                       <div className="row">
                         <input
                           type="checkbox"
@@ -472,7 +475,7 @@ class FormNewTeam extends Component {
               {(!this.state.inputSearchQuizzes ||
                 this.state.inputSearchQuizzes === "") &&
                 this.state.userQuizzes.map((userQuizz) => (
-                  <label htmlFor={`${userQuizz.title}`} key={userQuizz._id}>
+                  <label className="sign-label" htmlFor={`${userQuizz.title}`} key={userQuizz._id}>
                     <div className="row">
                       <input
                         type="checkbox"
@@ -499,7 +502,7 @@ class FormNewTeam extends Component {
         <button className="btn" onClick={this.finalSubmit}>
           {mode === "create" ? "Create" : "Edit"}
         </button>
-      </React.Fragment>
+      </div>
     );
   }
 }

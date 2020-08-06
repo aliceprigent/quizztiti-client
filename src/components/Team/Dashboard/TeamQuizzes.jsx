@@ -51,7 +51,7 @@ handleBack = (event) => {
       </div>
 </div>
 { !this.state.addQuizz &&
-      <div id="team_quizz" >
+      <div id="team_quizz" className="row wrap">
         {this.props.quizzes.map((quizz) => (
           <Link to={`/quizz/${quizz._id}`} >
           <StickerDashboard key={quizz._id} quizz={quizz} />
