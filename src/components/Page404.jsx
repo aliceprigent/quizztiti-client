@@ -1,5 +1,6 @@
 import QuizzSticker from "../components/Quizz/QuizzSticker";
 import quizzHandler from "../api/quizzHandler";
+import { Link } from "react-router-dom"
 
 import React, { Component } from "react";
 
@@ -30,14 +31,26 @@ export class Page404 extends Component {
       ];  
     
     return (
-      <div>
-        404 go back home to find your way :( Or answer a random quizz !
+      <div className="column center" style={{textAlign:"center"}}>
+        <h1 className="title" style={{color:"black"}}>404</h1> 
+        <br/>
+        <p style={{fontSize:"19px"}}>Go back <button className="btn">Home</button> to find your way... 
+        <br/> 
+        <br/> 
+
+        Or answer a random quizz !</p>
+        <br/>
+
+        <h2 className="title">Your lost soul quizz :</h2>
+        <Link to={`/quizz/${random._id}`}>
         <div
           className="quizz-sticker row center"
           style={{ backgroundImage: `url(${random.image})` }}
         >
           <h3 className="row ">{random.title}</h3>
         </div>
+        </Link>
+       
       </div>
     );
   }

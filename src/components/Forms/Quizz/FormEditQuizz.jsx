@@ -122,23 +122,30 @@ export class FormEditQuizz extends Component {
     }
 
     return (
-      <div>
-      <button className="quizz-delete btn" onClick={this.handleDelete}>Delete Quizz</button>
-        <form className="quizz-form column" onSubmit={this.handleSubmit}>
-          <label htmlFor="title" className="quizz-label">
-            Title
+      <div className="column center">
+      <h1 className="title">Your quizz infos</h1>
+      <section className="column center">
+   
+     
+       
+        <section className="column center" style={{marginTop:"40px", width:"100%"}}>
+        
+        <form className="column center" style={{backgroundColor:"var(--grey)", width:"40%", borderRadius:"20px"}}onSubmit={this.handleSubmit}>
+          <label style={{margin:"10px"}} htmlFor="title" className="quizz-label" style={{margin:"10px"}}>
+            Title :
           </label>
           <input
             type="text"
             name="title"
-            className="title quizz-input"
+            className="title sign-input"
             placeholder="Short description of your quizz"
             maxLength="120"
             defaultValue={this.state.title}
             onChange={this.handleChange}
+            style={{margin:"0px", border: "1px solid grey", textAlign:"left", width:"70%", backgroundColor:"white"}}
           />
-          <label htmlFor="thema" className="quizz-label">
-            Topic
+          <label style={{margin:"10px"}} htmlFor="thema" className="quizz-label" style={{margin:"10px"}}>
+            Topic :
           </label>
           <select
             name="thema"
@@ -146,24 +153,26 @@ export class FormEditQuizz extends Component {
             onChange={this.handleChange}
             // defaultValue={this.state.thema}
             value={this.state.thema}
+            style={{width: "30%"}}
           >
             <option value=""></option>
             <option value="Nature">Nature</option>
-            <option value="General Culture">General Culture</option>
-            <option value="Health and Beauty">Health and Beauty</option>
+            <option value="General">General</option>
+            <option value="Health">Health</option>
             <option value="Celebrity">Celebrity</option>
             <option value="Society">Society</option>
             <option value="Miscellaneous">Miscellaneous</option>
           </select>
 
-          <label htmlFor="status" className="status">
-            Status
+          <label style={{margin:"10px"}} htmlFor="status" className="status" style={{margin:"10px"}}>
+            Status :
           </label>
           <select
             name="status"
             className="quizz-status"
             onChange={this.handleChange}
             value={this.state.status}
+            style={{width: "30%"}}
           >
             <option value=""></option>
             <option value="Public" defaultValue>
@@ -173,7 +182,7 @@ export class FormEditQuizz extends Component {
             <option value="Private">Private</option>
           </select>
 
-          <label htmlFor="image">Image</label>
+          <label style={{margin:"10px"}} htmlFor="image" style={{margin:"10px"}}>Image :</label>
           <input
             type="file"
             name="image"
@@ -184,19 +193,26 @@ export class FormEditQuizz extends Component {
             className="quizz-image"
             src={this.state.tmpImage ? this.state.tmpImage : this.state.image}
             alt="Your chosen"
+            style={{margin:"20px"}}
           />
 
           <div className="form-validation">
-            <button className="btn">Submit</button> <br />
+            <button style={{margin:"10px"}} className="btn">Edit</button> <button className="quizz-delete btn" style={{width:"150px", margin:"10px"}} onClick={this.handleDelete}>Delete Quizz</button><br />
             <span style={{ color: "red" }}>{this.state.errors}</span>
           </div>
         </form>
-        <div className="edit-question mini-box">
-          {this.state.quizzTotal &&
-            this.state.quizzTotal.map((question) => {
-              return <MiniBox question={question} key={question._id} />;
-            })}
-        </div>
+        
+        </section>
+        <section className="row wrap center" style={{margin:"20px"}}>
+       
+       {this.state.quizzTotal &&
+         this.state.quizzTotal.map((question) => {
+           return <MiniBox question={question} key={question._id} />;
+         })}
+     </section>
+        
+       
+        </section>
       </div>
     );
   }
