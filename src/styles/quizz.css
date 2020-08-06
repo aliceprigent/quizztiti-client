@@ -222,7 +222,6 @@ h2 {
   box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
   border-radius: .5em;
    background-color: #fff;
-  background-image: ;
 
  }
 
@@ -242,11 +241,9 @@ h2 {
 .img-download{
   padding: 2em 0 ;
 }
-/* .icon{
-  height: 120px;
-  width: 30%;
-  size:9x
-} */
+.icon{
+cursor: pointer;;
+}
 .question{
   height:3em;
 }
