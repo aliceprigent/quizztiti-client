@@ -6,7 +6,6 @@ import React, { Component } from "react";
 export class Page404 extends Component {
   state = {
     quizz: [],
-    randomQuizz: {},
   };
 
   componentDidMount() {
@@ -20,33 +19,24 @@ export class Page404 extends Component {
       });
   }
 
-  randomQ = () => {
-      let random = this.state.quizz[
-        Math.floor(Math.random() * this.state.quizz.length)
-      ];
-      this.setState({ randomQuizz: this.state.quizz[random] }, () =>
-        console.log(this.state.randomQuizz)
-      );
-  };
-
   render() {
-    if (!this.state.randomQuizz) {
+
+    if (this.state.quizz.length === 0) {
       return <div>Oooops..</div>;
     }
 
-    if (this.state.quizz) {
-        this.randomQ()
-    }
-
+    let random = this.state.quizz[
+        Math.floor(Math.random() * this.state.quizz.length)
+      ];  
     
     return (
       <div>
         404 go back home to find your way :( Or answer a random quizz !
         <div
           className="quizz-sticker row center"
-          style={{ backgroundImage: `url(${this.state.randomQuizz.image})` }}
+          style={{ backgroundImage: `url(${random.image})` }}
         >
-          <h3 className="row ">{this.state.randomQuizz.title}</h3>
+          <h3 className="row ">{random.title}</h3>
         </div>
       </div>
     );
