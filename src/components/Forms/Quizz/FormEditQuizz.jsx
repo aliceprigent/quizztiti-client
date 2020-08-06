@@ -5,6 +5,7 @@ import MiniBox from "./MiniBox";
 import {withUser} from "../../../components/Auth/withUser"
 import UserContext from "../../../components/Auth/UserContext"
 
+
 export class FormEditQuizz extends Component {
   static contextType = UserContext;
 
@@ -121,7 +122,10 @@ export class FormEditQuizz extends Component {
       });
   }
   
-    
+
+
+
+
   render() {
     if (this.state === null) {
       return <div>...Loading</div>;
@@ -130,6 +134,9 @@ export class FormEditQuizz extends Component {
 if(!this.state.creator===this.props.context.user._id){
   this.props.history.push("/dashboard")
 }
+
+
+
     return (
       <div>
       <button className="quizz-delete btn" onClick={this.handleDelete}>Delete Quizz</button>
@@ -183,11 +190,13 @@ if(!this.state.creator===this.props.context.user._id){
           </select>
 
           <label htmlFor="image">Image</label>
+          <i class="fas fa-images"></i>
           <input
             type="file"
             name="image"
             id="quizz-image-label"
             onChange={this.handleImage}
+            ref={this.fileInput}
           />
           <img
             className="quizz-image"

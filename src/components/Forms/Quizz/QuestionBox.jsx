@@ -56,23 +56,24 @@ console.log(inputList)
 
   render() {
     return (
-      <div className="question-box ">
-        <form className="question-box" onChange={this.questionChange}>
+      // <div className="question-box ">
+        <form className="question-box center column" onChange={this.questionChange}>
           <label htmlFor="question">
-            Question {this.props.questionNumber}/10
+<h2> Question {this.props.questionNumber}/10</h2>
           </label>
           <input
             name="question"
             className="question column"
             type="text"
-            defaultValue="question 1"
+            defaultValue="What is your question?"
             ref={(el) => (this.inputTitle = el)}
           />
 
-          <label htmlFor="proposition">Propositions</label>
+          <label htmlFor="proposition" style={{paddingTop:"2em"}}><h3>Propositions</h3>
+          </label>
           <div>
             <label htmlFor="proposition1">
-              <h2>Proposition 1</h2>
+             Proposition 1</label>
               <input
                 type="text"
                 name="proposition1"
@@ -87,11 +88,11 @@ console.log(inputList)
                 value={this.state.proposition1}
                
               />
-            </label>
+            
           </div>
           <div>
-            <label htmlFor="proposition 2">
-              <h2>Proposition 2</h2>
+            <label htmlFor="proposition 2">Proposition 2
+            </label>
               <input
                 type="text"
                 name="proposition2"
@@ -106,12 +107,12 @@ console.log(inputList)
                 value={this.state.proposition2}
                 
               />
-            </label>
+            
           </div>
 
           <div>
-            <label htmlFor="proposition 3">
-              <h2>Proposition 3</h2>
+            <label htmlFor="proposition 3">Proposition 3
+            </label>
               <input
                 type="text"
                 name="proposition3"
@@ -125,11 +126,11 @@ console.log(inputList)
                 id="proposition3"
                 value={this.state.proposition3}
               />
-            </label>
+           
           </div>
           <div>
-            <label htmlFor="proposition4">
-              <h2>Proposition 4</h2>
+            <label htmlFor="proposition4">Proposition 4 </label>
+              
               <input
                 type="text"
                 name="proposition4"
@@ -143,14 +144,14 @@ console.log(inputList)
                 id="proposition4"
                 value={this.state.proposition4}
               />
-            </label>
+           
           </div>
 
           <label htmlFor="funFact">FunFact</label>
-          <input name="funFact" type="text" defaultValue="lol" />
-          <button onClick={this.compilQuest}>Validate Question</button>
+          <input name="funFact" type="text" defaultValue="lol" className="q-input" />
+          <button onClick={this.compilQuest} className="btn validate center">Validate Question</button>
         </form>
-      </div>
+      // </div>
     );
   }
 }

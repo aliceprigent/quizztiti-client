@@ -87,7 +87,7 @@ export class Home extends Component {
             
             <br />
 
-             <CarouselMobile /> 
+             {/* <CarouselMobile />  */}
           </div>
             
           </div>

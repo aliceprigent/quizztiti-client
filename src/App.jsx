@@ -16,11 +16,12 @@ import Page404 from "./components/Page404"
 import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
 import OneQuestionEdit from "./components/Forms/Quizz/OneQuestionEdit";
 import QuizzCategories from "./components/Quizz/QuizzCategories"
-
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faImages } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
+  library.add(faImages)
   return (
     <div className="App">
       <NavMain />

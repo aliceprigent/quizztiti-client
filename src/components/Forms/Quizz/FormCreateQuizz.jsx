@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import quizzHandler from "../../../api/quizzHandler";
 import QuestionBox from "../../Forms/Quizz/QuestionBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export class FormCreateQuizz extends Component {
+  constructor(props) {
+    super(props);
+    this.fileInput = React.createRef();
+    // this.handleClick=this.fileInput.bind(this)
+  }
+
   state = {
     questionNb: 1,
     // incrémenter le compte dès qu'on appuie sur add question
@@ -120,12 +128,16 @@ export class FormCreateQuizz extends Component {
     }
   };
 
+  handleClick = () => {
+    this.fileInput.current.click();
+  };
+
   render() {
     return (
-      <div>
-        <form className="quizz-form column" onSubmit={this.handleSubmit}>
+      <div className="global-quizz-form row center">
+        <form className="quizz-form column center space-around" onSubmit={this.handleSubmit}>
           <label htmlFor="title" className="quizz-label">
-            Title
+           <h2> Quizz Title</h2>
           </label>
           <input
             type="text"
@@ -133,7 +145,7 @@ export class FormCreateQuizz extends Component {
             className="title quizz-input"
             placeholder="Short description of your quizz"
             maxLength="120"
-            defaultValue="mon 1er quizz"
+            defaultValue="Super quizz name"
             onChange={this.handleChange}
           />
           <label htmlFor="thema" className="quizz-label">
@@ -144,7 +156,7 @@ export class FormCreateQuizz extends Component {
             className="quizz-select"
             onChange={this.handleChange}
           >
-            <option value=""></option>
+            <option value="Select a Category">Select a Category</option>
             <option value="Nature" defaultValue>
               Nature
             </option>
@@ -163,29 +175,39 @@ export class FormCreateQuizz extends Component {
             className="quizz-status"
             onChange={this.handleChange}
           >
-            <option value=""></option>
+            <option value="Select a Status">Select a Status</option>
             <option value="Public" defaultValue>
               Public
             </option>
             <option value="Private">Private</option>
           </select>
-
-          <label htmlFor="image">Image</label>
-          <input
-            type="file"
-            name="image"
-            id="quizz-image"
-            onChange={this.handleImage}
-          />
+          <div className="img-download center column ">
+            <label htmlFor="image">Custom your quizz picture</label>
+            <FontAwesomeIcon icon="images" size="4x" className="icon" onClick={this.handleClick} />
+            <input
+              type="file"
+              name="image"
+              id="quizz-image"
+              onChange={this.handleImage}
+              ref={this.fileInput}
+              style={{ display: "none" }}
+            />
+          </div>
           <img
             src={this.state.tmpImage}
             alt="Your chosen"
             style={{ display: !this.state.tmpImage && "none" }}
             className="quizz-image"
           />
+
+          <div className="form-validation">
+            <button className="btn">Submit</button> <br />
+            <span style={{ color: "red" }}>{this.state.errors}</span>
+          </div>
         </form>
         <div
           id="question-container"
+          className="question-box"
           style={{
             display: this.state.quizzTotal.length === 10 ? "none" : "flex",
           }}

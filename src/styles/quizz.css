@@ -180,29 +180,80 @@ h2 {
   color: white;
   font-size: 35px;
   font-family: 'Rubik', sans-serif;
- 
-  
 }
 
+/* ////////////////////////////////////////////////////////// */
 
-.quizz-form{
-  width: 50em;
-  padding: 1em;
+
+.global-quizz-form{
+  width:90%;
+  padding: 1.5em;
+  margin: 0 auto;
+
+}
+ .global-quizz-form input{
+  margin: 10px; 
+  border-radius: 10px;
+  border-style: none;
+  background-color: var(--grey);
+  height: 3em;
+  padding: 10px;
+
+ }
+
+ .global-quizz-form label{
+  font-size: 18px;
+  font-weight:bold
+ }
+
+ .global-quizz-form select{
+  display: flex;
+  font-size: 16px;
+ 
+  font-weight: 700;
+  color: #444;
+  line-height: 1.3;
+  padding: .6em 1.4em .5em .8em;
+  width: 50%;
+  
+
+  margin: 0;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  border-radius: .5em;
+   background-color: #fff;
+  background-image: ;
+
+ }
+
+ .quizz-form {
+  height:50vh;
+  
 }
 
 .quizz-form .title{
   height:3em;
   text-align:center;
   text-transform:uppercase;
-  color:grey
+  color:grey;
+
 }
 
+.img-download{
+  padding: 2em 0 ;
+}
+/* .icon{
+  height: 120px;
+  width: 30%;
+  size:9x
+} */
 .question{
   height:3em;
 }
 
 .question-box input{
   width: 50em;
+  
 }
 .q-input{
   height:3em;
@@ -211,6 +262,8 @@ h2 {
 }
 .question-box{
   padding:2em;
+  margin-top: 0.7em;
+  /* width:80% */
 }
 .question-box [type=radio]{
   width:1em;
@@ -236,6 +289,10 @@ h2 {
 .quizz-image{
   height:10rem;
 width:15rem
+}
+
+.validate{
+  width:30%
 }
 /* Display Quizz */
 
@@ -287,7 +344,7 @@ width:15rem
   margin: 15px;
   background-color: var(--grey);
   padding: 10px;
-  border-radius: 10px;
+  
   width: 90%;
 }
 
