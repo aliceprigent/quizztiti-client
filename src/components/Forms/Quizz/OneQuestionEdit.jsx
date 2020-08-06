@@ -114,12 +114,11 @@ export class MiniBox extends Component {
 
     var objectFormData = jsonToFormData(updatedQuest);
 
-    
     quizzHandler
       .updateOneQuestion(this.props.match.params.id, objectFormData)
       .then((res) => {
-        console.log("ok updated")
-        this.props.history.push(`/quizz/edit/${this.state._idParentQuizz}`)
+        console.log("ok updated");
+        this.props.history.push(`/quizz/edit/${this.state._idParentQuizz}`);
       })
       .catch((error) => {
         console.log(error);
@@ -129,7 +128,10 @@ export class MiniBox extends Component {
   render() {
     return (
       <div>
-        <form className="question-box" onChange={this.handleChange}>
+        <form
+          className="question-box center column"
+          onChange={this.handleChange}
+        >
           <label htmlFor="question">Question {this.state.index}/10</label>
           <input
             name="question"
@@ -140,77 +142,92 @@ export class MiniBox extends Component {
 
           <label htmlFor="proposition">Propositions</label>
           <div>
-            <label htmlFor="proposition1">
-              <h2>Proposition 1</h2>
-              <input
-                type="text"
-                name="proposition1"
-                className="proposition column q-input"
-                defaultValue={this.state.proposition1}
-              />
+            <label htmlFor="proposition1">Proposition 1</label>
+            <input
+              type="text"
+              name="proposition1"
+              className="proposition column q-input"
+              defaultValue={this.state.proposition1}
+            />
+            <div className="right-answer row">
               <input
                 type="radio"
                 name="answer"
-                id="proposition1"
+                id="radio1"
                 value={this.state.proposition1}
+                className="qbox"
               />
-            </label>
+              <label htmlFor="radio1" style={{ fontStyle: "italic" }}>
+                This is the right answer
+              </label>
+            </div>
           </div>
           <div>
-            <label htmlFor="proposition2">
-              <h2>Proposition 2</h2>
-              <input
-                type="text"
-                name="proposition2"
-                className="proposition column q-input"
-                defaultValue={this.state.proposition2}
-              />
+            <label htmlFor="proposition 2">Proposition 2</label>
+            <input
+              type="text"
+              name="proposition2"
+              className="proposition column q-input"
+              defaultValue={this.state.proposition2}
+            />
+            <div className="right-answer row">
               <input
                 type="radio"
                 name="answer"
-                id="proposition2"
+                id="radio2"
                 value={this.state.proposition2}
+                className="qbox"
               />
-            </label>
+              <label htmlFor="radio2" style={{ fontStyle: "italic" }}>
+                This is the right answer
+              </label>
+            </div>
           </div>
-
           <div>
-            <label htmlFor="proposition3">
-              <h2>Proposition 3</h2>
-              <input
-                type="text"
-                name="proposition3"
-                className="proposition column q-input"
-                defaultValue={this.state.proposition3}
-              />
+            <label htmlFor="proposition 3">Proposition 3</label>
+            <input
+              type="text"
+              name="proposition3"
+              className="proposition column q-input"
+              defaultValue={this.state.proposition3}
+            />
+            <div className="right-answer row">
               <input
                 type="radio"
                 name="answer"
-                id="proposition3"
+                id="radio3"
                 value={this.state.proposition3}
+                className="qbox"
               />
-            </label>
+              <label htmlFor="radio3" style={{ fontStyle: "italic" }}>
+                This is the right answer
+              </label>
+            </div>
           </div>
           <div>
-            <label htmlFor="proposition4">
-              <h2>Proposition 4</h2>
-              <input
-                type="text"
-                name="proposition4"
-                className="proposition column q-input"
-                defaultValue={this.state.proposition4}
-              />
+            <label htmlFor="proposition4">Proposition 4 </label>
+            <input
+              type="text"
+              name="proposition4"
+              className="proposition column q-input"
+              defaultValue={this.state.proposition4}
+            />
+            <div className="right-answer row">
               <input
                 type="radio"
                 name="answer"
-                id="proposition4"
+                id="radio4"
                 value={this.state.proposition4}
+                className="qbox"
               />
-            </label>
+              <label htmlFor="radio4" style={{ fontStyle: "italic" }}>
+                This is the right answer
+              </label>
+            </div>
           </div>
 
           <label htmlFor="funFact">FunFact</label>
-          <input name="funFact" type="text" defaultValue={this.state.funFact} />
+          <input name="funFact" type="text" defaultValue={this.state.funFact} className="q-input" />
           <button onClick={this.handleSubmit}>Validate Question</button>
         </form>
       </div>

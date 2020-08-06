@@ -31,7 +31,7 @@ export class QuestionBox extends Component {
 
   compilQuest = (event) => {
     event.preventDefault();
-    let inputList = document.querySelectorAll("input");
+    let inputList = document.querySelectorAll("input.qbox");
     console.log(inputList);
     let updatedQuest;
     // console.log(this.state)
@@ -69,9 +69,9 @@ export class QuestionBox extends Component {
         </label>
         <input
           name="question"
-          className="question column"
+          className="qbox question column"
           type="text"
-          defaultValue="What is your question?"
+          placeholder="What is your question?"
           ref={(el) => (this.inputTitle = el)}
         />
 
@@ -83,8 +83,8 @@ export class QuestionBox extends Component {
           <input
             type="text"
             name="proposition1"
-            className="proposition column q-input"
-            defaultValue="réponse 1"
+            className="qbox proposition column q-input"
+            placeholder="réponse 1"
           />
           <div className="right-answer row">
             <input
@@ -92,6 +92,7 @@ export class QuestionBox extends Component {
               name="answer"
               id="radio1"
               value={this.state.proposition1}
+              className="qbox"
             />
             <label htmlFor="radio1" style={{ fontStyle: "italic" }}>
               This is the right answer
@@ -103,8 +104,8 @@ export class QuestionBox extends Component {
           <input
             type="text"
             name="proposition2"
-            className="proposition column q-input"
-            defaultValue="réponse 2"
+            className="qbox proposition column q-input"
+            placeholder="réponse 2"
           />
            <div className="right-answer row">
           <input
@@ -112,6 +113,7 @@ export class QuestionBox extends Component {
             name="answer"
             id="radio2"
             value={this.state.proposition2}
+            className="qbox"
           />
           <label htmlFor="radio2" style={{ fontStyle: "italic" }}>
               This is the right answer
@@ -124,8 +126,8 @@ export class QuestionBox extends Component {
           <input
             type="text"
             name="proposition3"
-            className="proposition column q-input"
-            defaultValue="réponse 3"
+            className="qbox proposition column q-input"
+            placeholder="réponse 3"
           />
           <div className="right-answer row">
           <input
@@ -133,6 +135,7 @@ export class QuestionBox extends Component {
             name="answer"
             id="radio3"
             value={this.state.proposition3}
+            className="qbox"
           />
            <label htmlFor="radio3" style={{ fontStyle: "italic" }}>
               This is the right answer
@@ -145,8 +148,8 @@ export class QuestionBox extends Component {
           <input
             type="text"
             name="proposition4"
-            className="proposition column q-input"
-            defaultValue="réponse 4"
+            className="qbox proposition column q-input"
+            placeholder="réponse 4"
           />
           <div className="right-answer row">
           <input
@@ -154,6 +157,7 @@ export class QuestionBox extends Component {
             name="answer"
             id="radio4"
             value={this.state.proposition4}
+            className="qbox"
           />
            <label htmlFor="radio4" style={{ fontStyle: "italic" }}>
               This is the right answer
@@ -165,10 +169,10 @@ export class QuestionBox extends Component {
         <input
           name="funFact"
           type="text"
-          defaultValue="lol"
-          className="q-input"
+          placeholder="lol"
+          className="qbox q-input"
         />
-        <button onClick={this.compilQuest} className="btn validate center">
+        <button onClick={this.compilQuest} className=" btn validate center">
           Validate Question
         </button>
       </form>
