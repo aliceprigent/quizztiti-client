@@ -323,12 +323,13 @@ class FormNewTeam extends Component {
           </div>
         ) : (
           <div id="form_mode" className="row space-around">
-            <h2>Edit team </h2>
-            <img
+          <img
               src={this.state.tmpImage ? this.state.tmpImage : this.state.image}
               alt="your team image"
               className="team_image"
             />
+            <h2>Edit team </h2>
+            
             <h2 className="red click" onClick={this.handleDelete}>
               Delete team
             </h2>
