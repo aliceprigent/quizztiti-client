@@ -9,8 +9,13 @@ import DisplayQuizzes from "../Team/DisplayQuizzes";
 import "../../styles/teams/teamDashboard.css";
 import { Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class FormNewTeam extends Component {
+  constructor(props) {
+    super(props);
+    this.fileInput = React.createRef();
+  }
   static contextType = UserContext;
 
   state = {
@@ -31,6 +36,10 @@ class FormNewTeam extends Component {
     this.setState({ image: null, tmpImage: null }, () =>
       console.log("removed images")
     );
+  };
+
+  handleClick = () => {
+    this.fileInput.current.click();
   };
 
   handleChange = (event) => {
@@ -314,12 +323,13 @@ class FormNewTeam extends Component {
           </div>
         ) : (
           <div id="form_mode" className="row space-around">
-            <h2>Edit team </h2>
-            <img
+          <img
               src={this.state.tmpImage ? this.state.tmpImage : this.state.image}
               alt="your team image"
               className="team_image"
             />
+            <h2>Edit team </h2>
+            
             <h2 className="red click" onClick={this.handleDelete}>
               Delete team
             </h2>
@@ -329,12 +339,15 @@ class FormNewTeam extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="column">
+            <FontAwesomeIcon icon="images" size="2x" color="rgba(243, 236, 236, 0.808)"  className="icon" onClick={this.handleClick} />
               <input
                 className="sign-input"
                 type="file"
                 id="image"
                 name="image"
                 onChange={this.handleImage}
+                ref={this.fileInput}
+              style={{ display: "none" }}
               />
             </div>
 
