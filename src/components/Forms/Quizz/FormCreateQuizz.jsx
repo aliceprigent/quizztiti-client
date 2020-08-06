@@ -182,7 +182,7 @@ export class FormCreateQuizz extends Component {
             <option value="Private">Private</option>
           </select>
           <div className="img-download center column ">
-            <label htmlFor="image">Custom your quizz picture</label>
+            <label htmlFor="image">Customize your quizz picture</label>
             <FontAwesomeIcon icon="images" size="4x" className="icon" onClick={this.handleClick} />
             <input
               type="file"
