@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import QuestionBox from "../../Forms/Quizz/QuestionBox";
 import quizzHandler from "../../../api/quizzHandler";
 import MiniBox from "./MiniBox";
+import {withUser} from "../../../components/Auth/withUser"
+import UserContext from "../../../components/Auth/UserContext"
+
 
 export class FormEditQuizz extends Component {
+  static contextType = UserContext;
+
   state = {
     image:""
   };
@@ -11,10 +16,11 @@ export class FormEditQuizz extends Component {
   componentDidMount() {
     const quizzId = this.props.match.params.id;
     console.log(quizzId);
+    console.log(this.props.context.user._id)
     quizzHandler
       .getOneQuizz(quizzId)
       .then((data) => {
-        console.log(data.quizzTotal);
+        console.log(data);
         this.setState(
           {
             title: data.title,
@@ -22,9 +28,10 @@ export class FormEditQuizz extends Component {
             status: data.status,
             image: data.image,
             quizzTotal: data.quizzTotal,
+            creator:data.creator
           },
           () => {
-            console.log(this.state.quizzTotal);
+            console.log(this.state.creator===this.props.context.user._id);
           }
         );
       })
@@ -115,11 +122,20 @@ export class FormEditQuizz extends Component {
       });
   }
   
-    
+
+
+
+
   render() {
     if (this.state === null) {
       return <div>...Loading</div>;
     }
+   
+if(!this.state.creator===this.props.context.user._id){
+  this.props.history.push("/dashboard")
+}
+
+
 
     return (
       <div className="column center">
@@ -182,12 +198,18 @@ export class FormEditQuizz extends Component {
             <option value="Private">Private</option>
           </select>
 
+<<<<<<< HEAD
           <label style={{margin:"10px"}} htmlFor="image" style={{margin:"10px"}}>Image :</label>
+=======
+          <label htmlFor="image">Image</label>
+          <i class="fas fa-images"></i>
+>>>>>>> master
           <input
             type="file"
             name="image"
             id="quizz-image-label"
             onChange={this.handleImage}
+            ref={this.fileInput}
           />
           <img
             className="quizz-image"
@@ -218,4 +240,4 @@ export class FormEditQuizz extends Component {
   }
 }
 
-export default FormEditQuizz;
+export default withUser(FormEditQuizz);

@@ -16,10 +16,10 @@ const teamMembers = (props) => {
   return (
       <React.Fragment>
     <div id="dash_team_members" >
-      <div className="row space_between margin_bottom">
-      <div>
+      <div className="row space-between">
+      
       <h3>Members</h3>
-      </div>
+    
       { props.context.user._id === props.owner._id &&
       <div className="column">
       <button className="btn" onClick={props.edit}> Manage </button>

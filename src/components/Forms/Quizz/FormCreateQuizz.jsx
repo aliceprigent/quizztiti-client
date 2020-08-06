@@ -1,8 +1,15 @@
-
 import React, { Component } from "react";
 import quizzHandler from "../../../api/quizzHandler";
 import QuestionBox from "../../Forms/Quizz/QuestionBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export class FormCreateQuizz extends Component {
+  constructor(props) {
+    super(props);
+    this.fileInput = React.createRef();
+    // this.handleClick=this.fileInput.bind(this)
+  }
+
   state = {
     questionNb: 1,
     // incrémenter le compte dès qu'on appuie sur add question
@@ -10,7 +17,6 @@ export class FormCreateQuizz extends Component {
     //  push une question dès qu'on appuie sur add question
     fields: {},
     errors: "",
-    
   };
 
   handleChange = (event) => {
@@ -46,35 +52,33 @@ export class FormCreateQuizz extends Component {
       // () => console.log("step1", this.state.quizzTotal)
     );
   };
-// pour cleaner les inputs apres submit une question
-  clearInput=(inputArray)=>{
-    inputArray.forEach((
-      input) => {input.value =""})
-  }
-
+  // pour cleaner les inputs apres submit une question
+  clearInput = (inputArray) => {
+    inputArray.forEach((input) => {
+      input.value = "";
+    });
+  };
 
   handleValidation = (event) => {
-    if (this.state.quizzTotal.length <10) {
+    if (this.state.quizzTotal.length < 10) {
       this.setState({
         formIsValid: false,
-        errors:"Your quizz must have 10 questions to be valid",        
-      })
-    }else{
-      this.setState({formIsValid:true})
+        errors: "Your quizz must have 10 questions to be valid",
+      });
+    } else {
+      this.setState({ formIsValid: true });
     }
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     console.log("submit:", this.state);
-// this.handleValidation()
-    if (this.state.quizzTotal.length <10){
+    // this.handleValidation()
+    if (this.state.quizzTotal.length < 10) {
       this.setState({
-        
-        errors:"Your quizz must have 10 questions to be valid",        
-      })
-    }else{
-     
+        errors: "Your quizz must have 10 questions to be valid",
+      });
+    } else {
       var newQuizzData = {
         title: this.state.title,
         thema: this.state.thema,
@@ -115,22 +119,25 @@ export class FormCreateQuizz extends Component {
       quizzHandler
         .createQuizz(quizzFormData)
         .then((data) => {
-          console.log(data)
-          this.props.history.push("/dashboard")
+          console.log(data);
+          this.props.history.push("/dashboard");
         })
         .catch((error) => {
           console.log(error);
         });
     }
-  
+  };
+
+  handleClick = () => {
+    this.fileInput.current.click();
   };
 
   render() {
     return (
-      <div>
-        <form className="quizz-form column" onSubmit={this.handleSubmit}>
+      <div className="global-quizz-form row center">
+        <form className="quizz-form column center space-around" onSubmit={this.handleSubmit}>
           <label htmlFor="title" className="quizz-label">
-            Title
+           <h2> Quizz Title</h2>
           </label>
           <input
             type="text"
@@ -138,18 +145,18 @@ export class FormCreateQuizz extends Component {
             className="title quizz-input"
             placeholder="Short description of your quizz"
             maxLength="120"
-            defaultValue="mon 1er quizz"
+            defaultValue="Super quizz name"
             onChange={this.handleChange}
           />
           <label htmlFor="thema" className="quizz-label">
-            Topic
+            Category
           </label>
           <select
             name="thema"
             className="quizz-select"
             onChange={this.handleChange}
           >
-            <option value=""></option>
+            <option value="Select a Category">Select a Category</option>
             <option value="Nature" defaultValue>
               Nature
             </option>
@@ -168,39 +175,49 @@ export class FormCreateQuizz extends Component {
             className="quizz-status"
             onChange={this.handleChange}
           >
-            <option value=""></option>
+            <option value="Select a Status">Select a Status</option>
             <option value="Public" defaultValue>
               Public
             </option>
             <option value="Private">Private</option>
           </select>
-
-          <label htmlFor="image">Image</label>
-          <input
-            type="file"
-            name="image"
-            id="quizz-image"
-            onChange={this.handleImage}
-          />
+          <div className="img-download center column ">
+            <label htmlFor="image">Customize your quizz picture</label>
+            <FontAwesomeIcon icon="images" size="4x" className="icon" onClick={this.handleClick} />
+            <input
+              type="file"
+              name="image"
+              id="quizz-image"
+              onChange={this.handleImage}
+              ref={this.fileInput}
+              style={{ display: "none" }}
+            />
+          </div>
           <img
             src={this.state.tmpImage}
             alt="Your chosen"
             style={{ display: !this.state.tmpImage && "none" }}
+            className="quizz-image"
           />
+
           <div className="form-validation">
-            <button className="btn">Submit</button> <br/>
-            <span style={{ color: "red" }}>
-              {this.state.errors}
-            </span>
+            <button className="btn">Submit</button> <br />
+            <span style={{ color: "red" }}>{this.state.errors}</span>
           </div>
         </form>
-        <div id="question-container" style={{display:this.state.quizzTotal.length===10? "none":"flex"}}>
+        <div
+          id="question-container"
+          className="question-box"
+          style={{
+            display: this.state.quizzTotal.length === 10 ? "none" : "flex",
+          }}
+        >
           <QuestionBox
             changeCbk={this.handleChange}
             questionNumber={this.state.questionNb}
             addCbk={this.addQuestion}
             clearCbk={this.clearInput}
-                      />
+          />
         </div>
       </div>
     );
