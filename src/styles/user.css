@@ -125,25 +125,11 @@
 
   }
 
-  @media (max-width: 540px) {
-
-    .dashboard-row:first-of-type {
-        margin-top: 300px;
-       
-    }
-
-    @media (max-width: 400px) {
-
-        .dashboard-row:first-of-type {
-            margin-top: 470px;
-           
-        }
-    }
     
 
     .sticker-dashboard {
-        height: 5em;
-        width: 5em;
+        height: 4em;
+        width: 4em;
         background-size: cover;
         background-repeat: no-repeat;
         border-radius: 20%;
@@ -153,7 +139,7 @@
         text-align:center;
       }
 
-     }
+     
 
   .sticker-dashboard {
     height: 7em;

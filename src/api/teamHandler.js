@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL,
+  baseURL: process.env.REACT_APP_BACKEND_URL +"/api",
   withCredentials: true, // Cookie is sent to client when using this service. (used for session)
 });
 
@@ -32,14 +32,14 @@ export default {
 
   getOneTeam(id) {
     return service
-      .get(`teams/${id}`)
+      .get(`/teams/${id}`)
       .then((teamJSON) => teamJSON.data)
       .catch((err) => errorHandler(err));
   },
 
   updateOneTeam(id, obj) {
     return service
-      .patch(`teams/${id}`, obj)
+      .patch(`/teams/${id}`, obj)
       // .then((updTeamJSON) => console.log("update successful, updated team : ", updTeamJSON.data))
       .catch((err) => errorHandler(err));
   },
@@ -54,7 +54,7 @@ export default {
 
   deleteTeam(id) {
     return service
-      .delete(`teams/${id}`)
+      .delete(`/teams/${id}`)
       .then((deletion) => console.log(`deletion in frontend OK - ${deletion}`))
       .catch((err) => errorHandler(err));
   },
