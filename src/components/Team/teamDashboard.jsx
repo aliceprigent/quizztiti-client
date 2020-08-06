@@ -69,12 +69,12 @@ export class TeamDashboard extends Component {
     }
 
     return (
-      <div className="row" id="team_dashboard">
-        <div className="container_left">
-          <div id="team_info" className="row wrap">
+      <div id="team_dashboard" className="center column">
+        <div className="column center section-dashboard">
+          <div id="team_info"  >
             <img src={this.state.image} alt="team pic" className="team_image" />
-            <div className="column">
-              <div className="row space_between" id="team_head">
+            <div>
+              <div  id="team_head" className="row space-around">
                 {" "}
                 <h2>{this.state.name} </h2>{" "}
 
@@ -87,9 +87,9 @@ export class TeamDashboard extends Component {
               </div>
               <div id="team_desc"> {this.state.description} </div>
             </div>
-          </div>
+            </div>
 
-          <TeamQuizzes
+          <TeamQuizzes className="shadow-box dashboard-box"
           teamId={this.state.teamId}
           owner={this.state.owner}
             userQuizzes={this.props.context.user.quizzCreated}
@@ -98,13 +98,14 @@ export class TeamDashboard extends Component {
             create={this.handleCreateQuizz}
             add={this.handleAddQuizz}
           />
-        </div>
-        <TeamMembers
+        
+        <TeamMembers className="shadow-box dashboard-box"
           owner={this.state.owner}
           members={this.state.members}
           edit={this.handleEdit}
           owner={this.state.owner}
         />
+        </div>
       </div>
     );
   }

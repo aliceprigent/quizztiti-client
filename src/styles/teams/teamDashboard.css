@@ -41,8 +41,7 @@
   }
 
 #team_quizz {
-  width: 60vw;
-  height: 60vh;
+
   overflow: scroll;
 }
 
