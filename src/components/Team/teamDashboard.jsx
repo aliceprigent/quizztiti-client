@@ -15,7 +15,7 @@ export class TeamDashboard extends Component {
     teamHandler
       .getOneTeam(teamId)
       .then((team) => {
-        console.log(team);
+        // console.log(team);
         this.setState(
           {
             teamId: team._id,
@@ -26,7 +26,6 @@ export class TeamDashboard extends Component {
             members: team.members,
             teamQuizz: team.teamQuizz,
           },
-          () => console.log(this.state)
         );
       })
       .catch((err) => console.error(err));
@@ -48,7 +47,7 @@ export class TeamDashboard extends Component {
     teamHandler
       .updateTeamQuizzes(this.state.teamId, quizzUpdate)
       .then((newTeam) => {
-        console.log(newTeam);
+        // console.log(newTeam);
         this.setState({ teamQuizz: newTeam.teamQuizz });
       })
       .catch((err) => console.error('could not update state -', err));
@@ -70,7 +69,7 @@ export class TeamDashboard extends Component {
     }
 
     return (
-      <div className="row">
+      <div className="row" id="team_dashboard">
         <div className="container_left">
           <div id="team_info" className="row wrap">
             <img src={this.state.image} alt="team pic" className="team_image" />

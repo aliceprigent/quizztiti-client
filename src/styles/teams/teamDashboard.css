@@ -3,8 +3,8 @@
 
 .container_left {
   box-sizing: border-box;
-  width: 55vw;
-  height: 80vh;
+  /* width: 55vw; */
+  /* height: 80vh; */
   margin-left: 3vw;
 }
 
@@ -135,4 +135,22 @@ overflow: scroll;
 
 .click {
   cursor: pointer;
+}
+
+
+
+
+@media (max-width: 540px) {
+
+  #dash_team_members {
+      width: 10vh;
+     
+  }
+  #team_dashboard  {
+    flex-direction: column !important; 
+  }
+  #team_dashboard .container_left {
+    flex-direction: column !important
+    ;
+  }
 }
