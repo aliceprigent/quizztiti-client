@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import quizzHandler from "../../../api/quizzHandler";
 import QuestionBox from "../../Forms/Quizz/QuestionBox";
@@ -10,7 +9,6 @@ export class FormCreateQuizz extends Component {
     //  push une question dès qu'on appuie sur add question
     fields: {},
     errors: "",
-    
   };
 
   handleChange = (event) => {
@@ -46,35 +44,33 @@ export class FormCreateQuizz extends Component {
       // () => console.log("step1", this.state.quizzTotal)
     );
   };
-// pour cleaner les inputs apres submit une question
-  clearInput=(inputArray)=>{
-    inputArray.forEach((
-      input) => {input.value =""})
-  }
-
+  // pour cleaner les inputs apres submit une question
+  clearInput = (inputArray) => {
+    inputArray.forEach((input) => {
+      input.value = "";
+    });
+  };
 
   handleValidation = (event) => {
-    if (this.state.quizzTotal.length <10) {
+    if (this.state.quizzTotal.length < 10) {
       this.setState({
         formIsValid: false,
-        errors:"Your quizz must have 10 questions to be valid",        
-      })
-    }else{
-      this.setState({formIsValid:true})
+        errors: "Your quizz must have 10 questions to be valid",
+      });
+    } else {
+      this.setState({ formIsValid: true });
     }
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     console.log("submit:", this.state);
-// this.handleValidation()
-    if (this.state.quizzTotal.length <10){
+    // this.handleValidation()
+    if (this.state.quizzTotal.length < 10) {
       this.setState({
-        
-        errors:"Your quizz must have 10 questions to be valid",        
-      })
-    }else{
-     
+        errors: "Your quizz must have 10 questions to be valid",
+      });
+    } else {
       var newQuizzData = {
         title: this.state.title,
         thema: this.state.thema,
@@ -115,14 +111,13 @@ export class FormCreateQuizz extends Component {
       quizzHandler
         .createQuizz(quizzFormData)
         .then((data) => {
-          console.log(data)
-          this.props.history.push("/dashboard")
+          console.log(data);
+          this.props.history.push("/dashboard");
         })
         .catch((error) => {
           console.log(error);
         });
     }
-  
   };
 
   render() {
@@ -142,7 +137,7 @@ export class FormCreateQuizz extends Component {
             onChange={this.handleChange}
           />
           <label htmlFor="thema" className="quizz-label">
-            Topic
+            Category
           </label>
           <select
             name="thema"
@@ -186,21 +181,21 @@ export class FormCreateQuizz extends Component {
             src={this.state.tmpImage}
             alt="Your chosen"
             style={{ display: !this.state.tmpImage && "none" }}
+            className="quizz-image"
           />
-          <div className="form-validation">
-            <button className="btn">Submit</button> <br/>
-            <span style={{ color: "red" }}>
-              {this.state.errors}
-            </span>
-          </div>
         </form>
-        <div id="question-container" style={{display:this.state.quizzTotal.length===10? "none":"flex"}}>
+        <div
+          id="question-container"
+          style={{
+            display: this.state.quizzTotal.length === 10 ? "none" : "flex",
+          }}
+        >
           <QuestionBox
             changeCbk={this.handleChange}
             questionNumber={this.state.questionNb}
             addCbk={this.addQuestion}
             clearCbk={this.clearInput}
-                      />
+          />
         </div>
       </div>
     );

@@ -36,9 +36,9 @@ function App() {
           path="/quizz/:id"
           component={DisplayQuizz}
         />
-        <Route exact path="/quizz/edit/:id" component={FormEditQuizz}/>
-        <Route exact path="/question/:id" component={OneQuestionEdit}/>
-        <Route path="/dashboard" component={Dashboard} />        
+        <ProtectedRoute exact path="/quizz/edit/:id" component={FormEditQuizz}/>
+        <ProtectedRoute exact path="/question/:id" component={OneQuestionEdit}/>
+        <ProtectedRoute path="/dashboard" component={Dashboard} />        
         <ProtectedRoute path="/teams/:id" component={TeamDashboard} />
         <Route path="*" component={Page404} />
       </Switch>

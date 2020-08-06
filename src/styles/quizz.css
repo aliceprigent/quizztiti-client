@@ -192,6 +192,9 @@ h2 {
 
 .quizz-form .title{
   height:3em;
+  text-align:center;
+  text-transform:uppercase;
+  color:grey
 }
 
 .question{
