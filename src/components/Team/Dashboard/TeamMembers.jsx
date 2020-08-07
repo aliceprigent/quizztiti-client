@@ -24,7 +24,7 @@ var score = (quizzDone) => {
 
 
 const teamMembers = (props) => {
-  console.log("in team members, context:", props.context);
+  // console.log("in team members, context:", props.context);
   if (!props.members) {
     return (
       <div>

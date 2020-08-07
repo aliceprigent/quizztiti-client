@@ -52,9 +52,9 @@ export class TeamDashboard extends Component {
   };
 
   render() {
-    console.log("context", this.context);
+    // console.log("context", this.context);
     if (this.props.context.user === null) return null;
-    console.log(this.props.context.user);
+    // console.log(this.props.context.user);
 
     if (
       !this.props.context.user.teams.find(

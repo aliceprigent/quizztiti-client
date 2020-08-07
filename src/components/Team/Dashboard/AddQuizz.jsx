@@ -12,7 +12,7 @@ export class AddQuizz extends Component {
     apiUser
       .getOneUser()
       .then((res) => {
-        console.log("current user data", res);
+        // console.log("current user data", res);
         this.setState({ userQuizzes: [...res.data.quizzCreated] });
       })
       .catch((err) => console.error(err));
@@ -25,7 +25,7 @@ export class AddQuizz extends Component {
     } else {
       quizzes = [...this.state.newTeamQuizzes];
     }
-    console.log("quizzes in handlequizzes", quizzes);
+    // console.log("quizzes in handlequizzes", quizzes);
     const id = event.target.value;
     if (event.target.checked) {
       const quizzObj = this.state.userQuizzes.find((quizz) => quizz._id === id);
@@ -34,9 +34,7 @@ export class AddQuizz extends Component {
     } else if (!event.target.checked && quizzes.includes(event.target.value)) {
       quizzes = quizzes.filter((x) => x !== event.target.value);
     }
-    this.setState({ newTeamQuizzes: quizzes }, () =>
-      console.log("new team quizzes:", this.state.newTeamQuizzes)
-    );
+    this.setState({ newTeamQuizzes: quizzes });
   };
 
   checkOptionQuizzes = (userQuizz) => {

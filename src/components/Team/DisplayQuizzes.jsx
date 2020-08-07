@@ -2,7 +2,7 @@ import React from 'react'
 
 const DisplayQuizzes = (props) => {
 
-    console.log(props)
+    // console.log(props)
     if (!props.quizzes) {
         return (
           <div>

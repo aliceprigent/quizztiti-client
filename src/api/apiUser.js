@@ -24,7 +24,7 @@ export default {
   },
 
   deleteTeamInUser(obj) {
-    console.log("in apiUser", obj)
+    // console.log("in apiUser", obj)
     return service.patch(`/delete-team`, obj)
   }
   ,

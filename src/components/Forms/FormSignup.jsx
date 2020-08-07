@@ -24,7 +24,7 @@ class FormSignup extends Component {
 
     const key = event.target.name;
 
-    this.setState({ [key]: value }, () => console.log(this.state));
+    this.setState({ [key]: value });
   };
 
   componentDidMount() {
@@ -49,8 +49,7 @@ class FormSignup extends Component {
               email: apiRes.data.email,
               password: apiRes.data.password,
               image: apiRes.data.image,
-            },
-            () => console.log(this.state)
+            }
           );
         })
         .catch((error) => {

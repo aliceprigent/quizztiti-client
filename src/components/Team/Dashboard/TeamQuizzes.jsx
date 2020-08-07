@@ -25,9 +25,9 @@ handleBack = (event) => {
 }
 
   render () {
-    console.log("in team quizzes, context:", this.props.context);
+    // console.log("in team quizzes, context:", this.props.context);
     if (this.props.context.user === null) return null;
-    console.log("in team quizzes, props:",this.props);
+    // console.log("in team quizzes, props:",this.props);
 
   if (!this.props.quizzes) {
     return (

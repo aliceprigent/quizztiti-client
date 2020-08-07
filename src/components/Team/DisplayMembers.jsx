@@ -1,7 +1,7 @@
 import React from 'react'
 
 const displayMembers = (props) => {
-console.log(props)
+// console.log(props)
     if (!props.members) {
         return (
           <div>

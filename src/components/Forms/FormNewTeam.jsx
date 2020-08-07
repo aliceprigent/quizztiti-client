@@ -30,13 +30,13 @@ class FormNewTeam extends Component {
     inputSearchMembers: null,
   };
 
-  removeImages = (event) => {
-    // didn't manage to make it work
-    console.log("in Remove Images");
-    this.setState({ image: null, tmpImage: null }, () =>
-      console.log("removed images")
-    );
-  };
+  // removeImages = (event) => {
+  //   // didn't manage to make it work
+  //   console.log("in Remove Images");
+  //   this.setState({ image: null, tmpImage: null }, () =>
+  //     console.log("removed images")
+  //   );
+  // };
 
   handleClick = () => {
     this.fileInput.current.click();
@@ -45,7 +45,7 @@ class FormNewTeam extends Component {
   handleChange = (event) => {
     const value = event.target.value;
     const key = event.target.name;
-    this.setState({ [key]: value }, console.log(this.state));
+    this.setState({ [key]: value });
   };
 
   handleImage = (event) => {
@@ -64,8 +64,7 @@ class FormNewTeam extends Component {
     } else if (!event.target.checked && members.includes(event.target.value)) {
       members = members.filter((x) => x !== event.target.value);
     }
-    this.setState({ members: members }, () =>
-      console.log("team members:", this.state.members)
+    this.setState({ members: members }
     );
   };
 
@@ -78,8 +77,7 @@ class FormNewTeam extends Component {
     } else if (!event.target.checked && quizzes.includes(event.target.value)) {
       quizzes = quizzes.filter((x) => x !== event.target.value);
     }
-    this.setState({ teamQuizzes: quizzes }, () =>
-      console.log("team quizzes:", this.state.teamQuizzes)
+    this.setState({ teamQuizzes: quizzes }
     );
   };
 
@@ -131,7 +129,7 @@ class FormNewTeam extends Component {
     state = !!teamQuizzesCopy.find(
       (teamQuizz) => teamQuizz._id === userQuizz._id
     );
-    console.log("option is in team quizzes?", state);
+    // console.log("option is in team quizzes?", state);
     if (state) return true;
     else return false;
   };
@@ -191,7 +189,7 @@ class FormNewTeam extends Component {
       teamHandler
         .create(objectFormData)
         .then((newTeam) => {
-          console.log(newTeam);
+          // console.log(newTeam);
           this.setState({ teamId: newTeam._id });
           if (this.state.submitted)
             this.props.history.push(`/teams/${this.state.teamId}`);
@@ -204,7 +202,7 @@ class FormNewTeam extends Component {
       teamHandler
         .updateOneTeam(this.state.teamId, objectFormData)
         .then((updatedTeam) => {
-          console.log(updatedTeam);
+          // console.log(updatedTeam);
           if (this.state.submitted)
             this.props.history.push(`/teams/${this.state.teamId}`);
         })
@@ -243,7 +241,7 @@ class FormNewTeam extends Component {
     apiUser
       .getUsers()
       .then((usersJSON) => {
-        console.log(usersJSON);
+        // console.log(usersJSON);
         this.setState({ optionsMembers: usersJSON.data });
       })
       .catch((error) => {
@@ -253,7 +251,7 @@ class FormNewTeam extends Component {
     apiUser
       .getOneUser()
       .then((userPopulatedJSON) => {
-        console.log(userPopulatedJSON);
+        // console.log(userPopulatedJSON);
         this.setState({
           owner: userPopulatedJSON.data,
           userQuizzes: userPopulatedJSON.data.quizzCreated,
@@ -279,8 +277,7 @@ class FormNewTeam extends Component {
               members: DBres.members,
               teamQuizzes: DBres.teamQuizz,
               // optionsMembers : newoptionsMembers
-            },
-            () => console.log(this.state)
+            }
           );
         })
         .catch((error) => {
@@ -291,10 +288,10 @@ class FormNewTeam extends Component {
 
   render() {
     const mode = this.props.match.params.mode;
-    console.log("context", this.context);
+    // console.log("context", this.context);
     if (this.props.context.user === null) return null;
-    console.log("context user", this.props.context.user);
-    console.log("owner", this.state.owner);
+    // console.log("context user", this.props.context.user);
+    // console.log("owner", this.state.owner);
 
     if (!this.state.owner) {
       return <div> Please wait ...</div>;

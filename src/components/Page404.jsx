@@ -13,7 +13,7 @@ export class Page404 extends Component {
     quizzHandler
       .displayAllQuizz()
       .then((allQuizz) => {
-        this.setState({ quizz: allQuizz }, () => console.log(this.state.quizz));
+        this.setState({ quizz: allQuizz });
       })
       .catch((error) => {
         console.log(error);
