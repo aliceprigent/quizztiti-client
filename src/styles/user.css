@@ -66,14 +66,14 @@
     width:40%; 
     height:100%; 
     margin: 0px 5px 0px 5px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .dashboard-box2 {
     width:81%; 
     height:100%; 
     margin: 0px 5px 0px 5px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .dashboard-box .avatar {
