@@ -48,7 +48,7 @@ export class FormCreateQuizz extends Component {
         questionNb: this.state.questionNb + 1,
         quizzTotal: copy,
       }
-      // ,this.clearInput()
+      ,this.clearInput()
       // () => console.log("step1", this.state.quizzTotal)
     );
   };
@@ -76,7 +76,7 @@ export class FormCreateQuizz extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submit:", this.state);
+    // console.log("submit:", this.state);
     // this.handleValidation()
     if (this.state.quizzTotal.length < 10) {
       this.setState({
@@ -123,7 +123,7 @@ export class FormCreateQuizz extends Component {
       quizzHandler
         .createQuizz(quizzFormData)
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           this.props.history.push("/dashboard");
         })
         .catch((error) => {

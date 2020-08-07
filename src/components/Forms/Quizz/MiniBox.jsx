@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export class MiniBox extends Component {
   render() {
-    console.log(this.props.question);
+    // console.log(this.props.question);
     return (
       <div className=""style={{margin:"20px", width:"50%"}}>
        
