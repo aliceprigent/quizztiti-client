@@ -8,7 +8,7 @@ export class UserStats extends Component {
             return acc + currentValue.score
           }, 0)
 
-          return Math.round(globalScore / (numberQuizz*10))
+          return Math.round(globalScore / (numberQuizz)*10)
 
     }
 
