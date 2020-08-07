@@ -9,7 +9,7 @@ export class QuestionBox extends Component {
     const key = event.target.name;
     const ev = event.target;
     let refsCopy = [...this.state.refsArray];
-    console.log(event.target);
+    // console.log(event.target);
     if (event.target.ref) {
       const ref = event.target.ref;
       refsCopy.push(ref);
@@ -19,9 +19,9 @@ export class QuestionBox extends Component {
       {
         [key]: ev.value,
         refsArray: refsCopy,
-      },
-      () => {
-        console.log(this.state);
+      // },
+      // () => {
+      //   console.log(this.state);
       }
     );
     // console.log(this.state)
@@ -32,7 +32,7 @@ export class QuestionBox extends Component {
   compilQuest = (event) => {
     event.preventDefault();
     let inputList = document.querySelectorAll("input.qbox");
-    console.log(inputList);
+    // console.log(inputList);
     let updatedQuest;
     // console.log(this.state)
     //   let inputList=[]
@@ -54,7 +54,7 @@ export class QuestionBox extends Component {
       this.props.clearCbk(inputList);
     });
 
-    console.log(updatedQuest);
+    // console.log(updatedQuest);
   };
 
   render() {

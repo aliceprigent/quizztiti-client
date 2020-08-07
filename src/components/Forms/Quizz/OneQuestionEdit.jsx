@@ -11,16 +11,16 @@ export class MiniBox extends Component {
 
   componentDidMount() {
     const questId = this.props.match.params.id;
-    console.log(questId);
+    // console.log(questId);
 
     quizzHandler
       .getOneQuestion(questId)
       .then((res) => {
-        console.log("res[0]:", res[0]);
+        // console.log("res[0]:", res[0]);
 
         //   le quizz se trouve dans l'index 0 de l'array
         const questionsRecup = res[0].quizzTotal;
-        console.log("questionsRecup", questionsRecup);
+        // console.log("questionsRecup", questionsRecup);
         //   extraction des index des questions du quizz pour trouver l'index de la question posée
         let arrayIndex = [];
         questionsRecup.forEach((question) => {
@@ -32,9 +32,9 @@ export class MiniBox extends Component {
           return question._id === questId;
         });
         //La question se trouve dans l'index 0 de questToUpdate
-        console.log("questToUpdate:", questToUpdate[0]);
+        // console.log("questToUpdate:", questToUpdate[0]);
         //Print de l'index de la question à updater
-        console.log("arrayIndex", arrayIndex.indexOf(questToUpdate[0]._id));
+        // console.log("arrayIndex", arrayIndex.indexOf(questToUpdate[0]._id));
         this.setState(
           {
             _idParentQuizz: res[0]._id,
@@ -47,9 +47,9 @@ export class MiniBox extends Component {
             proposition4: questToUpdate[0].propositions[3],
             answer: questToUpdate[0].answer,
             funFact: questToUpdate[0].funFact,
-          },
-          () => {
-            console.log(this.state);
+          // },
+          // () => {
+          //   console.log(this.state);
           }
         );
       })
@@ -82,7 +82,7 @@ export class MiniBox extends Component {
       answer: this.state.answer,
       funFact: this.state.funFact,
     };
-    console.log(updatedQuest);
+    // console.log(updatedQuest);
     function buildFormData(formData, data, parentKey) {
       if (
         data &&
