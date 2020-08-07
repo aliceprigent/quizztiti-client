@@ -1,7 +1,27 @@
 import { withUser } from "../../Auth/withUser";
-
-
 import React from "react";
+
+
+var successRate = (quizzDone) => {
+  var numberQuizz = quizzDone.length
+  var globalScore = quizzDone.reduce((acc, currentValue) => {
+      return acc + currentValue.score
+    }, 0)
+
+    return Math.round(globalScore / (numberQuizz)*10)
+
+}
+
+var score = (quizzDone) => {
+
+  var globalScore = quizzDone.reduce((acc, currentValue) => {
+      return acc + currentValue.score
+    }, 0)
+
+    return Math.round(globalScore) 
+
+}
+
 
 const teamMembers = (props) => {
   console.log("in team members, context:", props.context);
@@ -30,7 +50,7 @@ const teamMembers = (props) => {
         {props.members.map((member) => (
             <div className="row" key={member._id}>
             <img src={member.image} alt={member.name}/>
-           {member.name} {(props.owner.name === member.name) ? "(owner)" : "" }
+           {member.name} - {score(member.quizzDone)}pts {(props.owner.name === member.name) ? "(owner)" : "" }
           </div>
         ))}
       </ul>
