@@ -191,6 +191,9 @@ class FormNewTeam extends Component {
         .create(objectFormData)
         .then((newTeam) => {
           // console.log(newTeam);
+          const updatedUser = {...this.context.user};
+          updatedUser.teams = [...updatedUser.teams, newTeam._id];
+          this.context.setUser(updatedUser);
           this.setState({ teamId: newTeam._id });
           if (this.state.submitted)
             this.props.history.push(`/teams/${this.state.teamId}`);
