@@ -30,7 +30,7 @@ export class Dashboard extends Component {
     }
 
   render() {
-    console.log(this.state,"this is state")
+    // console.log(this.state,"this is state")
     return (
 
         <div className="center column">

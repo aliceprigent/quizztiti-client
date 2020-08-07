@@ -1,7 +1,7 @@
 import React from "react";
 
 const StickerDashboard = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="sticker-dashboard column center" style={{backgroundImage:`url(${props.quizz.image})`}}>
     

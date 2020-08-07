@@ -3,7 +3,7 @@ import { withUser } from "../Auth/withUser";
 
 const UserProfile = (props) => {
   if (props.context.user === null) return null;
-  console.log(props.context.user)
+  // console.log(props.context.user)
 
   let globalScore = 0;
 

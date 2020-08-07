@@ -1,7 +1,7 @@
 import React from "react";
 
 const StickerTeam = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="div-team column center">
       <div
