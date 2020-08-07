@@ -147,6 +147,7 @@ class FormNewTeam extends Component {
     const mode = this.props.match.params.mode;
     event.preventDefault();
     var newTeamData = {
+      owner: this.state.owner,
       name: this.state.name,
       image: this.state.image,
       description: this.state.description,
