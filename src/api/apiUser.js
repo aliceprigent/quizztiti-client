@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL + "/users",
+  baseURL: process.env.REACT_APP_BACKEND_URL + "/api/users",
   withCredentials: true,
 });
 
@@ -20,7 +20,7 @@ export default {
 
 
   updateOneUser(id, data) {
-    return service.patch(`/:${id}`, data);
+    return service.patch(`/${id}`, data);
   },
 
   deleteTeamInUser(obj) {

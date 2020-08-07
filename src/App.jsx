@@ -29,7 +29,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/:mode(signup|profile/edit)" component={Signup} />
-        <ProtectedRoute path="/team/:mode(create|edit)/:id?" component={FormNewTeam} />
+        <ProtectedRoute exact path="/team/:mode(create|edit)/:id?" component={FormNewTeam} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <Route exact path="/quizz" component={Quizz}/>
         <ProtectedRoute exact path="/quizz/new" component={FormCreateQuizz} />

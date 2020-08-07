@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export class Carousel extends Component {
   state = {
-    quizz: null,
+    quizz: [],
     currentIndex: 1,
   };
 
@@ -36,8 +36,8 @@ export class Carousel extends Component {
   };
 
   render() {
-    if (!this.state.quizz) {
-      return <div>Loading...</div>;
+    if (!this.state.quizz.length) {
+      return <div>No data to display...</div>;
     }
     return (
       <div className="row center">

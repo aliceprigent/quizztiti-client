@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export class Carousel extends Component {
   state = {
-    quizz: null,
+    quizz: [],
     currentIndex: 0,
   };
 
@@ -38,8 +38,8 @@ export class Carousel extends Component {
   };
 
   render() {
-    if (!this.state.quizz) {
-      return <div>Loading...</div>;
+    if (!this.state.quizz.length) {
+      return <div>No data to display...</div>;
     }
     return (
       <div className="row center">
@@ -47,7 +47,7 @@ export class Carousel extends Component {
           onClick={this.previous}
           className="bouton-fleche-mobile"
           alt="previous"
-          src="../../../media/icons8-double-gauche-100.png"
+          src="/media/icons8-double-gauche-100.png"
         />
         <section className="quizz-home row">
           <Link to={`/quizz/${this.state.quizz[this.state.currentIndex]._id}`}>
@@ -70,7 +70,7 @@ export class Carousel extends Component {
           onClick={this.next}
           className="bouton-fleche-mobile"
           alt="previous"
-          src="../../../media/icons8-double-droite-100.png"
+          src="/media/icons8-double-droite-100.png"
         />
       </div>
     );

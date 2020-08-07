@@ -55,7 +55,11 @@ export class FormCreateQuizz extends Component {
   // pour cleaner les inputs apres submit une question
   clearInput = (inputArray) => {
     inputArray.forEach((input) => {
-      input.value = "";
+      if (input.type === "text") {
+        input.value = ""
+      } else {
+        input.checked= false
+      }
     });
   };
 
@@ -135,9 +139,12 @@ export class FormCreateQuizz extends Component {
   render() {
     return (
       <div className="global-quizz-form row center">
-        <form className="quizz-form column center space-around" onSubmit={this.handleSubmit}>
+        <form
+          className="quizz-form column center space-around"
+          onSubmit={this.handleSubmit}
+        >
           <label htmlFor="title" className="quizz-label">
-           <h2> Quizz Title</h2>
+            <h2> Quizz Title</h2>
           </label>
           <input
             type="text"
@@ -145,7 +152,7 @@ export class FormCreateQuizz extends Component {
             className="title quizz-input"
             placeholder="Short description of your quizz"
             maxLength="120"
-            defaultValue="Super quizz name"
+            placeholder="Super quizz name"
             onChange={this.handleChange}
           />
           <label htmlFor="thema" className="quizz-label">
@@ -183,7 +190,12 @@ export class FormCreateQuizz extends Component {
           </select>
           <div className="img-download center column ">
             <label htmlFor="image">Customize your quizz picture</label>
-            <FontAwesomeIcon icon="images" size="4x" className="icon" onClick={this.handleClick} />
+            <FontAwesomeIcon
+              icon="images"
+              size="4x"
+              className="icon"
+              onClick={this.handleClick}
+            />
             <input
               type="file"
               name="image"
@@ -201,7 +213,16 @@ export class FormCreateQuizz extends Component {
           />
 
           <div className="form-validation">
-            <button className="btn">Submit</button> <br />
+            <button
+              className="btn"
+              style={{
+                display:
+                  this.state.quizzTotal.length === 10 ? "initial" : "none",
+              }}
+            >
+              Submit
+            </button>{" "}
+            <br />
             <span style={{ color: "red" }}>{this.state.errors}</span>
           </div>
         </form>
@@ -209,7 +230,7 @@ export class FormCreateQuizz extends Component {
           id="question-container"
           className="question-box"
           style={{
-            display: this.state.quizzTotal.length === 10 ? "none" : "flex",
+            display: this.state.quizzTotal.length === 10 ? "none" : "flow",
           }}
         >
           <QuestionBox
