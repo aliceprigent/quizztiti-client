@@ -76,8 +76,11 @@ class FormSignup extends Component {
       apiUser
         .updateUser(this.state)
         .then((data) => {
-          this.context.setUser(data);
+          console.log(data)
+          const updatedUser = {...this.context.user, name:data.data.name, email:data.data.email, image:data.data.image};
+          this.context.setUser(updatedUser);
           this.props.history.push("/dashboard");
+          
         })
         .catch((error) => {
           console.log(error);
