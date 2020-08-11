@@ -17,6 +17,7 @@ export class FormCreateQuizz extends Component {
     //  push une question dès qu'on appuie sur add question
     fields: {},
     errors: "",
+    inputsToClear:[]
   };
 
   handleChange = (event) => {
@@ -48,19 +49,22 @@ export class FormCreateQuizz extends Component {
         questionNb: this.state.questionNb + 1,
         quizzTotal: copy,
       }
-      ,this.clearInput()
+      
       // () => console.log("step1", this.state.quizzTotal)
     );
+    this.clearInput()
   };
   // pour cleaner les inputs apres submit une question
-  clearInput = (inputArray) => {
-    inputArray.forEach((input) => {
-      if (input.type === "text") {
-        input.value = ""
+  clearInput = (inputArray) => {     
+    inputArray&&
+     inputArray.forEach((inp) => {
+      if (inp.type === "text") {
+        inp.value = ""
       } else {
-        input.checked= false
+        inp.checked= false
       }
-    });
+    }); 
+       
   };
 
   handleValidation = (event) => {

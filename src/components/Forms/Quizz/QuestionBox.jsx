@@ -30,9 +30,10 @@ export class QuestionBox extends Component {
   // }
 
   compilQuest = (event) => {
+    console.log(this.props)
     event.preventDefault();
     let inputList = document.querySelectorAll("input.qbox");
-    // console.log(inputList);
+    console.log(inputList);
     let updatedQuest;
     // console.log(this.state)
     //   let inputList=[]
@@ -54,7 +55,7 @@ export class QuestionBox extends Component {
       this.props.clearCbk(inputList);
     });
 
-    // console.log(updatedQuest);
+    console.log(updatedQuest);
   };
 
   render() {
