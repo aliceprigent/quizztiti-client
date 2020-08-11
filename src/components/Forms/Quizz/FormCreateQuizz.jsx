@@ -171,8 +171,8 @@ export class FormCreateQuizz extends Component {
             <option value="Nature" defaultValue>
               Nature
             </option>
-            <option value="General Culture">General Culture</option>
-            <option value="Health and Beauty">Health and Beauty</option>
+            <option value="General">General Culture</option>
+            <option value="Health">Health and Beauty</option>
             <option value="Celebrity">Celebrity</option>
             <option value="Society">Society</option>
             <option value="Miscellaneous">Miscellaneous</option>
