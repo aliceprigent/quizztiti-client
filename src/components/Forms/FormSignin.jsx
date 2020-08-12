@@ -36,7 +36,8 @@ class FormSignin extends Component {
         this.props.history.push("/");
       })
       .catch((error) => {
-        console.log(error);
+        console.log("error message in front", error);
+        this.setState({message : "Invalid email or password"})
         // Display error message here, if you set the state
       });
   };
@@ -45,6 +46,11 @@ class FormSignin extends Component {
     return (
       <div className="signup-div center column">
       <h2>Welcome back !</h2>
+
+{
+  this.state.message && <div className="red"> {this.state.message} </div>
+}
+
       <form className="center column" style={{marginTop:"30px"}} onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label className="sign-label" htmlFor="email">Email</label>
         <input className="sign-input" type="email" id="email" name="email" />
