@@ -36,8 +36,9 @@ class FormSignin extends Component {
         this.props.history.push("/");
       })
       .catch((error) => {
-        console.log("error message in front", error);
-        this.setState({message : "Invalid email or password"})
+        // console.log("error message in front", error.response.data);
+        // this.setState({message : "Invalid email or password"})
+        this.setState({message : error.response.data.message})
         // Display error message here, if you set the state
       });
   };
