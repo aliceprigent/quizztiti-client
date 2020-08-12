@@ -18,6 +18,7 @@ import OneQuestionEdit from "./components/Forms/Quizz/OneQuestionEdit";
 import QuizzCategories from "./components/Quizz/QuizzCategories"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
+import AdminDash from "./components/Admin/AdminDash";
 
 
 function App() {
@@ -38,11 +39,12 @@ function App() {
           path="/quizz/:id"
           component={DisplayQuizz}
         />
-        <ProtectedRoute exact path="/quizz/edit/:id" component={FormEditQuizz}/>
+        <ProtectedRoute exact path="/quizz/edit/yourQuizz" component={FormEditQuizz}/>
         <ProtectedRoute exact path="/question/:id" component={OneQuestionEdit}/>
         <ProtectedRoute path="/dashboard" component={Dashboard} />        
         <ProtectedRoute path="/teams/:id" component={TeamDashboard} />
         <ProtectedRoute exact path="/quizz/categories/:category" component={QuizzCategories} />
+        <ProtectedRoute exact path="/admin" component={AdminDash}/>
         <Route path="*" component={Page404} />
       </Switch>
       

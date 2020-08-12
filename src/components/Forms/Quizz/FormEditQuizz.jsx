@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import QuestionBox from "../../Forms/Quizz/QuestionBox";
 import quizzHandler from "../../../api/quizzHandler";
 import MiniBox from "./MiniBox";
+import UserContext from "../../Auth/UserContext";
+import { withUser } from "../../Auth/withUser";
 
 export class FormEditQuizz extends Component {
+  static contextType = UserContext;
   state = {
     image: "",
   };
 
   componentDidMount() {
-    const quizzId = this.props.match.params.id;
+    const quizzId = this.props.location.state;
     // console.log(quizzId);
     quizzHandler
       .getOneQuizz(quizzId)
@@ -21,6 +24,7 @@ export class FormEditQuizz extends Component {
           status: data.status,
           image: data.image,
           quizzTotal: data.quizzTotal,
+          creator: data.creator,
           // },
           // () => {
           //   console.log(this.state.quizzTotal);
@@ -44,15 +48,13 @@ export class FormEditQuizz extends Component {
   };
 
   handleImage = (event) => {
-    this.setState(
-      {
-        image: event.target.files[0],
-        tmpImage: URL.createObjectURL(event.target.files[0]),
+    this.setState({
+      image: event.target.files[0],
+      tmpImage: URL.createObjectURL(event.target.files[0]),
       // },
       // () => {
       //   console.log(this.state.image);
-      }
-    );
+    });
   };
 
   handleSubmit = (event) => {
@@ -94,9 +96,11 @@ export class FormEditQuizz extends Component {
     }
 
     var updquizzFormData = jsonToFormData(updQuizzData);
+    var quizzId = this.props.location.quizzProps.quizz._id;
+
 
     quizzHandler
-      .updateQuizz(this.props.match.params.id, updquizzFormData)
+      .updateQuizz(quizzId, updquizzFormData)
       .then((data) => {
         // console.log(data);
         this.props.history.push("/dashboard");
@@ -108,7 +112,7 @@ export class FormEditQuizz extends Component {
 
   handleDelete = (event) => {
     quizzHandler
-      .deleteQuizz(this.props.match.params.id)
+      .deleteQuizz(this.props.location.state)
       .then((data) => {
         // console.log(data)
         this.props.history.push("/dashboard");
@@ -122,7 +126,15 @@ export class FormEditQuizz extends Component {
     if (this.state === null) {
       return <div>...Loading</div>;
     }
+    console.log(this.props.location.state);
+    console.log("creator", this.state.creator);
 
+    if (
+      !this.state.creator === this.props.context.user._id ||
+      this.props.context.user.isAdmin === "false"
+    ) {
+      this.props.history.push("/dashboard");
+    }
     return (
       <div className="column center">
         <h1 className="title">Your quizz infos</h1>
@@ -262,4 +274,4 @@ export class FormEditQuizz extends Component {
   }
 }
 
-export default FormEditQuizz;
+export default withUser(FormEditQuizz);
