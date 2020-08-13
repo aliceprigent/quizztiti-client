@@ -17,12 +17,12 @@ import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
 import OneQuestionEdit from "./components/Forms/Quizz/OneQuestionEdit";
 import QuizzCategories from "./components/Quizz/QuizzCategories"
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faImages } from '@fortawesome/free-solid-svg-icons'
+import { faImages, faPlay, faEdit } from '@fortawesome/free-solid-svg-icons'
 import AdminDash from "./components/Admin/AdminDash";
 
 
 function App() {
-  library.add(faImages)
+  library.add(faImages,faPlay,faEdit)
   return (
     <div className="App">
       <NavMain />
@@ -32,7 +32,7 @@ function App() {
         <Route exact path="/:mode(signup|profile/edit)" component={Signup} />
         <ProtectedRoute exact path="/team/:mode(create|edit)/:id?" component={FormNewTeam} />
         <ProtectedRoute exact path="/profile" component={Profile} />
-        <Route exact path="/quizz" component={Quizz}/>
+        <Route exact path="/quizz" component={Quizz} />
         <ProtectedRoute exact path="/quizz/new" component={FormCreateQuizz} />
         <Route
           exact
