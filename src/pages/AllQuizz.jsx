@@ -48,12 +48,12 @@ export class AllQuizz extends Component {
       if (this.state.searchValue) {
         return (
           quiz.isPublished === true &&
-          quiz.status === "Public" &&
+          
           (quiz.title.toLowerCase().includes(this.state.searchValue) ||
             quiz.thema.toLowerCase().includes(this.state.searchValue))
         );
       } else {
-        return quiz.isPublished === true && quiz.status === "Public";
+        return quiz.isPublished === true ;
       }
     });
     console.log(filteredArray);
@@ -66,7 +66,9 @@ export class AllQuizz extends Component {
         <div className="all-quizz row center global-view">
           {this.props.context.user &&
             !this.props.context.user.isAdmin &&
-            filteredArray.map((quiz) => {
+            filteredArray
+            .filter((quizz)=>quizz.status==="Public")
+            .map((quiz) => {
               return (
                 <Link to={`/quizz/${quiz._id}`}>
                   <QuizzSticker key={quiz._id} quiz={quiz} />
@@ -77,7 +79,7 @@ export class AllQuizz extends Component {
             <div className="app-quizz">
               <h2>Public Quizzes</h2>
               <div className="all-quizz row center global-view">
-                {this.state.quizz
+                {filteredArray
                   .filter((quiz) => quiz.status === "Public")
                   .map((quiz) => {
                     return (
@@ -117,7 +119,7 @@ export class AllQuizz extends Component {
               </div>
               <h2>Private Quizzes</h2>
               <div className="all-quizz row center global-view">
-                {this.state.quizz
+                {filteredArray
                   .filter((quiz) => quiz.status === "Private")
                   .map((quiz) => {
                     return (

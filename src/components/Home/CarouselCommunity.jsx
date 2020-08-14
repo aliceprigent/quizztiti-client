@@ -13,8 +13,8 @@ export class CarouselCommunity extends Component {
       .displayAllQuizz()
       .then((apiRes) => {
         this.setState({
-          quizz: apiRes.filter((quiz) => quiz.supplier === "Quizztiti"),
-        });
+          quizz: apiRes.filter((quiz) => quiz.supplier === "Quizztiti" && quiz.status==="Public"),
+        },()=>console.log(this.state.quizz));
       })
       .catch((error) => {
         console.log(error);

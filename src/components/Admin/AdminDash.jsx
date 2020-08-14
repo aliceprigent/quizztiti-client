@@ -10,7 +10,7 @@ export class AdminDash extends Component {
   static contextType = UserContext;
   state = {
     quizzToValidate: [],
-    // inputSearchMembers:"null",
+    inputSearchMembers: "",
     optionsMembers: [],
     members: [],
   };
@@ -21,34 +21,24 @@ export class AdminDash extends Component {
     this.setState({ [key]: value });
   };
 
-  updateMembers = (memberId) => {
-    this.setState(
-      {
-        members: this.state.members.filter((member) => member._id !== memberId),
-      },
-      () => console.log("new state members!")
-    );
-  };
-
   componentDidMount() {
     quizzHandler
       .displayAllQuizz()
-      .then(
-        (allQuizz) => {
-          console.log(allQuizz);
-          this.setState({ quizzToValidate: allQuizz });
-        },
-        () => console.log(this.state.quizzToValidate)
-      )
+      .then((allQuizz) => {
+        console.log(allQuizz);
+        this.setState({ quizzToValidate: allQuizz });
+      })
       .catch((error) => {
         console.log(error);
       });
 
     apiUser
       .getUsers()
-      .then((usersJSON) => {
-        console.log(usersJSON);
-        this.setState({ members: usersJSON.data });
+      .then((users) => {
+        console.log(users);
+        this.setState({ members: users.data }, () =>
+          console.log("this.state", this.state)
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -61,8 +51,10 @@ export class AdminDash extends Component {
     });
 
     var filteredMembers = this.state.members.filter((member) => {
-      if (this.state.inputSearchMembers) {
-        return member.name.toLowerCase().includes(this.state.filteredMembers);
+      if (this.state.inputSearchMembers !== null) {
+        return member.name
+          .toLowerCase()
+          .includes(this.state.inputSearchMembers);
       } else {
         return member;
       }
