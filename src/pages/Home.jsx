@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Carousel from "../components/Home/Carousel";
 import quizzHandler from "../api/quizzHandler";
-import CarouselMobile from "../components/Home/CarouselMobile";
+import CarouselCommunity from "../components/Home/CarouselCommunity";
 import Categories from "../components/Home/Categories";
 import Footer from "../components/Footer"
+import CarouselMobile from "../components/Home/CarouselMobile"
 
 export class Home extends Component {
   state = {
@@ -36,20 +37,18 @@ export class Home extends Component {
   };
 
   render() {
+    console.log(window.innerWidth)
     return (
       <div className="column center">
         <div className="column center" style={{ width: "80%" }}>
           <section className="row center" style={{ width: "100%" }}>
             <div
               className="row welcome-div"
-              style={{
-                height: "50px",
-                backgroundColor: "var(--grey)",
-              }}
+              
             >
              <img className="logo-quizztiti" src="../../media/imageonline-co-transparentimage.png" alt="logo"/>
               Discover all our quizzes and categories !{" "}
-              <a href="/quizz"><button className="btn" style={{ width: "170px" }}>
+              <a href="/quizz"><button className="btn">
                 Discover !
               </button></a>
             </div>
@@ -58,11 +57,11 @@ export class Home extends Component {
           <h3 className="title">All quizz</h3>
           </div>
 
-          <div>
+           <div>
             
             <br />
 
-            <Carousel />
+            {window.innerWidth > 1023 ? <Carousel /> : <CarouselMobile />}
           </div>
           <br />
           <a href="/quizz"><button className="btn" style={{marginBottom:"40px"}}>See more</button></a>
@@ -87,7 +86,7 @@ export class Home extends Component {
             
             <br />
 
-             <CarouselMobile /> 
+             <CarouselCommunity /> 
           </div>
             
           </div>

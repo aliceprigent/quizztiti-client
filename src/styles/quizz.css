@@ -358,8 +358,8 @@ input:checked + .slider:before {
 
 @media (max-width: 1200px) {
   .quizz-sticker {
-    height: 14em;
-    width: 18em;
+    height: 12em;
+    width: 13em;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 20px;
@@ -369,7 +369,7 @@ input:checked + .slider:before {
 
   .quizz-sticker-mobile {
     height: 12em;
-    width: 23em;
+    width: 18em;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 20px;
@@ -383,10 +383,18 @@ input:checked + .slider:before {
 
   .question-h3 {
     height: 60%;
+    font-size: 15px;
   }
 
   .banner-question {
     width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .quizz-sticker-mobile {
+    height: 9em;
+    width: 14em;
   }
 }
 

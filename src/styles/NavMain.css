@@ -1,5 +1,8 @@
 @import'./variables.css'; 
 
+
+
+
 .NavMain {
   background-color: var(--red);
   color: white;
@@ -63,9 +66,65 @@
   margin-right: 50px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .NavMain .avatar {
-    margin-left: 15px;
+   visibility: hidden;
+
   }
 
+  .NavMain {
+   display: none;
+  }
+
+
+
+}
+
+@media (min-width: 650px) {
+  .NavMain {
+    visibility: visible;
+  }
+
+.nav-mobile {
+  display: none;
+}
+
+}
+
+.menu-burger {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+}
+
+.nav-mobile {
+  padding: 6px;
+  background-color: var(--red);
+  position: absolute;
+  right: 0vh;
+  top: 0vh;
+  margin: 10px;
+  
+}
+
+.nav-burger {
+  height: 500px;
+  background-color: var(--red);
+  position: absolute;
+  z-index: 10;
+  color: white;
+  top: 10vh;
+  right: 0vh;
+  
+  
+
+}
+
+.absolute {
+  position: absolute;
+}
+
+.li-burger {
+  padding:30px;
 }

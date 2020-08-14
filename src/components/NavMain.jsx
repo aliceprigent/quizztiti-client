@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { withUser } from "../components/Auth/withUser";
 import apiHandler from "../api/apiHandler";
+import NavMobile from "../components/NavMobile"
 
 import "../styles/NavMain.css";
 
@@ -20,7 +21,8 @@ const NavMain = (props) => {
   }
 
   return (
-    <nav className="NavMain NavMobile">
+    <section>
+    <nav className="NavMain">
       <NavLink exact to="/">
         <img src="/media/icons8-année-du-singe-50.png" className="logo" alt="logo"/>
       </NavLink>
@@ -58,7 +60,7 @@ const NavMain = (props) => {
            </React.Fragment>
       )}
             <li>
-              <NavLink to="/profile">
+              <NavLink to="/dashboard">
                 {context.user.name}
               </NavLink>
             </li>
@@ -72,13 +74,18 @@ const NavMain = (props) => {
             </li>
             </ul>
               <img src={context.user.image} className="avatar" alt="avatar"/>
+
+              
+             
           </React.Fragment>
           
         )}
+        </nav>
         
-        
+        <NavMobile />
       
-    </nav>
+   
+    </section>
   );
 };
 

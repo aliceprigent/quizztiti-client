@@ -1,4 +1,4 @@
-@media (max-width: 1040px){
+@media (max-width: 900px){
     .quizz-home {
         display:flex;
         flex-direction: column;
@@ -24,6 +24,28 @@
     }
 }
 
+@media (max-width: 750px){
+    .logo-quizztiti {
+        display: none;
+    }
+
+    .welcome-div {
+        margin-top: 60px !important;
+    }
+
+  
+}
+
+@media (max-width: 400px){
+
+    .welcome-div {
+        margin-top: 60px !important;
+        font-size: 13px;
+    }
+
+  
+}
+
 .welcome-div {
     justify-content: space-between;
     align-items: center;
@@ -32,6 +54,8 @@
     margin-top: 30px;
     padding: 40px;
     width: 100%;
+    height: 50px;
+    background-color: var(--grey);
 }
 
 .bouton-flèche {
