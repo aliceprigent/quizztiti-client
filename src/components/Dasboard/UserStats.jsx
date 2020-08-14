@@ -18,10 +18,10 @@ else {
     return (
       <React.Fragment>
         <h2>MY STATS</h2>
-        <section className="row center">
+        <section className="stats row center">
           <div
             className="column center score-box"
-            style={{ width: "20%", height: "25vh", margin: "25px" }}
+            style={{ height: "25vh", margin: "25px" }}
           >
             <h3>QUIZZ DONE</h3>
             <img

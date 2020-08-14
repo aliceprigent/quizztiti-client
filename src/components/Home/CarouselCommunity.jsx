@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import quizzHandler from "../../api/quizzHandler";
 import { Link } from "react-router-dom";
 
-export class CarouselMobile extends Component {
+export class CarouselCommunity extends Component {
   state = {
     quizz: [],
     currentIndex: 1,
@@ -12,7 +12,9 @@ export class CarouselMobile extends Component {
     quizzHandler
       .displayAllQuizz()
       .then((apiRes) => {
-        this.setState({ quizz: apiRes.filter(quiz => quiz.supplier === 'OpenQuizzDB - Fournisseur de contenu libre (https://www.openquizzdb.org)') });
+        this.setState({
+          quizz: apiRes.filter((quiz) => quiz.supplier === "Quizztiti"),
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -75,4 +77,4 @@ export class CarouselMobile extends Component {
   }
 }
 
-export default CarouselMobile;
+export default CarouselCommunity;

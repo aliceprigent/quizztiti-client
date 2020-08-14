@@ -40,6 +40,7 @@
     background-color: var(--grey);
     box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.30);
     padding: 20px;
+    width: 20%;
 
 }
 
@@ -52,6 +53,8 @@
 
 .section-dashboard {
     width: 100%; 
+    display:flex;
+    flex-direction: center;
     
 }
 
@@ -94,10 +97,14 @@
         margin-bottom: 10px;
     }
 
-    .dashboard-row:first-of-type {
-        margin-top: 200px;
-       
+    .stats {
+        display:flex;
+        flex-direction: column;
     }
+
+   .score-box {
+       width: 60% !important
+   }
     
 
     .div-team {
