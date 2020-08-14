@@ -5,8 +5,25 @@ const service = axios.create({
   withCredentials: true,
 });
 
+
+function errorHandler(error) {
+  if (error.response.data) {
+    console.log(error.response && error.response.data);
+    throw error;
+  }
+  throw error;
+}
+
+
+
 export default {
   service,
+
+  checkUsername(params) {
+    return service.get("/", {params})
+    .then((teamsJSON) => teamsJSON.data.length)
+    .catch((err) => errorHandler(err));
+  },
 
   getUsers(params) {
     return service.get("/", {
