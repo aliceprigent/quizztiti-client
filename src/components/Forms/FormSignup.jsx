@@ -12,6 +12,7 @@ class FormSignup extends Component {
     email: "",
     password: "",
     image: "",
+    validUsername : true,
   };
 
   handleChange = (event) => {
@@ -24,7 +25,7 @@ class FormSignup extends Component {
 
     const key = event.target.name;
 
-    this.setState({ [key]: value });
+    this.setState({ [key]: value }, ()=> this.handleUsername(event));
   };
 
   componentDidMount() {
@@ -58,20 +59,37 @@ class FormSignup extends Component {
     }
   }
 
+handleUsername = (event) => {
+  if (this.state.name) {
+    apiUser.checkUsername({name : this.state.name})
+    .then((res) => {
+      console.log("checking unique username :", res)
+    if (res > 0) this.setState({validUsername : false})
+  else this.setState({validUsername : true})})
+    .catch((err)=> console.error(err))
+  }
+}
+
+
   handleSubmit = (event) => {
     const mode = this.props.match.params.mode;
     event.preventDefault();
 
     if (mode === "signup") {
+if (this.state.validUsername) {
+      let newUser = {...this.state}
+      delete newUser.validUsername
+
       apiHandler
-        .signup(this.state)
+        .signup(newUser)
         .then((data) => {
           this.context.setUser(data);
           this.props.history.push("/");
         })
         .catch((error) => {
           console.log(error);
-        });
+        }); }
+
     } else {
       apiUser
         .updateUser(this.state)
@@ -107,6 +125,9 @@ class FormSignup extends Component {
             name="name"
             defaultValue={mode === "profile/edit" ? this.state.name : "Name"}
           />
+          {!this.state.validUsername && (
+            <div className="red"> unavailable username</div>
+          )}
           <label className="sign-label" htmlFor="email">
             Email
           </label>
