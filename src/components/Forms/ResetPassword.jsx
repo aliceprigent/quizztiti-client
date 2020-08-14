@@ -4,7 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 export class ResetPassword extends Component {
   state = {
     email: null,
-    message: { username: null, email: null, passwordMatch: null },
+    message: { username: false, email: false, passwordMatch: false },
   };
 
   componentDidMount() {
@@ -18,26 +18,23 @@ export class ResetPassword extends Component {
   handleChange = (event) => {
     const key = event.target.name;
     let value = event.target.value;
-    this.setState({ [key]: value }, this.handleConfirm(event), () =>
-      console.log(this.state)
-    );
+    this.setState({ [key]: value }, () => {this.handleConfirm(event)} );
   };
 
+
+
   handleConfirm = (event) => {
-    let id = event.target.id;
     let message = { ...this.state.message };
-    // console.log("in confirm function", id);
-    if (id === "username") {
+    console.log("in handleConfirm2 function");
       if (!this.state.name) {
         message.username = false;
-      } else message.username = true;
-    } else if (id === "email") {
+      } else {message.username = true};
+
       if (!this.state.email) {
         message.email = false;
-      } else message.email = true;
-    } else if (id === "passwordConfirm") {
-      // console.log("in password matching zone")
-      if (this.state.passwordConfirm == this.state.password) {
+      } else {message.email = true};
+
+      if (this.state.passwordConfirm === this.state.password) {
         message.passwordMatch = true;
         console.log("in password matching zone __ TRUE");
       } else {
@@ -49,12 +46,11 @@ export class ResetPassword extends Component {
         );
         message.passwordMatch = false;
         console.log("in password matching zone __ FALSE");
-
-        // doesn't work - maybe try in an independant function for passwordConfirm
       }
+      this.setState({ message });
     }
-    this.setState({ message });
-  };
+    
+
 
   render() {
     return (
