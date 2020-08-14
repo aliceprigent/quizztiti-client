@@ -11,7 +11,7 @@ export class MiniBox extends Component {
 
   componentDidMount() {
     const questId = this.props.match.params.id;
-    // console.log(questId);
+    console.log(this.props.history);
 
     quizzHandler
       .getOneQuestion(questId)
@@ -118,7 +118,10 @@ export class MiniBox extends Component {
       .updateOneQuestion(this.props.match.params.id, objectFormData)
       .then((res) => {
         console.log("ok updated");
-        this.props.history.push(`/quizz/edit/${this.state._idParentQuizz}`);
+        var histoState=this.state._idParentQuizz
+     
+        this.props.history.push({pathname:"/quizz/edit/yourQuizz",state:histoState});
+        // this.props.history.goBack();
       })
       .catch((error) => {
         console.log(error);

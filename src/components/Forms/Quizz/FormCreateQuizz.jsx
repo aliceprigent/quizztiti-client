@@ -17,6 +17,7 @@ export class FormCreateQuizz extends Component {
     //  push une question dès qu'on appuie sur add question
     fields: {},
     errors: "",
+    inputsToClear:[]
   };
 
   handleChange = (event) => {
@@ -48,19 +49,22 @@ export class FormCreateQuizz extends Component {
         questionNb: this.state.questionNb + 1,
         quizzTotal: copy,
       }
-      ,this.clearInput()
+      
       // () => console.log("step1", this.state.quizzTotal)
     );
+    this.clearInput()
   };
   // pour cleaner les inputs apres submit une question
-  clearInput = (inputArray) => {
-    inputArray.forEach((input) => {
-      if (input.type === "text") {
-        input.value = ""
+  clearInput = (inputArray) => {     
+    inputArray&&
+     inputArray.forEach((inp) => {
+      if (inp.type === "text") {
+        inp.value = ""
       } else {
-        input.checked= false
+        inp.checked= false
       }
-    });
+    }); 
+       
   };
 
   handleValidation = (event) => {
@@ -167,8 +171,8 @@ export class FormCreateQuizz extends Component {
             <option value="Nature" defaultValue>
               Nature
             </option>
-            <option value="General Culture">General Culture</option>
-            <option value="Health and Beauty">Health and Beauty</option>
+            <option value="General">General Culture</option>
+            <option value="Health">Health and Beauty</option>
             <option value="Celebrity">Celebrity</option>
             <option value="Society">Society</option>
             <option value="Miscellaneous">Miscellaneous</option>

@@ -2,29 +2,43 @@ import React, { Component } from "react";
 import QuestionBox from "../../Forms/Quizz/QuestionBox";
 import quizzHandler from "../../../api/quizzHandler";
 import MiniBox from "./MiniBox";
+import UserContext from "../../Auth/UserContext";
+import { withUser } from "../../Auth/withUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class FormEditQuizz extends Component {
+  static contextType = UserContext;
+  constructor(props) {
+    super(props);
+    this.fileInput = React.createRef();
+    // this.handleClick=this.fileInput.bind(this)
+  }
   state = {
     image: "",
+    isPublished: "",
   };
 
   componentDidMount() {
-    const quizzId = this.props.match.params.id;
+    const quizzId = this.props.location.state;
     // console.log(quizzId);
     quizzHandler
       .getOneQuizz(quizzId)
       .then((data) => {
-        // console.log("data.quizzTotal");
-        this.setState({
-          title: data.title,
-          thema: data.thema,
-          status: data.status,
-          image: data.image,
-          quizzTotal: data.quizzTotal,
-          // },
-          // () => {
-          //   console.log(this.state.quizzTotal);
-        });
+        console.log(data);
+        this.setState(
+          {
+            title: data.title,
+            thema: data.thema,
+            status: data.status,
+            image: data.image,
+            quizzTotal: data.quizzTotal,
+            creator: data.creator,
+            isPublished: data.isPublished,
+          },
+          () => {
+            console.log(this.state);
+          }
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -44,15 +58,13 @@ export class FormEditQuizz extends Component {
   };
 
   handleImage = (event) => {
-    this.setState(
-      {
-        image: event.target.files[0],
-        tmpImage: URL.createObjectURL(event.target.files[0]),
+    this.setState({
+      image: event.target.files[0],
+      tmpImage: URL.createObjectURL(event.target.files[0]),
       // },
       // () => {
       //   console.log(this.state.image);
-      }
-    );
+    });
   };
 
   handleSubmit = (event) => {
@@ -64,6 +76,7 @@ export class FormEditQuizz extends Component {
       thema: this.state.thema,
       status: this.state.status,
       image: this.state.image,
+      isPublished: this.state.isPublished,
     };
 
     function buildFormData(formData, data, parentKey) {
@@ -94,12 +107,18 @@ export class FormEditQuizz extends Component {
     }
 
     var updquizzFormData = jsonToFormData(updQuizzData);
+    var quizzId = this.props.location.state;
+    console.log(updQuizzData);
 
     quizzHandler
-      .updateQuizz(this.props.match.params.id, updquizzFormData)
+      .updateQuizz(quizzId, updquizzFormData)
       .then((data) => {
-        // console.log(data);
-        this.props.history.push("/dashboard");
+        console.log(data);
+        if (this.props.context.user.isAdmin === true) {
+          this.props.history.push("/admin");
+        } else {
+          this.props.history.push("/dashboard");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -108,21 +127,39 @@ export class FormEditQuizz extends Component {
 
   handleDelete = (event) => {
     quizzHandler
-      .deleteQuizz(this.props.match.params.id)
+      .deleteQuizz(this.props.location.state)
       .then((data) => {
         // console.log(data)
-        this.props.history.push("/dashboard");
+        if (this.props.context.user.isAdmin === true) {
+          this.props.history.push("/admin");
+        } else {
+          this.props.history.push("/dashboard");
+        }
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  handleChecked = (event) => {
+    this.setState({ isPublished: !this.state.isPublished }, () => {
+      console.log("check verif", this.state);
+    });
+  };
+
   render() {
     if (this.state === null) {
       return <div>...Loading</div>;
     }
+    console.log(this.props.location.state);
+    console.log("creator", this.state.creator);
 
+    if (
+      !this.state.creator === this.props.context.user._id ||
+      this.props.context.user.isAdmin === "false"
+    ) {
+      this.props.history.push("/dashboard");
+    }
     return (
       <div className="column center">
         <h1 className="title">Your quizz infos</h1>
@@ -167,8 +204,7 @@ export class FormEditQuizz extends Component {
               <label
                 style={{ margin: "10px" }}
                 htmlFor="thema"
-                className="quizz-label"
-                style={{ margin: "10px" }}
+                className="quizz-label"                
               >
                 Topic :
               </label>
@@ -193,7 +229,7 @@ export class FormEditQuizz extends Component {
                 style={{ margin: "10px" }}
                 htmlFor="status"
                 className="status"
-                style={{ margin: "10px" }}
+                
               >
                 Status :
               </label>
@@ -212,19 +248,23 @@ export class FormEditQuizz extends Component {
                 <option value="Private">Private</option>
               </select>
 
-              <label
-                style={{ margin: "10px" }}
-                htmlFor="image"
-                style={{ margin: "10px" }}
-              >
-                Image :
-              </label>
-              <input
-                type="file"
-                name="image"
-                id="quizz-image-label"
-                onChange={this.handleImage}
-              />
+              <div className="img-download center column ">
+            <label htmlFor="image" style={{ margin: "10px" }}>Customize your quizz picture</label>
+            <FontAwesomeIcon
+              icon="images"
+              size="4x"
+              className="icon"
+              onClick={this.handleClick}
+            />
+            <input
+              type="file"
+              name="image"
+              id="quizz-image"
+              onChange={this.handleImage}
+              ref={this.fileInput}
+              style={{ display: "none" }}
+            />
+          </div>
               <img
                 className="quizz-image"
                 src={
@@ -234,7 +274,23 @@ export class FormEditQuizz extends Component {
                 style={{ margin: "20px" }}
               />
 
-              <div className="form-validation">
+              {this.props.context.user.isAdmin === true && (
+                <div className="toggle column center space around" style={{margin:"0px auto 20px"}}>
+
+                <label className="quizz-label" style={{ margin: "10px"}}>Publish on App:</label>
+                  <label class="switch">
+                    <input
+                      type="checkbox"
+                      name="isPublished"
+                      onChange={this.handleChecked}
+                      checked={this.state.isPublished}
+                    />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              )}
+
+              <div className="form-validation" >
                 <button style={{ margin: "10px" }} className="btn">
                   Edit
                 </button>{" "}
@@ -262,4 +318,4 @@ export class FormEditQuizz extends Component {
   }
 }
 
-export default FormEditQuizz;
+export default withUser(FormEditQuizz);

@@ -17,11 +17,13 @@ import FormEditQuizz from "./components/Forms/Quizz/FormEditQuizz";
 import OneQuestionEdit from "./components/Forms/Quizz/OneQuestionEdit";
 import QuizzCategories from "./components/Quizz/QuizzCategories"
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faImages } from '@fortawesome/free-solid-svg-icons'
+import { faImages, faPlay, faEdit } from '@fortawesome/free-solid-svg-icons'
+import AdminDash from "./components/Admin/AdminDash";
+import MemberManagement from "./components/Admin/MemberManagement";
 
 
 function App() {
-  library.add(faImages)
+  library.add(faImages,faPlay,faEdit)
   return (
     <div className="App">
       <NavMain />
@@ -31,18 +33,21 @@ function App() {
         <Route exact path="/:mode(signup|profile/edit)" component={Signup} />
         <ProtectedRoute exact path="/team/:mode(create|edit)/:id?" component={FormNewTeam} />
         <ProtectedRoute exact path="/profile" component={Profile} />
-        <Route exact path="/quizz" component={Quizz}/>
+        <Route exact path="/quizz" component={Quizz} />
         <ProtectedRoute exact path="/quizz/new" component={FormCreateQuizz} />
         <Route
           exact
           path="/quizz/:id"
           component={DisplayQuizz}
         />
-        <ProtectedRoute exact path="/quizz/edit/:id" component={FormEditQuizz}/>
+        <ProtectedRoute exact path="/quizz/edit/yourQuizz" component={FormEditQuizz}/>
         <ProtectedRoute exact path="/question/:id" component={OneQuestionEdit}/>
         <ProtectedRoute path="/dashboard" component={Dashboard} />        
         <ProtectedRoute path="/teams/:id" component={TeamDashboard} />
         <ProtectedRoute exact path="/quizz/categories/:category" component={QuizzCategories} />
+        <ProtectedRoute exact path="/admin" component={AdminDash}/>
+        <ProtectedRoute exact path="/manage-member" component={MemberManagement}/>
+
         <Route path="*" component={Page404} />
       </Switch>
       

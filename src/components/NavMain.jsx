@@ -26,7 +26,8 @@ const NavMain = (props) => {
       <NavLink exact to="/">
         <img src="/media/icons8-année-du-singe-50.png" className="logo" alt="logo"/>
       </NavLink>
-     
+
+    
      
 
       {!context.isLoggedIn && (
@@ -43,9 +44,21 @@ const NavMain = (props) => {
         )}
     
         {context.isLoggedIn && (
-          
+         
           <React.Fragment>
           <ul className="nav-list">
+          {/* Marie 
+          ajout du lien vers Admin Dashboard*/}
+          {context.user.isAdmin&&(
+           
+           <React.Fragment>
+             <li>
+               <NavLink to="/admin">
+               Admin Dashboard
+               </NavLink>
+             </li>
+           </React.Fragment>
+      )}
             <li>
               <NavLink to="/dashboard">
                 {context.user.name}
