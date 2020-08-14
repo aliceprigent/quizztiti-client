@@ -6,13 +6,13 @@ const service = axios.create({
 });
 
 
-function errorHandler(error) {
-  if (error.response.data) {
-    console.log(error.response && error.response.data);
-    throw error;
-  }
-  throw error;
-}
+// function errorHandler(error) {
+//   if (error.response.data) {
+//     console.log(error.response && error.response.data);
+//     throw error;
+//   }
+//   throw error;
+// }
 
 
 
@@ -22,7 +22,8 @@ export default {
   checkUsername(params) {
     return service.get("/", {params})
     .then((teamsJSON) => teamsJSON.data.length)
-    .catch((err) => errorHandler(err));
+    // .catch((err) => errorHandler(err));
+    .catch((err)=> console.log('ERR in front while checking unicity', err))
   },
 
   getUsers(params) {
@@ -52,5 +53,12 @@ export default {
 
   manageUser(managedUserId) {
   return service.get('/manage',managedUserId)
+},
+
+resetPassword(name,data) {
+  return service.patch(`/reset/${name}`, data)
+  .then((updatedPwd) => updatedPwd)
+    // .catch((err) => errorHandler(err));
+    .catch((err)=> console.log('ERR in front while getting updated pwd', err))
 }
 };

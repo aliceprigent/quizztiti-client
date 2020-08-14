@@ -156,6 +156,11 @@ overflow: auto;
   color: crimson;
 }
 
+.green {
+  color: green;
+  font-style: italic;
+}
+
 .red:hover{
   /* background-color: crimson;
   color: white; */

@@ -128,7 +128,7 @@ if (this.state.validUsername) {
             name="name"
             defaultValue={mode === "profile/edit" ? this.state.name : "Name"}
           />
-          {!this.state.validUsername && (
+          {!this.state.validUsername && mode === "signup" && (
             <div className="red"> unavailable username</div>
           )}
           <label className="sign-label" htmlFor="email">

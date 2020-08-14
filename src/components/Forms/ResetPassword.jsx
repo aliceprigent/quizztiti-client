@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
 import apiUser from "../../api/apiUser";
 
 export class ResetPassword extends Component {
@@ -80,6 +79,20 @@ message.username = false})
     this.setState({ message });
   };
 
+
+handleReset = (event) => {
+  event.preventDefault();
+  const data = {email : this.state.email, password : this.state.password};
+  const name = this.state.name;
+console.log('params before sending in back,', data)
+  apiUser.resetPassword(name, data)
+  .then((res) => {console.log('yay back in front with updated password, ', res.data)
+this.props.reset(data.email, data.password)
+})
+  .catch((err) => console.log('error in front', err))
+}
+
+
   render() {
     return (
       <div>
@@ -134,7 +147,8 @@ message.username = false})
           <button
             className="btn"
             style={{ marginTop: "30px" }}
-            onSubmit={this.props.reset}
+            // onSubmit={this.props.reset}
+            onClick={this.handleReset}
           >
             Reset
           </button>
