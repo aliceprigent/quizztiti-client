@@ -32,4 +32,8 @@ export default {
   updateUser(data) {
     return service.patch("/me", data);
   },
+
+  manageUser(managedUserId) {
+  return service.get('/manage',managedUserId)
+}
 };

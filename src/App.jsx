@@ -19,6 +19,7 @@ import QuizzCategories from "./components/Quizz/QuizzCategories"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faImages, faPlay, faEdit } from '@fortawesome/free-solid-svg-icons'
 import AdminDash from "./components/Admin/AdminDash";
+import MemberManagement from "./components/Admin/MemberManagement";
 
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
         <ProtectedRoute path="/teams/:id" component={TeamDashboard} />
         <ProtectedRoute exact path="/quizz/categories/:category" component={QuizzCategories} />
         <ProtectedRoute exact path="/admin" component={AdminDash}/>
+        <ProtectedRoute exact path="/manage-member" component={MemberManagement}/>
+
         <Route path="*" component={Page404} />
       </Switch>
       
