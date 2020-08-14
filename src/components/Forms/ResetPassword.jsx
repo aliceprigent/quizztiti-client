@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
+import apiUser from "../../api/apiUser";
 
 export class ResetPassword extends Component {
   state = {
@@ -18,39 +19,66 @@ export class ResetPassword extends Component {
   handleChange = (event) => {
     const key = event.target.name;
     let value = event.target.value;
-    this.setState({ [key]: value }, () => {this.handleConfirm(event)} );
+    this.setState({ [key]: value }, () => {
+      this.handleConfirm(event);
+    });
   };
-
-
 
   handleConfirm = (event) => {
     let message = { ...this.state.message };
-    console.log("in handleConfirm2 function");
-      if (!this.state.name) {
-        message.username = false;
-      } else {message.username = true};
-
-      if (!this.state.email) {
-        message.email = false;
-      } else {message.email = true};
-
-      if (this.state.passwordConfirm === this.state.password) {
-        message.passwordMatch = true;
-        console.log("in password matching zone __ TRUE");
-      } else {
-        console.log(
-          "password :",
-          this.state.password,
-          "confirm password :",
-          this.state.passwordConfirm
-        );
-        message.passwordMatch = false;
-        console.log("in password matching zone __ FALSE");
-      }
-      this.setState({ message });
+    // console.log("in handleConfirm function");
+    if (!this.state.name) {
+      message.username = false;
+    } else {
+apiUser.getUsers({name : this.state.name})
+.then((res)=> { 
+  // console.log('in front',res)
+// console.log("nb users : ", res.data.length)
+if (res.data.length === 1) {
+  message.username = true;
+} else {message.username = false}
+  
+})
+.catch((err) => {
+// console.log('in front', err);
+message.username = false})
+      
     }
-    
 
+    if (!this.state.email) {
+      message.email = false;
+    } else {
+
+      apiUser.getUsers({email : this.state.email, name : this.state.name})
+.then((res)=> { 
+  // console.log('in front',res)
+// console.log("nb users : ", res.data.length)
+if (res.data.length === 1) {
+  message.username = true;
+} else {message.username = false}
+  
+})
+.catch((err) => {console.log('in front', err);
+message.username = false})
+
+      message.email = true;
+    }
+
+    if (this.state.passwordConfirm === this.state.password) {
+      message.passwordMatch = true;
+      // console.log("in password matching zone __ TRUE");
+    } else {
+      // console.log(
+      //   "password :",
+      //   this.state.password,
+      //   "confirm password :",
+      //   this.state.passwordConfirm
+      // );
+      message.passwordMatch = false;
+      // console.log("in password matching zone __ FALSE");
+    }
+    this.setState({ message });
+  };
 
   render() {
     return (
