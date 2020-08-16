@@ -119,7 +119,7 @@ if (this.state.validUsername) {
           onSubmit={this.handleSubmit}
         >
           <label className="sign-label" htmlFor="name">
-            User Name
+            Username
           </label>
           <input
             className="sign-input"
@@ -129,7 +129,7 @@ if (this.state.validUsername) {
             defaultValue={mode === "profile/edit" ? this.state.name : "Name"}
           />
           {!this.state.validUsername && mode === "signup" && (
-            <div className="red"> unavailable username</div>
+            <div className="warning"> unavailable username</div>
           )}
           <label className="sign-label" htmlFor="email">
             Email

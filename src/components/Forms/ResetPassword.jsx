@@ -106,7 +106,7 @@ this.props.reset(data.email, data.password)
           </label>
           <input className="sign-input" type="text" id="username" name="name" />
           {!this.state.message.username && (
-            <div className="red"> this user doesn't exist </div>
+            <div className="warning"> this user doesn't exist </div>
           )}
           <label className="sign-label" htmlFor="email">
             Email
@@ -119,7 +119,7 @@ this.props.reset(data.email, data.password)
             defaultValue={this.props.email}
           />
           {!this.state.message.email && (
-            <div className="red"> this is not this users's email </div>
+            <div className="warning"> wrong email </div>
           )}
           <label className="sign-label" htmlFor="password">
             {" "}
@@ -142,7 +142,7 @@ this.props.reset(data.email, data.password)
             name="passwordConfirm"
           />
           {!this.state.message.passwordMatch && (
-            <div className="red"> the passwords don't match </div>
+            <div className="warning"> passwords don't match </div>
           )}
           <button
             className="btn"

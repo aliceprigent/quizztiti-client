@@ -123,3 +123,28 @@ ul {
   margin-bottom: 10px;
   margin-top: 20px;
 }
+
+.warning {
+  color: crimson;
+  font-size: .8rem;
+  margin-bottom: 3px;
+  margin-top: 0;
+}
+
+.valid {
+  color: lightseagreen;
+  font-size: .8rem;
+  font-style: italic;
+}
+
+.reset {
+  color: var(--red);
+  font-variant-caps: all-small-caps;
+  padding: 0em 3.7em .2em 3.7em;
+}
+
+.reset:hover {
+  background-color: var(--red);
+  color: whitesmoke;
+  border-radius: 30px;
+}

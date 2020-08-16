@@ -70,17 +70,17 @@ this.setState({reset : !this.state.reset, email: email, password : password, mes
       <h2>Welcome back !</h2>
 
 {
-  this.state.message.credentials && <div className="red"> {this.state.message.credentials} </div>
+  this.state.message.credentials && <div className="warning"> {this.state.message.credentials} </div>
 }
 {
-  this.state.message.reset && <div className="green"> {this.state.message.reset} </div>
+  this.state.message.reset && <div className="valid"> {this.state.message.reset} </div>
 }
       <form className="center column" style={{marginTop:"30px"}} onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label className="sign-label" htmlFor="email">Email</label>
         <input className="sign-input" type="email" id="email" name="email" defaultValue={this.state.email? this.state.email : ""}/>
         <label className="sign-label" htmlFor="password">Password</label>
         <input className="sign-input"type="password" id="password" name="password" defaultValue={this.state.password? this.state.password : ""}/>
-        <Link onClick={this.toggleReset}> reset my password </Link>
+        <Link onClick={this.toggleReset} className="reset" > reset my password </Link>
         <button className="btn" style={{marginTop:"30px"}}>Submit</button>
       </form>
       
