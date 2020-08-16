@@ -57,7 +57,7 @@ if (res.data.length === 1) {
 } else {message.username = false}
   
 })
-.catch((err) => {console.log('in front', err);
+.catch((err) => {console.log('ERR in front', err);
 message.username = false})
 
       message.email = true;
@@ -84,9 +84,10 @@ handleReset = (event) => {
   event.preventDefault();
   const data = {email : this.state.email, password : this.state.password};
   const name = this.state.name;
-console.log('params before sending in back,', data)
+// console.log('params before sending in back,', data)
   apiUser.resetPassword(name, data)
-  .then((res) => {console.log('yay back in front with updated password, ', res.data)
+  .then((res) => {
+    // console.log('yay back in front with updated password, ', res.data)
 this.props.reset(data.email, data.password)
 })
   .catch((err) => console.log('error in front', err))

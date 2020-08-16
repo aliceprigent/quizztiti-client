@@ -63,7 +63,7 @@ handleUsername = (event) => {
   if (this.state.name) {
     apiUser.checkUsername({name : this.state.name})
     .then((res) => {
-      console.log("checking unique username :", res)
+      // console.log("checking unique username :", res)
     if (res > 0) this.setState({validUsername : false})
   else this.setState({validUsername : true})})
     .catch((err)=> console.error(err))
@@ -94,7 +94,7 @@ if (this.state.validUsername) {
       apiUser
         .updateUser(this.state)
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           const updatedUser = {...this.context.user, name:data.data.name, email:data.data.email, image:data.data.image};
           this.context.setUser(updatedUser);
           this.props.history.push("/dashboard");
