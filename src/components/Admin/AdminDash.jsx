@@ -100,7 +100,8 @@ export class AdminDash extends Component {
               onChange={this.handleChange}
             />
             <div id="add_members">
-              {filteredMembers.map((member) => (
+            {this.state.members.length>0&&(
+              filteredMembers.map((member) => (
                 <Link
                   to={{
                     pathname: "/manage-member",
@@ -118,7 +119,11 @@ export class AdminDash extends Component {
                     </div>
                   </label>
                 </Link>
-              ))}
+              )))}
+
+              {this.state.members.length===0&&(
+                <p>No Members in database</p>
+              )}
             </div>
           </div>
         </div>
