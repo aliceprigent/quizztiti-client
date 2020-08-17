@@ -45,6 +45,16 @@ export class AdminDash extends Component {
       });
   }
 
+// componentWillUnmount() {
+//   this.setState({
+//     quizzToValidate: [],
+//     inputSearchMembers: "",
+//     optionsMembers: [],
+//     members: [],
+//   }, ()=>console.log("ready to unmount ?)"))
+
+// }
+
   render() {
     var quizzList = this.state.quizzToValidate.filter((OneQuizz) => {
       return OneQuizz.isPublished === false;

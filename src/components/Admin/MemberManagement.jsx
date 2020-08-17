@@ -63,8 +63,21 @@ export class MemberManagement extends Component {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });   
   }
+
+  // componentWillUnmount() {
+  //   this.setState({name: "",
+  //     email: "",
+  //     image: "",
+  //     teams: [],
+  //     quizzCreated: [],
+  //     isAdmin: false}, ()=> console.log("ready to unmount ?"))
+  // }
+
+
+
+
   render() {
     return (
       <div className="signup-div center column">
