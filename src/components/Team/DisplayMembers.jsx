@@ -20,6 +20,7 @@ const displayMembers = (props) => {
       }
       return (
           <React.Fragment>
+
         <div id="team_members" >
           <div className="row space_between margin_bottom">
           <div>
@@ -29,6 +30,13 @@ const displayMembers = (props) => {
           </div>
     </div>
           <ul>
+          
+{  props.mode === "create" &&   <div className="row" key={props.owner._id}>
+                 <button className="btn owner" >  </button>
+                <img src={props.owner.image} alt={props.owner.name}/>
+                {props.owner.name}  (owner)
+              </div>}
+
             {props.members &&   props.members.map((member) => (
                 <div className="row" key={member._id}>
                 { !(props.owner._id === member._id) ? <button className="btn delete" onClick={()=>props.updateMembers(member._id)}> x</button> : <button className="btn owner" >  </button>}

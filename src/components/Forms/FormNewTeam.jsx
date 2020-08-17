@@ -389,6 +389,7 @@ class FormNewTeam extends Component {
               owner={this.state.owner}
               updateMembers={this.updateMembers}
               members={this.state.members}
+              mode={ mode === "create" ? "create" : "edit"}
             />
             <div className="column">
               <h3>Add members</h3>
@@ -407,7 +408,7 @@ class FormNewTeam extends Component {
                         .toLowerCase()
                         .includes(this.state.inputSearchMembers.toLowerCase())
                     )
-                    .map((optionMember) => (
+                    .map((optionMember) => ( optionMember._id !== this.state.owner._id &&
                       <label
                         className="sign-label"
                         htmlFor={`${optionMember.name}`}
@@ -434,7 +435,7 @@ class FormNewTeam extends Component {
 
                 {(!this.state.inputSearchMembers ||
                   this.state.inputSearchMembers === "") &&
-                  this.state.optionsMembers.map((optionMember) => (
+                  this.state.optionsMembers.map((optionMember) => ( optionMember._id !== this.state.owner._id &&
                     <label
                       className="sign-label"
                       htmlFor={`${optionMember.name}`}
